@@ -14,6 +14,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -32,8 +33,8 @@ public class CreateMap {
             _mapWidth = Integer.parseInt(token.nextToken());
 
             while (sc.hasNextLine()) {              // If sc can read more line.
-                mapIdx = new int[_mapWidth][_mapHeight];            // Create new obj mapIdx in main file.
-                listKill = new int[_mapWidth][_mapHeight];         // Create new obj listKill in main file.
+                objIdx = new int[_mapWidth][_mapHeight];            // Create new obj mapIdx in main file.
+                listisKilled = new int[_mapWidth][_mapHeight];         // Create new obj listKill in main file.
                 for (int i = 0; i < _mapHeight; ++i) {
                     String lineInfo = sc.nextLine();                // Get input from line.
                     StringTokenizer tokenLineInfo = new StringTokenizer(lineInfo);      // Read info from lineInfo.
@@ -55,17 +56,17 @@ public class CreateMap {
                             case 3:
                                 object = new Brick(j, i, Sprite.brick.getFxImage());
                                 break;
-                            case 4:
+                            case 6:
                                 object = new SpeedItem(j, i, Sprite.brick.getFxImage());
                                 break;
-                            case 5:
+                            case 7:
                                 object = new FlameItem(j, i, Sprite.brick.getFxImage());
                                 break;
                             default:
                                 object = new Grass(j, i, Sprite.grass.getFxImage());
                         }
 
-                        mapIdx[j][i] = value;
+                        objIdx[j][i] = value;
                         stillObjects.add(object);
 
                     }

@@ -25,15 +25,17 @@ public class BombermanGame extends Application {
     public static int _mapHeight = 0;
     public static int _gameLevel = 1;
 
-    public static int[][] mapIdx;
-    public static int[][] listKill;
+    public static int[][] objIdx;
+    public static int[][] listisKilled;
+
+    public static Animal player;
 
     private GraphicsContext gc;
     private Canvas canvas;
-    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
+//    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
     public static List<Animal> enemies = new ArrayList<>();         // Contains enemy entities
-    public static List<Entity> stillObjects = new ArrayList<>();
+    public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
 
 
     public static void main(String[] args) {
