@@ -26,7 +26,7 @@ public class BombermanGame extends Application {
     public static int _gameLevel = 1;
 
     public static int[][] objIdx;
-    public static int[][] listisKilled;
+    public static int[][] listIsKilled;
 
     public static Animal player;
 

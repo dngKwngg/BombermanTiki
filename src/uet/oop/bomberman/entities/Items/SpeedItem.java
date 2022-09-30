@@ -25,7 +25,7 @@ public class SpeedItem extends Items {
     public void update() {
         for (Entity entity: stillObjects) {
             if (entity instanceof SpeedItem && (!isReceived)) {
-                if (listisKilled[entity.getX() / 32][entity.getY()/32] == 4) {          // 4 có thể là 1 giá trị riêng với Items
+                if (listIsKilled[entity.getX() / 32][entity.getY()/32] == 4) {          // 4 có thể là 1 giá trị riêng với Items
                     entity.setImg(Sprite.powerup_flames.getFxImage());
                 }
             }

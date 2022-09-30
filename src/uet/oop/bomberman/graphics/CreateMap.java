@@ -34,7 +34,7 @@ public class CreateMap {
 
             while (sc.hasNextLine()) {              // If sc can read more line.
                 objIdx = new int[_mapWidth][_mapHeight];            // Create new obj mapIdx in main file.
-                listisKilled = new int[_mapWidth][_mapHeight];         // Create new obj listKill in main file.
+                listIsKilled = new int[_mapWidth][_mapHeight];         // Create new obj listKill in main file.
                 for (int i = 0; i < _mapHeight; ++i) {
                     String lineInfo = sc.nextLine();                // Get input from line.
                     StringTokenizer tokenLineInfo = new StringTokenizer(lineInfo);      // Read info from lineInfo.
