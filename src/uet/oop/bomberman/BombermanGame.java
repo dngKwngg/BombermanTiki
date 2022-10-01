@@ -29,7 +29,7 @@ import java.util.StringTokenizer;
 
 public class BombermanGame extends Application {
 
-    public static final int WIDTH = 20;
+    public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
     public static int _mapHeight = 0;
