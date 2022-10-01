@@ -9,16 +9,26 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import uet.oop.bomberman.bomber.Bomber;
 import uet.oop.bomberman.entities.Animal.Animal;
+import uet.oop.bomberman.entities.Block.Brick;
+import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Block.Grass;
 import uet.oop.bomberman.entities.Block.Wall;
+import uet.oop.bomberman.entities.Items.FlameItem;
+import uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.graphics.Sprite;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class BombermanGame extends Application {
-    
+
     public static final int WIDTH = 20;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -32,7 +42,7 @@ public class BombermanGame extends Application {
 
     private GraphicsContext gc;
     private Canvas canvas;
-//    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
+    //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
     public static List<Animal> enemies = new ArrayList<>();         // Contains enemy entities
     public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
