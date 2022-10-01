@@ -10,7 +10,6 @@ import uet.oop.bomberman.entities.Items.SpeedItem;
 
 import static uet.oop.bomberman.BombermanGame.*;
 
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
