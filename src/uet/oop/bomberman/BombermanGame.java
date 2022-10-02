@@ -38,7 +38,7 @@ public class BombermanGame extends Application {
     public static int[][] objIdx;
     public static int[][] listIsKilled;
 
-    public static Animal player;
+    public static Bomber player;
 
     private GraphicsContext gc;
     private Canvas canvas;

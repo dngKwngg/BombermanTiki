@@ -46,26 +46,31 @@ public class CreateMap {
                         // Through the program, in the for-loop statement, we can get the map according to each loop it passed.
                         switch (value) {
                             case 1:
+                                objIdx[j][i] = value;
                                 object = new Portal(j, i, Sprite.portal.getFxImage());
                                 value = 0;
                                 break;
                             case 2:
+                                objIdx[j][i] = value;
                                 object = new Wall(j, i, Sprite.wall.getFxImage());
                                 break;
                             case 3:
+                                objIdx[j][i] = value;
                                 object = new Brick(j, i, Sprite.brick.getFxImage());
                                 break;
                             case 6:
+                                objIdx[j][i] = value;
                                 object = new SpeedItem(j, i, Sprite.brick.getFxImage());
                                 break;
                             case 7:
+                                objIdx[j][i] = value;
                                 object = new FlameItem(j, i, Sprite.brick.getFxImage());
                                 break;
                             default:
+                                objIdx[j][i] = value;
                                 object = new Grass(j, i, Sprite.grass.getFxImage());
                         }
 
-                        objIdx[j][i] = value;
                         stillObjects.add(object);
 
                     }

@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.Items;
 
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import javafx.scene.image.Image;
+import uet.oop.bomberman.entities.Block.Bomb;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -35,7 +36,7 @@ public class FlameItem extends Items {
             if (player.getX() == this.x && player.getY() == this.y) {
                 this.setImg(Sprite.grass.getFxImage());
                 this.isReceived = true;
-//                Bomb.bombPower += 2;
+                Bomb.bombPower += 2;
             }
         }
     }
