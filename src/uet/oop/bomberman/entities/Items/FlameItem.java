@@ -36,7 +36,7 @@ public class FlameItem extends Items {
             if (player.getX() == this.x && player.getY() == this.y) {
                 this.setImg(Sprite.grass.getFxImage());
                 this.isReceived = true;
-                Bomb.bombPower += 2;
+                Bomb.bombPower += 1;
             }
         }
     }
