@@ -22,5 +22,4 @@ public class IsBlocked {
         return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] == 0;
     }
 
-
 }
