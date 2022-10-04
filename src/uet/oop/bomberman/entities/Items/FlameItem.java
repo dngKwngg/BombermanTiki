@@ -1,7 +1,5 @@
 package uet.oop.bomberman.entities.Items;
 
-
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.entities.Block.Bomb;
 import uet.oop.bomberman.entities.Entity;

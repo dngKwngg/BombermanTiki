@@ -22,7 +22,5 @@ public class IsBlocked {
         return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] == 0;
     }
 
-    public static boolean leftBombBlock (Entity entity, int power) {        // Limit the range and animation of the explosion to the left
-        return objIdx[entity.getX() / 32][entity.getY() / 32 ]
-    }
+
 }
