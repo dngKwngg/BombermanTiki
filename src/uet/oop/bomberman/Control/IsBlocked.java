@@ -7,7 +7,7 @@ import static uet.oop.bomberman.BombermanGame.objIdx;
 public class IsBlocked {
 
     public static boolean blockLeft(Entity entity) {            // Check if player, animals can go left through the block
-        return objIdx[entity.getX() / 32 - 1][entity.getY() / 32] == 0;
+        return objIdx[entity.getX()/ 32 - 1][entity.getY() / 32] == 0;
     }
 
     public static boolean blockRight(Entity entity) {           // Check if player, animals can go right through the block
