@@ -1,22 +1,21 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.Monster;
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
+import uet.oop.bomberman.entities.Entity;
 
-public class Bomber extends Entity {
-
-
-    public Bomber(int x, int y, Image img) {
+public class Monster extends Entity {
+    public Monster(int x, int y, Image img) {
         super( x, y, img);
     }
 
-
     public void run() {
-        setDelayPerStep(getDelayPerStep() + 1);
+        setDelayPerStep(getDelayPerStep() + 2);
     }
+
     @Override
     public void update() {
-        if (this.getDelayPerStep() == 5) {
+        if (this.getDelayPerStep() == 14) {
             Move.checkRun(this);
             this.setDelayPerStep(0);
         }

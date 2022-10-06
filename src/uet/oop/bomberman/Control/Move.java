@@ -4,40 +4,40 @@ import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.entities.Items.SpeedItem.speed;
+import static uet.oop.bomberman.Control.IsBlocked.*;
 
 public class Move {
 
     public static void checkRun(Entity entity) {    //Check if all your mob move or not
         if (entity instanceof Bomber && entity.getCount() > 0) {
-            setDirection(entity.getDirection(), entity, 8 * speed);
+            setDirection(entity.getDirection(), entity, 8 );
             entity.setCount(entity.getCount() - 1);
         }
     }
 
-    public static void setDirection(String direction, Entity entity, int isMove) {     //Show the direction of all mob
+    public static void setDirection(String direction, Entity entity, int step) {     //Show the direction of all mob
         switch (direction) {
             case "down":
                 downstep(entity);
-                entity.setY(entity.getY() + isMove);
+                entity.setY(entity.getY() + step);
                 break;
             case "up":
                 upstep(entity);
-                entity.setY(entity.getY() - isMove);
+                entity.setY(entity.getY() - step);
                 break;
             case "left":
                 leftstep(entity);
-                entity.setX(entity.getX() - isMove);
+                entity.setX(entity.getX() - step);
                 break;
             case "right":
                 rightstep(entity);
-                entity.setX(entity.getX() + isMove);
+                entity.setX(entity.getX() + step);
                 break;
         }
     }
 
     public static void up(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0) {
+        if(entity instanceof Bomber && entity.getCount()==0 && blockUp(entity)) {
             entity.setCount(4);
             entity.setDirection("up");
             checkRun(entity);
@@ -45,7 +45,7 @@ public class Move {
     }
 
     public static void down(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0) {
+        if(entity instanceof Bomber && entity.getCount()==0 && blockDown(entity)) {
             entity.setCount(4);
             entity.setDirection("down");
             checkRun(entity);
@@ -53,7 +53,7 @@ public class Move {
     }
 
     public static void right(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0) {
+        if(entity instanceof Bomber && entity.getCount()==0 && blockRight(entity)) {
             entity.setCount(4);
             entity.setDirection("right");
             checkRun(entity);
@@ -61,7 +61,7 @@ public class Move {
     }
 
     public static void left(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0) {
+        if(entity instanceof Bomber && entity.getCount()==0 && blockLeft(entity)) {
             entity.setCount(4);
             entity.setDirection("left");
             checkRun(entity);

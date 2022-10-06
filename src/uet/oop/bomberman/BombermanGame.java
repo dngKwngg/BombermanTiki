@@ -10,16 +10,15 @@ import javafx.stage.Stage;
 import uet.oop.bomberman.entities.Block.Brick;
 import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Bomber;
-import uet.oop.bomberman.entities.Animal.Animal;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Block.Grass;
 import uet.oop.bomberman.entities.Block.Wall;
 import uet.oop.bomberman.entities.Items.FlameItem;
 import uet.oop.bomberman.entities.Items.SpeedItem;
+import uet.oop.bomberman.entities.Monster.Monster;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -45,7 +44,7 @@ public class BombermanGame extends Application {
     private Canvas canvas;
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
-    public static List<Animal> enemies = new ArrayList<>();         // Contains enemy entities
+    public static List<Monster> enemies = new ArrayList<>();         // Contains enemy entities
     public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
 
 
