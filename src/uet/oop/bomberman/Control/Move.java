@@ -7,10 +7,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.IsBlocked;
 
 import static uet.oop.bomberman.Control.IsBlocked.*;
-<<<<<<< Updated upstream
-=======
 import static uet.oop.bomberman.entities.Items.SpeedItem.speed;
->>>>>>> Stashed changes
 
 public class Move {
 
@@ -25,11 +22,10 @@ public class Move {
         }
     }
 
-<<<<<<< Updated upstream
-    public static void setDirection(String direction, Entity entity, int step) {
-=======
+//    public static void setDirection(String direction, Entity entity, int step) {
+
     public static void setDirection(String direction, Entity entity, int step) {     //Show the direction of all mob
->>>>>>> Stashed changes
+
         switch (direction) {
             case "down":
                 downstep(entity);
