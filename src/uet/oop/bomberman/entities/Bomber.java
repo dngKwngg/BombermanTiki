@@ -16,7 +16,11 @@ public class Bomber extends Entity {
     }
     @Override
     public void update() {
+<<<<<<< Updated upstream
         if (this.getDelayPerStep() == 5) {
+=======
+        if (this.getRunOneKey() == 6) {
+>>>>>>> Stashed changes
             Move.checkRun(this);
             this.setDelayPerStep(0);
         }

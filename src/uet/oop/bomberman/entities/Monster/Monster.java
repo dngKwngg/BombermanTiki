@@ -5,6 +5,10 @@ import uet.oop.bomberman.Control.Move;
 import uet.oop.bomberman.entities.Entity;
 
 public class Monster extends Entity {
+    Monster() {
+
+    }
+
     public Monster(int x, int y, Image img) {
         super( x, y, img);
     }
