@@ -11,8 +11,8 @@ import java.util.List;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Bomb extends Entity {
-    protected static long timeExploding = 1;
-    protected static long timeBetweenPlant = 1;
+    protected static long timeBomb = 1;
+    protected static long timeBetweenAnimation = 1;
 
     private static Entity bomb;
 
@@ -33,6 +33,9 @@ public class Bomb extends Entity {
     public static int isPlanted = 0;                // Check if there's a bomb here: 0: clear, 1: have bomb, 2: explode
     public static boolean isEdge = false;           // Variable to check if the edge exist
     public static boolean isMiddle = false;         // Check if the bomb explode in the center position
+    private static long timeBetweenPlantAndExplode = 2000L;     // Set time between plant anh explode is 2 seconds
+    private static long timeBetweenPlantAndAnimation = 100L; // Set time between plant and get bomb animation is 0.1 second
+    private static long timeExploding = 1000L;                  // Set time exploding the bomb is 1 second
     private static List<Entity> listBombMiddleVertical = new ArrayList<>();
     private static List<Entity> listBombMiddleHorizontal = new ArrayList<>();
 
@@ -49,8 +52,8 @@ public class Bomb extends Entity {
             y = Math.round((float) y);                              // Get y in canvas
             numberBomb--;
             isPlanted = 1;
-            timeExploding = System.currentTimeMillis();             // Get time when plant the bomb
-            timeBetweenPlant = timeExploding;                       // Time between 2 bombs
+            timeBomb = System.currentTimeMillis();             // Get time when plant the bomb
+            timeBetweenAnimation = timeBomb;                       // Time between 2 bombs
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());        // Create new object Bomb
             stillObjects.add(bomb);                                 // Add Bomb to list Objects
             objIdx[player.getX() / 32][player.getY() / 32] = 4;         // Set objIdx at position plant the bomb to 4
@@ -264,10 +267,97 @@ public class Bomb extends Entity {
 
     }
 
+    private static void checkBombActive() {         // Function to handle the bomb when it is planted and is not explode
+        if (isPlanted == 1) {
+            if (System.currentTimeMillis() - timeBomb < timeBetweenPlantAndExplode) {
+                if (System.currentTimeMillis() - timeBetweenAnimation > timeBetweenPlantAndAnimation) {
+                    showBombAnimation();
+                    timeBetweenAnimation += timeBetweenPlantAndAnimation;
+                }
+            } else {
+                isPlanted = 2;
+                timeBomb = System.currentTimeMillis();
+                timeBetweenAnimation = timeBomb;
+            }
+        }
+    }
 
+    private static void checkExplosion() {
+        if (isPlanted == 2) {
+            if (System.currentTimeMillis() - timeBomb < timeExploding) {
+                if (System.currentTimeMillis() - timeBetweenAnimation > timeBetweenPlantAndAnimation) {
+                    if (!isEdge) {
+                        createBlocked();
+                        isEdge = true;
+                    }
+
+                    if (bombPower > 0 && !isMiddle) {
+                        changeMiddle();
+                        isMiddle = true;
+                    }
+
+                    bombExplosion();
+                    timeBetweenAnimation += timeBetweenPlantAndAnimation;
+                } else {
+                    isPlanted = 0;
+                    objIdx[bomb.getX() / 32][bomb.getY() / 32] = 0;
+                    listIsKilled[bomb.getX() / 32][bomb.getY() / 32] = 0;
+                    bomb.setImg(Sprite.transparent.getFxImage());
+
+                    if (IsBlocked.upBombBlock(bomb, bombPowerUp) == true) {
+                        lastEdgeUp.setImg(Sprite.transparent.getFxImage());
+                        objIdx[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
+                        listIsKilled[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
+                    }
+
+                    if (IsBlocked.leftBombBlock(bomb, bombPowerLeft) == true) {
+                        lastEdgeLeft.setImg(Sprite.transparent.getFxImage());
+                        objIdx[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
+                        listIsKilled[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
+                    }
+
+                    if (IsBlocked.rightBombBlock(bomb, bombPowerRight) == true) {
+                        lastEdgeRight.setImg(Sprite.transparent.getFxImage());
+                        objIdx[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
+                        listIsKilled[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
+                    }
+
+                    if (IsBlocked.downBombBlock(bomb, bombPowerDown) == true) {
+                        lastEdgeDown.setImg(Sprite.transparent.getFxImage());
+                        objIdx[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
+                        listIsKilled[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
+                    }
+
+                    if (isMiddle) {
+                        for (Entity e: listBombMiddleVertical) {
+                            objIdx[e.getX() / 32][e.getY() / 32] = 0;
+                            listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
+                        }
+
+                        for (Entity e: listBombMiddleHorizontal) {
+                            objIdx[e.getX() / 32][e.getY() / 32] = 0;
+                            listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
+                        }
+                    }
+
+                    stillObjects.removeAll(listBombMiddleVertical);
+                    stillObjects.removeAll(listBombMiddleHorizontal);
+                    listBombMiddleHorizontal.clear();
+                    listBombMiddleVertical.clear();
+                    bombPowerUp = 0;
+                    bombPowerDown = 0;
+                    bombPowerLeft = 0;
+                    bombPowerRight = 0;
+                    isEdge = false;
+                    isMiddle = false;
+                }
+            }
+        }
+    }
 
     @Override
     public void update() {
-
+        checkBombActive();
+        checkExplosion();
     }
 }
