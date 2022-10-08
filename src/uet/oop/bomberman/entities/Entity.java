@@ -16,7 +16,10 @@ public abstract class Entity {
     protected int count;
     protected String direction;
     protected int swap=1;
-    protected int runOneKey;
+    protected int delayPerStep;
+    protected boolean life;
+
+    protected int standing=1;
 
     //Khởi tạo đối tượng, chuyển từ tọa độ đơn vị sang tọa độ trong canvas
     public Entity( int xUnit, int yUnit, Image img) {
@@ -77,12 +80,28 @@ public abstract class Entity {
         this.swap=swap;
     }
 
-    public int getRunOneKey() {
-        return runOneKey;
+    public int getDelayPerStep() {
+        return delayPerStep;
     }
 
-    public void setRunOneKey(int runOneKey) {
-        this.runOneKey = runOneKey;
+    public void setDelayPerStep(int delayPerStep) {
+        this.delayPerStep = delayPerStep;
+    }
+
+    public boolean getLife() {
+        return life;
+    }
+
+    public void setLife(boolean life) {
+        this.life=life;
+    }
+
+    public int getStanding() {
+        return standing;
+    }
+
+    public void setStanding(int standing) {
+        this.standing=standing;
     }
     public void render(GraphicsContext gc) {
         gc.drawImage(img, x, y);

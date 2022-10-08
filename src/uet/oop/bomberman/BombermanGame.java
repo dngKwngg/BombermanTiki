@@ -10,16 +10,16 @@ import javafx.stage.Stage;
 import uet.oop.bomberman.entities.Block.Brick;
 import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Bomber;
-import uet.oop.bomberman.entities.Animal.Animal;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Block.Grass;
 import uet.oop.bomberman.entities.Block.Wall;
 import uet.oop.bomberman.entities.Items.FlameItem;
 import uet.oop.bomberman.entities.Items.SpeedItem;
+import uet.oop.bomberman.entities.Monster.Ballom;
+import uet.oop.bomberman.entities.Monster.Monster;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -41,11 +41,13 @@ public class BombermanGame extends Application {
 
     public static Bomber player;
 
+    public static Ballom ballom;
+
     private GraphicsContext gc;
     private Canvas canvas;
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
-    public static List<Animal> enemies = new ArrayList<>();         // Contains enemy entities
+    public static List<Monster> enemies = new ArrayList<>();         // Contains enemy entities
     public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
 
 
@@ -69,16 +71,16 @@ public class BombermanGame extends Application {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
-                    Move.up(player);
+                    Move.up(entities.get(0));
                     break;
                 case DOWN:
-                    Move.down(player);
+                    Move.down(entities.get(0));
                     break;
                 case RIGHT:
-                    Move.right(player);
+                    Move.right(entities.get(0));
                     break;
                 case LEFT:
-                    Move.left(player);
+                    Move.left(entities.get(0));
                     break;
                 case SPACE:
                     break;
@@ -103,7 +105,11 @@ public class BombermanGame extends Application {
         createMap();
 
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        ballom = new Ballom(7, 3, Sprite.balloom_left1.getFxImage());
         entities.add(player);
+        enemies.add(ballom);
+        enemies.add(new Ballom(9, 3, Sprite.balloom_left1.getFxImage()));
+        enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
     }
 
     public void createMap() {
@@ -181,13 +187,19 @@ public class BombermanGame extends Application {
 
     public void update() {
         entities.forEach(Entity::update);
+        enemies.forEach(Entity::update);
         player.run();
         player.update();
+        for(Monster x:enemies) {
+            x.run();
+            x.update();
+        }
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));
+        enemies.forEach(g -> g.render(gc));
     }
 }
