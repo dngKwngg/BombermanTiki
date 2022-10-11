@@ -102,11 +102,8 @@ public class BombermanGame extends Application {
 
         createMap();
 
-<<<<<<< Updated upstream
         player = new Bomber(5, 10, Sprite.player_right.getFxImage());
-=======
         player = new Bomber(7, 1, Sprite.player_right.getFxImage());
->>>>>>> Stashed changes
         ballom = new Ballom(7, 3, Sprite.balloom_left1.getFxImage());
         entities.add(player);
         enemies.add(ballom);
@@ -188,29 +185,16 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
-<<<<<<< Updated upstream
-        for(int i=0;i<entities.size();i++) {
+        for (int i = 0; i < entities.size(); i++) {
             entities.get(i).run();
             entities.get(i).update();
         }
-        for(int i=0;i<enemies.size();i++) {
+        for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).run();
             enemies.get(i).update();
         }
-        for(int i=0;i<stillObjects.size();i++) {
+        for (int i = 0; i < stillObjects.size(); i++) {
             stillObjects.get(i).update();
-=======
-        for(Entity x:entities) {
-            x.run();
-            x.update();
-        };
-        for(Monster x:enemies) {
-            x.run();
-            x.update();
->>>>>>> Stashed changes
-        }
-        for(Entity x:stillObjects) {
-            x.update();
         }
     }
 
