@@ -103,6 +103,10 @@ public abstract class Entity {
     public void setStanding(int standing) {
         this.standing=standing;
     }
+
+    public void run() {
+        setDelayPerStep(getDelayPerStep() + 1);
+    }
     public void render(GraphicsContext gc) {
         gc.drawImage(img, x, y);
     }

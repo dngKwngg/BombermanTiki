@@ -45,7 +45,7 @@ public class BombermanGame extends Application {
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
     public static List<Monster> enemies = new ArrayList<>();         // Contains enemy entities
-    public static final List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
+    public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
 
 
     public static void main(String[] args) {
@@ -184,17 +184,16 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
-        stillObjects.forEach(Entity::update);
-        entities.forEach(Entity::update);
-        enemies.forEach(Entity::update);
-        player.run();
-        player.update();
-        for(Monster x:enemies) {
-            x.run();
-            x.update();
+        for(int i=0;i<entities.size();i++) {
+            entities.get(i).run();
+            entities.get(i).update();
         }
-        for (Entity x: stillObjects) {
-            x.update();
+        for(int i=0;i<enemies.size();i++) {
+            enemies.get(i).run();
+            enemies.get(i).update();
+        }
+        for(int i=0;i<stillObjects.size();i++) {
+            stillObjects.get(i).update();
         }
     }
 

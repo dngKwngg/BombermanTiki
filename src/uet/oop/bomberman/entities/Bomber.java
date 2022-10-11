@@ -11,9 +11,7 @@ public class Bomber extends Entity {
     }
 
 
-    public void run() {
-        setDelayPerStep(getDelayPerStep() + 1);
-    }
+
 
     @Override
     public void update() {
