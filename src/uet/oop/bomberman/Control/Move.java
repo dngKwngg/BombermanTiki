@@ -7,8 +7,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.Control.IsBlocked.*;
 
 
-public class
-Move {
+public class Move {
 
     public static void checkRun(Entity entity) {
         if (entity instanceof Bomber && entity.getCount() > 0) {
