@@ -14,36 +14,35 @@ Move {
 
     public static void checkRun(Entity entity) {
         if (entity instanceof Bomber && entity.getCount() > 0) {
-            setDirection(entity.getDirection(), entity, 8 );
+            stepByStep(entity.getDirection(), entity, 8 );
             entity.setCount(entity.getCount() - 1);
         }
 
         if (entity instanceof Ballom && entity.getCount() > 0) {
-            setDirection(entity.getDirection(), entity, 4);
+            stepByStep(entity.getDirection(), entity, 4);
             entity.setCount(entity.getCount() - 1);
         }
     }
 
 //    public static void setDirection(String direction, Entity entity, int step) {
 
-    public static void setDirection(String direction, Entity entity, int step) {     //Show the direction of all mob
-
+    public static void stepByStep(String direction, Entity entity, int distance) {     //Show the direction of all mob
         switch (direction) {
             case "down":
-                downstep(entity);
-                entity.setY(entity.getY() + step);
+                ifDown(entity);
+                entity.setY(entity.getY() + distance);
                 break;
             case "up":
-                upstep(entity);
-                entity.setY(entity.getY() - step);
+                ifUp(entity);
+                entity.setY(entity.getY() - distance);
                 break;
             case "left":
-                leftstep(entity);
-                entity.setX(entity.getX() - step);
+                ifLeft(entity);
+                entity.setX(entity.getX() - distance);
                 break;
             case "right":
-                rightstep(entity);
-                entity.setX(entity.getX() + step);
+                ifRight(entity);
+                entity.setX(entity.getX() + distance);
                 break;
         }
     }
@@ -120,134 +119,102 @@ Move {
         }
     }
 
-    public static void upstep(Entity entity) {
+    public static void ifUp(Entity entity) {
         if (entity instanceof Bomber) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.player_up.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.player_up_1.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.player_up_2.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.player_up.getFxImage());
-                entity.setSwap(1);
             }
         }
         if (entity instanceof Ballom) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.balloom_left1.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.balloom_left2.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
-                entity.setSwap(1);
             }
         }
     }
 
-    public static void downstep(Entity entity) {
+    public static void ifDown(Entity entity) {
         if (entity instanceof Bomber) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.player_down.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.player_down_1.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.player_down_2.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.player_down.getFxImage());
-                entity.setSwap(1);
             }
         }
         if (entity instanceof Ballom) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.balloom_right1.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.balloom_right2.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
-                entity.setSwap(1);
             }
         }
     }
 
-    public static void leftstep(Entity entity) {
+    public static void ifLeft(Entity entity) {
         if (entity instanceof Bomber) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.player_left.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.player_left_1.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.player_left_2.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.player_left.getFxImage());
-                entity.setSwap(1);
             }
         }
         if (entity instanceof Ballom) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.balloom_left1.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.balloom_left2.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
-                entity.setSwap(1);
             }
         }
     }
 
-    public static void rightstep(Entity entity) {
-        if (entity instanceof Bomber ) {
-            if (entity.getSwap() == 1) {
+    public static void ifRight(Entity entity) {
+        if (entity instanceof Bomber) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.player_right.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.player_right_1.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.player_right_2.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.player_right.getFxImage());
-                entity.setSwap(1);
             }
         }
         if (entity instanceof Ballom) {
-            if (entity.getSwap() == 1) {
+            if (entity.getCount() % 4 == 0) {
                 entity.setImg(Sprite.balloom_right1.getFxImage());
-                entity.setSwap(2);
-            } else if (entity.getSwap() == 2) {
+            } else if (entity.getCount() % 4 == 3) {
                 entity.setImg(Sprite.balloom_right2.getFxImage());
-                entity.setSwap(3);
-            } else if (entity.getSwap() == 3) {
+            } else if (entity.getCount() % 4 == 2) {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
-                entity.setSwap(4);
             } else {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
-                entity.setSwap(1);
             }
         }
     }

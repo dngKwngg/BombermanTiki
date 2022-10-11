@@ -65,6 +65,7 @@ public class BombermanGame extends Application {
         // Tao scene
         Scene scene = new Scene(root);
 
+        //Bat su kien
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:

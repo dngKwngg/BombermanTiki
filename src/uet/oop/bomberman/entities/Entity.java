@@ -15,7 +15,6 @@ public abstract class Entity {
     protected Image img;
     protected int count;
     protected String direction;
-    protected int swap=1;
     protected int delayPerStep;
     protected boolean life;
 
@@ -70,14 +69,6 @@ public abstract class Entity {
 
     public void setDirection(String direction) {
         this.direction = direction;
-    }
-
-    public int getSwap(){
-        return swap;
-    }
-
-    public void setSwap(int swap){
-        this.swap=swap;
     }
 
     public int getDelayPerStep() {

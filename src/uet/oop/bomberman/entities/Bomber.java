@@ -16,7 +16,7 @@ public class Bomber extends Entity {
     @Override
     public void update() {
 
-        if (this.getDelayPerStep() == 5) {
+        if (this.getDelayPerStep() == 6) {
 
             Move.checkRun(this);
             this.setDelayPerStep(0);
