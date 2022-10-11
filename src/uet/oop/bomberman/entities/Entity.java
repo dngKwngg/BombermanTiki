@@ -14,7 +14,7 @@ public abstract class Entity {
     protected int y;
     protected Image img;
     protected int count;
-    protected String direction;
+    protected int direction;
     protected int delayPerStep;
     protected boolean life;
 
@@ -63,11 +63,11 @@ public abstract class Entity {
         return count;
     }
 
-    public String getDirection() {
+    public int getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
+    public void setDirection(int direction) {
         this.direction = direction;
     }
 

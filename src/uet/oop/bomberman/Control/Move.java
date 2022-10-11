@@ -4,10 +4,8 @@ import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Monster.Ballom;
 import uet.oop.bomberman.graphics.Sprite;
-import uet.oop.bomberman.Control.IsBlocked;
-
 import static uet.oop.bomberman.Control.IsBlocked.*;
-import static uet.oop.bomberman.entities.Items.SpeedItem.speed;
+
 
 public class
 Move {
@@ -26,21 +24,21 @@ Move {
 
 //    public static void setDirection(String direction, Entity entity, int step) {
 
-    public static void stepByStep(String direction, Entity entity, int distance) {     //Show the direction of all mob
+    public static void stepByStep(int direction, Entity entity, int distance) {     //Show the direction of all mob
         switch (direction) {
-            case "down":
+            case 0:
                 ifDown(entity);
                 entity.setY(entity.getY() + distance);
                 break;
-            case "up":
+            case 1:
                 ifUp(entity);
                 entity.setY(entity.getY() - distance);
                 break;
-            case "left":
+            case 2:
                 ifLeft(entity);
                 entity.setX(entity.getX() - distance);
                 break;
-            case "right":
+            case 3:
                 ifRight(entity);
                 entity.setX(entity.getX() + distance);
                 break;
@@ -50,14 +48,14 @@ Move {
     public static void up(Entity entity) {
         if(entity instanceof Bomber && entity.getCount()==0 && blockUp(entity)) {
             entity.setCount(4);
-            entity.setDirection("up");
+            entity.setDirection(1);
             checkRun(entity);
         }
         if(entity instanceof Ballom && entity.getCount()==0) {
             if(blockUp(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
-                entity.setDirection("up");
+                entity.setDirection(1);
                 checkRun(entity);
             } else {
                 entity.setStanding(1);
@@ -68,14 +66,14 @@ Move {
     public static void down(Entity entity) {
         if(entity instanceof Bomber && entity.getCount()==0 && blockDown(entity)) {
             entity.setCount(4);
-            entity.setDirection("down");
+            entity.setDirection(0);
             checkRun(entity);
         }
         if(entity instanceof Ballom && entity.getCount()==0) {
             if(blockDown(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
-                entity.setDirection("down");
+                entity.setDirection(0);
                 checkRun(entity);
             } else {
                 entity.setStanding(1);
@@ -86,14 +84,14 @@ Move {
     public static void right(Entity entity) {
         if(entity instanceof Bomber && entity.getCount()==0 && blockRight(entity)) {
             entity.setCount(4);
-            entity.setDirection("right");
+            entity.setDirection(3);
             checkRun(entity);
         }
         if(entity instanceof Ballom && entity.getCount()==0) {
             if(blockRight(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
-                entity.setDirection("right");
+                entity.setDirection(3);
                 checkRun(entity);
             } else {
                 entity.setStanding(1);
@@ -104,14 +102,14 @@ Move {
     public static void left(Entity entity) {
         if(entity instanceof Bomber && entity.getCount()==0 && blockLeft(entity)) {
             entity.setCount(4);
-            entity.setDirection("left");
+            entity.setDirection(2);
             checkRun(entity);
         }
         if(entity instanceof Ballom && entity.getCount()==0) {
             if(blockLeft(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
-                entity.setDirection("left");
+                entity.setDirection(2);
                 checkRun(entity);
             } else {
                 entity.setStanding(1);
