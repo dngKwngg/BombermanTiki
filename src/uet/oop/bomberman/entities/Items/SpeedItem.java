@@ -35,7 +35,7 @@ public class SpeedItem extends Items {
             if (player.getX() == this.x && player.getY() == this.y) {
                 this.setImg(Sprite.grass.getFxImage());
                 this.isReceived = true;
-                speed = 3;
+                player.setLimitDelay(4);
             }
         }
     }
