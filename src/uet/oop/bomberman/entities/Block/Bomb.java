@@ -11,24 +11,24 @@ import java.util.List;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Bomb extends Entity {
-    protected static long timeBomb = 1;
-    protected static long timeBetweenAnimation = 1;
+    protected static long timeBomb = 1;         // Exploding time bomb
+    protected static long timeBombTemp = 1;     // TimeBombTemp to handle between 2 bombs
 
     private static Entity bomb;
 
-    private static int state = 0;       // State of the bomb
+    private static int state = 1;       // State of the bomb
     private static int stateExplosion = 1;          // State explosion of the bomb
     public static int numberBomb = 20;              // Number bomb limit in the map
-    public static int bombPower = 1;
-    public static int bombPowerLeft = 1;
-    public static int bombPowerRight = 1;
-    public static int bombPowerUp = 1;
-    public static int bombPowerDown = 1;
+    public static int bombPower = 0;                // Bomb power
+    public static int bombPowerLeft = 0;            // Bomb power in left side
+    public static int bombPowerRight = 0;           // Bomb power in right side
+    public static int bombPowerUp = 0;              // Bomb power in up side
+    public static int bombPowerDown = 0;            // Bomb power in down side
 
-    private static Entity lastEdgeUp = null;
-    private static Entity lastEdgeDown = null;
-    private static Entity lastEdgeLeft = null;
-    private static Entity lastEdgeRight = null;
+    private static Entity lastEdgeUp = null;        // The upper edge of the block blocks bomber going through
+    private static Entity lastEdgeDown = null;      // The down edge of the block blocks bomber going through
+    private static Entity lastEdgeLeft = null;      // The left edge of the block blocks bomber going through
+    private static Entity lastEdgeRight = null;     // The right edge of the block blocks bomber going through
 
     public static int isPlanted = 0;                // Check if there's a bomb here: 0: clear, 1: have bomb, 2: explode
     public static boolean isEdge = false;           // Variable to check if the edge exist
@@ -36,8 +36,8 @@ public class Bomb extends Entity {
     private static long timeBetweenPlantAndExplode = 2000L;     // Set time between plant anh explode is 2 seconds
     private static long timeBetweenPlantAndAnimation = 100L; // Set time between plant and get bomb animation is 0.1 second
     private static long timeExploding = 1000L;                  // Set time exploding the bomb is 1 second
-    private static List<Entity> listBombMiddleVertical = new ArrayList<>();
-    private static List<Entity> listBombMiddleHorizontal = new ArrayList<>();
+    private static final List<Entity> listBombMiddleVertical = new ArrayList<>();
+    private static final List<Entity> listBombMiddleHorizontal = new ArrayList<>();
 
     public Bomb(int x, int y, Image fxImage) {
         super(x, y, fxImage);
@@ -53,7 +53,7 @@ public class Bomb extends Entity {
             numberBomb--;
             isPlanted = 1;
             timeBomb = System.currentTimeMillis();             // Get time when plant the bomb
-            timeBetweenAnimation = timeBomb;                       // Time between 2 bombs
+            timeBombTemp = timeBomb;                       // Time between 2 bombs
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());        // Create new object Bomb
             stillObjects.add(bomb);                                 // Add Bomb to list Objects
             objIdx[player.getX() / 32][player.getY() / 32] = 4;         // Set objIdx at position plant the bomb to 4
@@ -61,31 +61,27 @@ public class Bomb extends Entity {
     }
 
     public static void showBombAnimation() {            // Show animation of the bomb when it is planted till it explodes
-        switch (state) {
-            case 0:
-                bomb.setImg(Sprite.bomb.getFxImage());
-                state = 1;
-                break;
-            case 1:
-                bomb.setImg(Sprite.bomb_1.getFxImage());
-                state = 2;
-                break;
-            case 2:
-                bomb.setImg(Sprite.bomb_2.getFxImage());
-                state = 3;
-                break;
-            case 3:
-                bomb.setImg(Sprite.bomb_1.getFxImage());
-                state = 0;
-                break;
+        if (state == 1) {
+            bomb.setImg(Sprite.bomb.getFxImage());
+            state = 2;
+        } else if (state == 2) {
+            bomb.setImg(Sprite.bomb_1.getFxImage());
+            state = 3;
+        } else if (state == 3) {
+            bomb.setImg(Sprite.bomb_2.getFxImage());
+            state = 4;
+        } else {
+            bomb.setImg(Sprite.bomb_1.getFxImage());
+            state = 1;
         }
     }
 
-    public static void createBlocked() {            // Create a block to prevent bomber move and the explosion of bomb
+    public static void createBlocked() {        // Create a block to prevent bomber move and the explosion of bomb
+        int i;
         if (IsBlocked.leftBombBlock(bomb, 0)) {
             lastEdgeLeft = new Bomb(bomb.getX() / 32 - 1, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
-                for (int i = 1; i <= bombPower && IsBlocked.leftBombBlock(bomb, i) == true; ++i) {
+                for (i = 1; i <= bombPower && IsBlocked.leftBombBlock(bomb, i); ++i) {
                     lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
                     bombPowerLeft++;
                 }
@@ -97,7 +93,7 @@ public class Bomb extends Entity {
         if (IsBlocked.rightBombBlock(bomb, 0)) {
             lastEdgeRight = new Bomb(bomb.getX() / 32 + 1, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
-                for (int i = 1; i <= bombPower && IsBlocked.rightBombBlock(bomb, i) == true; ++i) {
+                for (i = 1; i <= bombPower && IsBlocked.rightBombBlock(bomb, i); ++i) {
                     lastEdgeRight.setX(bomb.getX() + 32 + i * 32);
                     bombPowerRight++;
                 }
@@ -109,7 +105,7 @@ public class Bomb extends Entity {
         if (IsBlocked.upBombBlock(bomb, 0)) {
             lastEdgeUp = new Bomb(bomb.getX() / 32, bomb.getY() / 32 - 1, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
-                for (int i = 1; i <= bombPower && IsBlocked.upBombBlock(bomb, i) == true; ++i) {
+                for (i = 1; i <= bombPower && IsBlocked.upBombBlock(bomb, i); ++i) {
                     lastEdgeUp.setY(bomb.getY() - 32 - i * 32);
                     bombPowerUp++;
                 }
@@ -121,8 +117,8 @@ public class Bomb extends Entity {
         if (IsBlocked.downBombBlock(bomb, 0)) {
             lastEdgeDown = new Bomb(bomb.getX() / 32, bomb.getY() / 32 + 1, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
-                for (int i = 1; i <= bombPower && IsBlocked.downBombBlock(bomb, i) == true; ++i) {
-                    lastEdgeLeft.setX(bomb.getX() + 32 + i * 32);
+                for (i = 1; i <= bombPower && IsBlocked.downBombBlock(bomb, i); ++i) {
+                    lastEdgeDown.setX(bomb.getX() + 32 + i * 32);
                     bombPowerDown++;
                 }
             }
@@ -133,33 +129,29 @@ public class Bomb extends Entity {
 
     public static void changeMiddle() {     // Change the bomb to explode in center position
         Entity middlePos;
-        for (int i = 1; i <= bombPowerLeft; ++i) {
+        int i;
+        for (i = 1; i <= bombPowerLeft; ++i) {
             middlePos = new Bomb(bomb.getX() / 32 - i, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             listBombMiddleHorizontal.add(middlePos);
         }
 
-        for (int i = 1; i <= bombPowerRight; ++i) {
+        for (i = 1; i <= bombPowerRight; ++i) {
             middlePos = new Bomb(bomb.getX() / 32 + i, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             listBombMiddleHorizontal.add(middlePos);
         }
 
-        for (int i = 1; i <= bombPowerUp; ++i) {
+        for (i = 1; i <= bombPowerUp; ++i) {
             middlePos = new Bomb(bomb.getX() / 32, bomb.getY() / 32 - i, Sprite.bomb_exploded.getFxImage());
             listBombMiddleVertical.add(middlePos);
         }
 
-        for (int i = 1; i <= bombPowerDown; ++i) {
+        for (i = 1; i <= bombPowerDown; ++i) {
             middlePos = new Bomb(bomb.getX() / 32, bomb.getY() / 32 + i, Sprite.bomb_exploded.getFxImage());
             listBombMiddleVertical.add(middlePos);
         }
 
-        for (Entity middleBomb : listBombMiddleHorizontal) {
-            stillObjects.add(middleBomb);
-        }
-
-        for (Entity middleBomb : listBombMiddleVertical) {
-            stillObjects.add(middleBomb);
-        }
+        stillObjects.addAll(listBombMiddleHorizontal);
+        stillObjects.addAll(listBombMiddleVertical);
     }
 
     public static void bombExplosion() {
@@ -202,6 +194,7 @@ public class Bomb extends Entity {
             }
 
             stateExplosion = 2;
+
         } else if (stateExplosion == 2) {
             bomb.setImg(Sprite.bomb_exploded1.getFxImage());
 
@@ -269,23 +262,23 @@ public class Bomb extends Entity {
 
     private static void checkBombActive() {         // Function to handle the bomb when it is planted and is not explode
         if (isPlanted == 1) {
-            if (System.currentTimeMillis() - timeBomb < timeBetweenPlantAndExplode) {
-                if (System.currentTimeMillis() - timeBetweenAnimation > timeBetweenPlantAndAnimation) {
+            if (System.currentTimeMillis() - timeBomb < 2000L) {
+                if (System.currentTimeMillis() - timeBombTemp > 100L) {
                     showBombAnimation();
-                    timeBetweenAnimation += timeBetweenPlantAndAnimation;
+                    timeBombTemp += 100L;
                 }
             } else {
                 isPlanted = 2;
                 timeBomb = System.currentTimeMillis();
-                timeBetweenAnimation = timeBomb;
+                timeBombTemp = timeBomb;
             }
         }
     }
 
-    private static void checkExplosion() {
+    private static void checkExplosion() {          // Handle the explosion of bomb after planted
         if (isPlanted == 2) {
-            if (System.currentTimeMillis() - timeBomb < timeExploding) {
-                if (System.currentTimeMillis() - timeBetweenAnimation > timeBetweenPlantAndAnimation) {
+            if (System.currentTimeMillis() - timeBomb < 1000L) {
+                if (System.currentTimeMillis() - timeBombTemp > 100L) {
                     if (!isEdge) {
                         createBlocked();
                         isEdge = true;
@@ -297,60 +290,60 @@ public class Bomb extends Entity {
                     }
 
                     bombExplosion();
-                    timeBetweenAnimation += timeBetweenPlantAndAnimation;
-                } else {
-                    isPlanted = 0;
-                    objIdx[bomb.getX() / 32][bomb.getY() / 32] = 0;
-                    listIsKilled[bomb.getX() / 32][bomb.getY() / 32] = 0;
-                    bomb.setImg(Sprite.transparent.getFxImage());
-
-                    if (IsBlocked.upBombBlock(bomb, bombPowerUp) == true) {
-                        lastEdgeUp.setImg(Sprite.transparent.getFxImage());
-                        objIdx[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
-                        listIsKilled[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
-                    }
-
-                    if (IsBlocked.leftBombBlock(bomb, bombPowerLeft) == true) {
-                        lastEdgeLeft.setImg(Sprite.transparent.getFxImage());
-                        objIdx[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
-                        listIsKilled[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
-                    }
-
-                    if (IsBlocked.rightBombBlock(bomb, bombPowerRight) == true) {
-                        lastEdgeRight.setImg(Sprite.transparent.getFxImage());
-                        objIdx[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
-                        listIsKilled[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
-                    }
-
-                    if (IsBlocked.downBombBlock(bomb, bombPowerDown) == true) {
-                        lastEdgeDown.setImg(Sprite.transparent.getFxImage());
-                        objIdx[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
-                        listIsKilled[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
-                    }
-
-                    if (isMiddle) {
-                        for (Entity e: listBombMiddleVertical) {
-                            objIdx[e.getX() / 32][e.getY() / 32] = 0;
-                            listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
-                        }
-
-                        for (Entity e: listBombMiddleHorizontal) {
-                            objIdx[e.getX() / 32][e.getY() / 32] = 0;
-                            listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
-                        }
-                    }
-
-                    stillObjects.removeAll(listBombMiddleVertical);
-                    stillObjects.removeAll(listBombMiddleHorizontal);
-                    listBombMiddleHorizontal.clear();
-                    listBombMiddleVertical.clear();
-                    bombPowerUp = 0;
-                    bombPowerDown = 0;
-                    bombPowerLeft = 0;
-                    bombPowerRight = 0;
-                    isEdge = false;
-                    isMiddle = false;
+                    timeBombTemp += 100L;
                 }
+            } else {
+                isPlanted = 0;
+                objIdx[bomb.getX() / 32][bomb.getY() / 32] = 0;
+                listIsKilled[bomb.getX() / 32][bomb.getY() / 32] = 0;
+                bomb.setImg(Sprite.transparent.getFxImage());
+
+                if (IsBlocked.downBombBlock(bomb, bombPowerDown)) {
+                    lastEdgeDown.setImg(Sprite.transparent.getFxImage());
+                    objIdx[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
+                    listIsKilled[lastEdgeDown.getX() / 32][lastEdgeDown.getY() / 32] = 0;
+                }
+
+                if (IsBlocked.upBombBlock(bomb, bombPowerUp)) {
+                    lastEdgeUp.setImg(Sprite.transparent.getFxImage());
+                    objIdx[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
+                    listIsKilled[lastEdgeUp.getX() / 32][lastEdgeUp.getY() / 32] = 0;
+                }
+
+                if (IsBlocked.leftBombBlock(bomb, bombPowerLeft)) {
+                    lastEdgeLeft.setImg(Sprite.transparent.getFxImage());
+                    objIdx[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
+                    listIsKilled[lastEdgeLeft.getX() / 32][lastEdgeLeft.getY() / 32] = 0;
+                }
+
+                if (IsBlocked.rightBombBlock(bomb, bombPowerRight)) {
+                    lastEdgeRight.setImg(Sprite.transparent.getFxImage());
+                    objIdx[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
+                    listIsKilled[lastEdgeRight.getX() / 32][lastEdgeRight.getY() / 32] = 0;
+                }
+
+                if (isMiddle) {
+                    for (Entity e : listBombMiddleVertical) {
+                        objIdx[e.getX() / 32][e.getY() / 32] = 0;
+                        listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
+                    }
+
+                    for (Entity e : listBombMiddleHorizontal) {
+                        objIdx[e.getX() / 32][e.getY() / 32] = 0;
+                        listIsKilled[e.getX() / 32][e.getY() / 32] = 0;
+                    }
+                }
+
+                stillObjects.removeAll(listBombMiddleVertical);
+                stillObjects.removeAll(listBombMiddleHorizontal);
+                listBombMiddleHorizontal.clear();
+                listBombMiddleVertical.clear();
+                bombPowerUp = 0;
+                bombPowerDown = 0;
+                bombPowerLeft = 0;
+                bombPowerRight = 0;
+                isEdge = false;
+                isMiddle = false;
             }
         }
     }

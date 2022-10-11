@@ -7,12 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
-import uet.oop.bomberman.entities.Block.Brick;
-import uet.oop.bomberman.entities.Block.Portal;
+import uet.oop.bomberman.entities.Block.*;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Block.Grass;
-import uet.oop.bomberman.entities.Block.Wall;
 import uet.oop.bomberman.entities.Items.FlameItem;
 import uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.entities.Monster.Ballom;
@@ -48,7 +45,7 @@ public class BombermanGame extends Application {
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
     public static List<Monster> enemies = new ArrayList<>();         // Contains enemy entities
-    public static List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
+    public static final List<Entity> stillObjects = new ArrayList<>();    // Contains entities after fixed
 
 
     public static void main(String[] args) {
@@ -83,6 +80,7 @@ public class BombermanGame extends Application {
                     Move.left(entities.get(0));
                     break;
                 case SPACE:
+                    Bomb.plantBomb();
                     break;
                 case P:
                     break;
@@ -104,7 +102,7 @@ public class BombermanGame extends Application {
 
         createMap();
 
-        player = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        player = new Bomber(5, 10, Sprite.player_right.getFxImage());
         ballom = new Ballom(7, 3, Sprite.balloom_left1.getFxImage());
         entities.add(player);
         enemies.add(ballom);
@@ -186,12 +184,16 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
+        stillObjects.forEach(Entity::update);
         entities.forEach(Entity::update);
         enemies.forEach(Entity::update);
         player.run();
         player.update();
         for(Monster x:enemies) {
             x.run();
+            x.update();
+        }
+        for (Entity x: stillObjects) {
             x.update();
         }
     }
