@@ -9,13 +9,15 @@ import uet.oop.bomberman.Control.IsBlocked;
 import static uet.oop.bomberman.Control.IsBlocked.*;
 import static uet.oop.bomberman.entities.Items.SpeedItem.speed;
 
-public class Move {
+public class
+Move {
 
     public static void checkRun(Entity entity) {
         if (entity instanceof Bomber && entity.getCount() > 0) {
             setDirection(entity.getDirection(), entity, 8 );
             entity.setCount(entity.getCount() - 1);
         }
+
         if (entity instanceof Ballom && entity.getCount() > 0) {
             setDirection(entity.getDirection(), entity, 4);
             entity.setCount(entity.getCount() - 1);
