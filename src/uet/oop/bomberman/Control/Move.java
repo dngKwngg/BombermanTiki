@@ -45,13 +45,13 @@ public class Move {
     }
 
     public static void up(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0 && blockUp(entity)) {
+        if (entity instanceof Bomber && entity.getCount() == 0 && blockUp(entity)) {
             entity.setCount(4);
             entity.setDirection(1);
             checkRun(entity);
         }
-        if(entity instanceof Ballom && entity.getCount()==0) {
-            if(blockUp(entity)) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
+            if (blockUp(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
                 entity.setDirection(1);
@@ -63,13 +63,13 @@ public class Move {
     }
 
     public static void down(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0 && blockDown(entity)) {
+        if (entity instanceof Bomber && entity.getCount() == 0 && blockDown(entity)) {
             entity.setCount(4);
             entity.setDirection(0);
             checkRun(entity);
         }
-        if(entity instanceof Ballom && entity.getCount()==0) {
-            if(blockDown(entity)) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
+            if (blockDown(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
                 entity.setDirection(0);
@@ -81,13 +81,13 @@ public class Move {
     }
 
     public static void right(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0 && blockRight(entity)) {
+        if (entity instanceof Bomber && entity.getCount() == 0 && blockRight(entity)) {
             entity.setCount(4);
             entity.setDirection(3);
             checkRun(entity);
         }
-        if(entity instanceof Ballom && entity.getCount()==0) {
-            if(blockRight(entity)) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
+            if (blockRight(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
                 entity.setDirection(3);
@@ -99,13 +99,13 @@ public class Move {
     }
 
     public static void left(Entity entity) {
-        if(entity instanceof Bomber && entity.getCount()==0 && blockLeft(entity)) {
+        if (entity instanceof Bomber && entity.getCount() == 0 && blockLeft(entity)) {
             entity.setCount(4);
             entity.setDirection(2);
             checkRun(entity);
         }
-        if(entity instanceof Ballom && entity.getCount()==0) {
-            if(blockLeft(entity)) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
+            if (blockLeft(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
                 entity.setDirection(2);
