@@ -38,8 +38,6 @@ public class BombermanGame extends Application {
 
     public static Bomber player;
 
-    public static Ballom ballom;
-
     private GraphicsContext gc;
     private Canvas canvas;
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
@@ -102,12 +100,9 @@ public class BombermanGame extends Application {
         timer.start();
 
         createMap();
-
-        player = new Bomber(5, 10, Sprite.player_right.getFxImage());
         player = new Bomber(7, 1, Sprite.player_right.getFxImage());
-        ballom = new Ballom(7, 3, Sprite.balloom_left1.getFxImage());
         entities.add(player);
-        enemies.add(ballom);
+        enemies.add(new Ballom(7, 3, Sprite.balloom_left1.getFxImage()));
         enemies.add(new Ballom(9, 3, Sprite.balloom_left1.getFxImage()));
         enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
     }

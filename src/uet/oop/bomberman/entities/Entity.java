@@ -16,7 +16,7 @@ public abstract class Entity {
     protected int count;
     protected int direction;
     protected int delayPerStep;
-    protected boolean life;
+    protected boolean life=true;
 
     protected int standing=1;
 

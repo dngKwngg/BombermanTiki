@@ -33,9 +33,9 @@ public class Bomb extends Entity {
     public static int isPlanted = 0;                // Check if there's a bomb here: 0: clear, 1: have bomb, 2: explode
     public static boolean isEdge = false;           // Variable to check if the edge exist
     public static boolean isMiddle = false;         // Check if the bomb explode in the center position
-    private static long timeBetweenPlantAndExplode = 2000L;     // Set time between plant anh explode is 2 seconds
-    private static long timeBetweenPlantAndAnimation = 100L; // Set time between plant and get bomb animation is 0.1 second
-    private static long timeExploding = 1000L;                  // Set time exploding the bomb is 1 second
+    private static final long timeBetweenPlantAndExplode = 2000L;     // Set time between plant anh explode is 2 seconds
+    private static final long timeBetweenPlantAndAnimation = 100L; // Set time between plant and get bomb animation is 0.1 second
+    private static final long timeExploding = 1000L;                  // Set time exploding the bomb is 1 second
     private static final List<Entity> listBombMiddleVertical = new ArrayList<>();
     private static final List<Entity> listBombMiddleHorizontal = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class Bomb extends Entity {
 
 
     public static void plantBomb() {                // Function to plant a bomb
-        if (numberBomb > 0 && isPlanted == 0) {
+        if (numberBomb > 0 && isPlanted == 0 && player.getLife()) {
             int x = player.getX() / 32;
             int y = player.getY() / 32;
             x = Math.round((float) x);                              // Get x in Canvas

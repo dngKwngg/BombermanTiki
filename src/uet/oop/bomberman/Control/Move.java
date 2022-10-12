@@ -10,7 +10,7 @@ import static uet.oop.bomberman.Control.IsBlocked.*;
 public class Move {
 
     public static void checkRun(Entity entity) {
-        if (entity instanceof Bomber && entity.getCount() > 0) {
+        if (entity instanceof Bomber && entity.getCount() > 0 && entity.getLife()) {
             stepByStep(entity.getDirection(), entity, 8 );
             entity.setCount(entity.getCount() - 1);
         }
