@@ -118,7 +118,7 @@ public class Bomb extends Entity {
             lastEdgeDown = new Bomb(bomb.getX() / 32, bomb.getY() / 32 + 1, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.downBombBlock(bomb, i); ++i) {
-                    lastEdgeDown.setX(bomb.getX() + 32 + i * 32);
+                    lastEdgeDown.setY(bomb.getY() + 32 + i * 32);
                     bombPowerDown++;
                 }
             }
