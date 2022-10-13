@@ -78,4 +78,12 @@ public class Bomber extends Entity {
             this.setDelayPerStep(0);
         }
     }
+
+    public int getBomberX() {
+        return this.x / 32;
+    }
+
+    public int getBomberY() {
+        return this.y / 32;
+    }
 }
