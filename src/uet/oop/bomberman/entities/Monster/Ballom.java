@@ -31,7 +31,7 @@ public class Ballom extends Monster {
             } else if (dieScene == 3) {
                 this.setImg(Sprite.balloom_dead.getFxImage());
                 dieScene = 4;
-            } else {
+            } else if (dieScene == 4) {
                 this.setImg(Sprite.transparent.getFxImage());
             }
         }
@@ -85,9 +85,11 @@ public class Ballom extends Monster {
         }
         if (this.getDelayPerStep() == 8) {
             Die();
-            Move.checkRun(this);
+            if(this.getLife()) {
+                Move.checkRun(this);
+                stepLoop++;
+            }
             this.setDelayPerStep(0);
-            stepLoop++;
         }
     }
 }
