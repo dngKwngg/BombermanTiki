@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.Monster;
 import uet.oop.bomberman.Control.IsBlocked.*;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
+import uet.oop.bomberman.entities.Monster.Smart.AiLevel2;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.Random;
