@@ -81,10 +81,23 @@ public class Bomb extends Entity {
         if (IsBlocked.leftBombBlock(bomb, 0)) {
             lastEdgeLeft = new Bomb(bomb.getX() / 32 - 1, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
-                for (i = 1; i <= bombPower && IsBlocked.leftBombBlock(bomb, i); ++i) {
+                for (i = 1; i <= bombPower && (IsBlocked.leftBombBlock(bomb, i)); ++i) {
+                    int tempIdx = objIdx[bomb.getX() / 32 - i][bomb.getY() / 32];
+                    if (tempIdx == 3) {
+                        break;
+                    }
                     lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
                     bombPowerLeft++;
+
+//                    if (tempIdx == 3) {
+//                        break;
+//                    }
                 }
+
+//                for (i = 1; i <= bombPower && (IsBlocked.leftBombBlock(bomb, i) || IsBlocked.leftBombBlockBrick(bomb, i)); ++i) {
+//                    lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
+//                    bombPowerLeft++;
+//                }
             }
 
             stillObjects.add(lastEdgeLeft);
@@ -94,6 +107,10 @@ public class Bomb extends Entity {
             lastEdgeRight = new Bomb(bomb.getX() / 32 + 1, bomb.getY() / 32, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.rightBombBlock(bomb, i); ++i) {
+                    int tempIdx = objIdx[bomb.getX() / 32 + i][bomb.getY() / 32];
+                    if (tempIdx == 3) {
+                        break;
+                    }
                     lastEdgeRight.setX(bomb.getX() + 32 + i * 32);
                     bombPowerRight++;
                 }
@@ -106,6 +123,10 @@ public class Bomb extends Entity {
             lastEdgeUp = new Bomb(bomb.getX() / 32, bomb.getY() / 32 - 1, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.upBombBlock(bomb, i); ++i) {
+                    int tempIdx = objIdx[bomb.getX() / 32][bomb.getY() / 32 - i];
+                    if (tempIdx == 3) {
+                        break;
+                    }
                     lastEdgeUp.setY(bomb.getY() - 32 - i * 32);
                     bombPowerUp++;
                 }
@@ -118,6 +139,10 @@ public class Bomb extends Entity {
             lastEdgeDown = new Bomb(bomb.getX() / 32, bomb.getY() / 32 + 1, Sprite.bomb_exploded.getFxImage());
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.downBombBlock(bomb, i); ++i) {
+                    int tempIdx = objIdx[bomb.getX() / 32][bomb.getY() / 32 + i];
+                    if (tempIdx == 3) {
+                        break;
+                    }
                     lastEdgeDown.setY(bomb.getY() + 32 + i * 32);
                     bombPowerDown++;
                 }
