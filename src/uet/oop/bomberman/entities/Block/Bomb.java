@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.Block;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.IsBlocked;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.graphics.Sound;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class Bomb extends Entity {
 
     public static void plantBomb() {                // Function to plant a bomb
         if (numberBomb > 0 && isPlanted == 0 && player.getLife()) {
+            new Sound("sound/put_bombs.wav", "plantBomb");
             int x = player.getX() / 32;
             int y = player.getY() / 32;
             x = Math.round((float) x);                              // Get x in Canvas
@@ -314,6 +316,7 @@ public class Bomb extends Entity {
                         isMiddle = true;
                     }
 
+                    new Sound("sound/bomb_explosion.wav", "explosion");
                     bombExplosion();
                     timeBombTemp += 100L;
                 }
