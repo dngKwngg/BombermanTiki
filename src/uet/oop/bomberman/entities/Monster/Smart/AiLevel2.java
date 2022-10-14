@@ -12,6 +12,10 @@ public class AiLevel2 extends AI {
     Monster _m;
 //    List<Bomb> bombList;
 
+    public AiLevel2(Monster _m) {
+        this._m = _m;
+    }
+
     @Override
     public int calculateDirection() {
         // TODO: Chase bomber
