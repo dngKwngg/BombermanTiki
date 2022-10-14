@@ -6,10 +6,9 @@ import uet.oop.bomberman.entities.Monster.Monster;
 
 import java.util.List;
 
+import static uet.oop.bomberman.BombermanGame.player;
+
 public class AiLevel2 extends AI {
-
-    Bomber _bomber;
-
     Monster _m;
 //    List<Bomb> bombList;
 
@@ -35,9 +34,9 @@ public class AiLevel2 extends AI {
     }
 
     protected int calculateColumnDir() {
-        if (_bomber.getBomberX() < _m.getMonsterX()) {
+        if (player.getBomberX() < _m.getMonsterX()) {
             return 3;
-        } else if (_bomber.getBomberX() > _m.getMonsterX()) {
+        } else if (player.getBomberX() > _m.getMonsterX()) {
             return 1;
         }
 
@@ -45,9 +44,9 @@ public class AiLevel2 extends AI {
     }
 
     protected int calculateRowDir() {
-        if (_bomber.getBomberY() < _m.getMonsterY()) {
+        if (player.getBomberY() < _m.getMonsterY()) {
             return 0;
-        } else if (_bomber.getBomberY() > _m.getMonsterY()) {
+        } else if (player.getBomberY() > _m.getMonsterY()) {
             return 2;
         }
 
