@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import static uet.oop.bomberman.graphics.Sound.updateSound;
+
 public class BombermanGame extends Application {
 
     public static final int WIDTH = 25;
@@ -192,6 +194,8 @@ public class BombermanGame extends Application {
         for (int i = 0; i < stillObjects.size(); i++) {
             stillObjects.get(i).update();
         }
+
+        updateSound();
     }
 
     public void render() {

@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.Block;
 
 import javafx.scene.image.Image;
+import javafx.scene.media.MediaPlayer;
 import uet.oop.bomberman.Control.IsBlocked;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sound;
