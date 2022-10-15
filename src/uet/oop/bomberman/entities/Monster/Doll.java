@@ -24,12 +24,15 @@ public class Doll extends Monster {
                 this.setImg(Sprite.doll_dead.getFxImage());
                 dieScene = 2;
             } else if (dieScene == 2) {
-                this.setImg(Sprite.doll_dead.getFxImage());
+                this.setImg(Sprite.mob_dead1.getFxImage());
                 dieScene = 3;
             } else if (dieScene == 3) {
-                this.setImg(Sprite.doll_dead.getFxImage());
+                this.setImg(Sprite.mob_dead2.getFxImage());
                 dieScene = 4;
             } else if (dieScene == 4) {
+                this.setImg(Sprite.mob_dead3.getFxImage());
+                dieScene = 5;
+            } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
             }
         }
