@@ -7,27 +7,27 @@ import java.util.Random;
 
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
-public class Ballom extends Monster {
+public class Minvo extends Monster {
 
     public int dieScene=1;
     private int direction;
 
     private int stepLoop = 0;
 
-    public Ballom(int x, int y, Image img) {
+    public Minvo(int x, int y, Image img) {
         super(x, y, img);
     }
 
     public void Die() {
         if(!this.getLife()) {
             if (dieScene == 1) {
-                this.setImg(Sprite.balloom_dead.getFxImage());
+                this.setImg(Sprite.minvo_dead.getFxImage());
                 dieScene = 2;
             } else if (dieScene == 2) {
-                this.setImg(Sprite.balloom_dead.getFxImage());
+                this.setImg(Sprite.minvo_dead.getFxImage());
                 dieScene = 3;
             } else if (dieScene == 3) {
-                this.setImg(Sprite.balloom_dead.getFxImage());
+                this.setImg(Sprite.minvo_dead.getFxImage());
                 dieScene = 4;
             } else if (dieScene == 4) {
                 this.setImg(Sprite.transparent.getFxImage());
@@ -44,14 +44,14 @@ public class Ballom extends Monster {
     }
 
     public void randomDirection() {
-            if (standing == 0 && stepLoop != 5) {
-                moveWithNumber(direction);
+        if (standing == 0 && stepLoop != 5) {
+            moveWithNumber(direction);
 
-            } else {
-                Random random = new Random();
-                direction = random.nextInt(4);
-                moveWithNumber(direction);
-            }
+        } else {
+            Random random = new Random();
+            direction = random.nextInt(4);
+            moveWithNumber(direction);
+        }
     }
 
     void moveWithNumber(int number) {
@@ -81,7 +81,7 @@ public class Ballom extends Monster {
         if(this.getLife()) {
             randomDirection();
         }
-        if (this.getDelayPerStep() == 8) {
+        if (this.getDelayPerStep() == 5) {
             Die();
             if(this.getLife()) {
                 Move.checkRun(this);

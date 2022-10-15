@@ -2,7 +2,7 @@ package uet.oop.bomberman.Control;
 
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Monster.Ballom;
+import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.Control.IsBlocked.*;
 
@@ -16,6 +16,21 @@ public class Move {
         }
 
         if (entity instanceof Ballom && entity.getCount() > 0) {
+            stepByStep(entity.getDirection(), entity, 4);
+            entity.setCount(entity.getCount() - 1);
+        }
+
+        if (entity instanceof Oneal && entity.getCount() > 0) {
+            stepByStep(entity.getDirection(), entity, 4);
+            entity.setCount(entity.getCount() - 1);
+        }
+
+        if (entity instanceof Doll && entity.getCount() > 0) {
+            stepByStep(entity.getDirection(), entity, 4);
+            entity.setCount(entity.getCount() - 1);
+        }
+
+        if (entity instanceof Minvo && entity.getCount() > 0) {
             stepByStep(entity.getDirection(), entity, 4);
             entity.setCount(entity.getCount() - 1);
         }
@@ -50,7 +65,37 @@ public class Move {
             entity.setDirection(1);
             checkRun(entity);
         }
-        if (entity instanceof Ballom && entity.getCount() == 0) {
+        if (entity instanceof Monster && entity.getCount() == 0) {
+            if (blockUp(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(1);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Oneal && entity.getCount() == 0) {
+            if (blockUp(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(1);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Minvo && entity.getCount() == 0) {
+            if (blockUp(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(1);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Doll && entity.getCount() == 0) {
             if (blockUp(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
@@ -68,7 +113,7 @@ public class Move {
             entity.setDirection(0);
             checkRun(entity);
         }
-        if (entity instanceof Ballom && entity.getCount() == 0) {
+        if (entity instanceof Monster && entity.getCount() == 0) {
             if (blockDown(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
@@ -86,7 +131,7 @@ public class Move {
             entity.setDirection(3);
             checkRun(entity);
         }
-        if (entity instanceof Ballom && entity.getCount() == 0) {
+        if (entity instanceof Monster && entity.getCount() == 0) {
             if (blockRight(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
@@ -104,7 +149,7 @@ public class Move {
             entity.setDirection(2);
             checkRun(entity);
         }
-        if (entity instanceof Ballom && entity.getCount() == 0) {
+        if (entity instanceof Monster && entity.getCount() == 0) {
             if (blockLeft(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
@@ -139,6 +184,39 @@ public class Move {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
             }
         }
+        if (entity instanceof Oneal) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.oneal_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.oneal_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.oneal_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.oneal_left3.getFxImage());
+            }
+        }
+        if (entity instanceof Minvo) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.minvo_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.minvo_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.minvo_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.minvo_left3.getFxImage());
+            }
+        }
+        if (entity instanceof Doll) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.doll_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.doll_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.doll_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.doll_left3.getFxImage());
+            }
+        }
     }
 
     public static void ifDown(Entity entity) {
@@ -162,6 +240,39 @@ public class Move {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
             } else {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Oneal) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.oneal_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.oneal_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.oneal_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.oneal_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Minvo) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.minvo_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.minvo_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.minvo_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.minvo_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Doll) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.doll_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.doll_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.doll_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.doll_right3.getFxImage());
             }
         }
     }
@@ -189,6 +300,39 @@ public class Move {
                 entity.setImg(Sprite.balloom_left3.getFxImage());
             }
         }
+        if (entity instanceof Oneal) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.oneal_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.oneal_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.oneal_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.oneal_left3.getFxImage());
+            }
+        }
+        if (entity instanceof Minvo) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.minvo_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.minvo_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.minvo_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.minvo_left3.getFxImage());
+            }
+        }
+        if (entity instanceof Doll) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.doll_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.doll_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.doll_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.doll_left3.getFxImage());
+            }
+        }
     }
 
     public static void ifRight(Entity entity) {
@@ -212,6 +356,39 @@ public class Move {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
             } else {
                 entity.setImg(Sprite.balloom_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Oneal) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.oneal_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.oneal_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.oneal_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.oneal_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Minvo) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.minvo_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.minvo_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.minvo_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.minvo_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Doll) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.doll_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.doll_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.doll_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.doll_right3.getFxImage());
             }
         }
     }
