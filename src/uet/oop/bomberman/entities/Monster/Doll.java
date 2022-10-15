@@ -81,7 +81,7 @@ public class Doll extends Monster {
         if(this.getLife()) {
             randomDirection();
         }
-        if (this.getDelayPerStep() == 12) {
+        if (this.getDelayPerStep() == 8) {
             Die();
             if(this.getLife()) {
                 Move.checkRun(this);

@@ -26,7 +26,7 @@ public class Move {
         }
 
         if (entity instanceof Doll && entity.getCount() > 0) {
-            stepByStep(entity.getDirection(), entity, 4);
+            stepByStep(entity.getDirection(), entity, 2);
             entity.setCount(entity.getCount() - 1);
         }
 
@@ -65,7 +65,7 @@ public class Move {
             entity.setDirection(1);
             checkRun(entity);
         }
-        if (entity instanceof Monster && entity.getCount() == 0) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
             if (blockUp(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
@@ -98,7 +98,7 @@ public class Move {
         if (entity instanceof Doll && entity.getCount() == 0) {
             if (blockUp(entity)) {
                 entity.setStanding(0);
-                entity.setCount(8);
+                entity.setCount(16);
                 entity.setDirection(1);
                 checkRun(entity);
             } else {
