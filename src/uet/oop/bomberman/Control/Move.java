@@ -34,6 +34,11 @@ public class Move {
             stepByStep(entity.getDirection(), entity, 4);
             entity.setCount(entity.getCount() - 1);
         }
+
+        if (entity instanceof Kondoria && entity.getCount() > 0) {
+            stepByStep(entity.getDirection(), entity, 4);
+            entity.setCount(entity.getCount() - 1);
+        }
     }
 
 //    public static void setDirection(String direction, Entity entity, int step) {
@@ -105,6 +110,16 @@ public class Move {
                 entity.setStanding(1);
             }
         }
+        if (entity instanceof Kondoria && entity.getCount() == 0) {
+            if (blockUp(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(1);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
     }
 
     public static void down(Entity entity) {
@@ -147,6 +162,16 @@ public class Move {
             if (blockDown(entity)) {
                 entity.setStanding(0);
                 entity.setCount(16);
+                entity.setDirection(0);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Kondoria && entity.getCount() == 0) {
+            if (blockDown(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
                 entity.setDirection(0);
                 checkRun(entity);
             } else {
@@ -201,6 +226,16 @@ public class Move {
                 entity.setStanding(1);
             }
         }
+        if (entity instanceof Kondoria && entity.getCount() == 0) {
+            if (blockRight(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(3);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
     }
 
     public static void left(Entity entity) {
@@ -243,6 +278,16 @@ public class Move {
             if (blockLeft(entity)) {
                 entity.setStanding(0);
                 entity.setCount(16);
+                entity.setDirection(2);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Kondoria && entity.getCount() == 0) {
+            if (blockLeft(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
                 entity.setDirection(2);
                 checkRun(entity);
             } else {
@@ -307,6 +352,17 @@ public class Move {
                 entity.setImg(Sprite.doll_left3.getFxImage());
             }
         }
+        if (entity instanceof Kondoria) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.kondoria_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.kondoria_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
+            }
+        }
     }
 
     public static void ifDown(Entity entity) {
@@ -363,6 +419,17 @@ public class Move {
                 entity.setImg(Sprite.doll_right3.getFxImage());
             } else {
                 entity.setImg(Sprite.doll_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Kondoria) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.kondoria_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.kondoria_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
             }
         }
     }
@@ -423,6 +490,17 @@ public class Move {
                 entity.setImg(Sprite.doll_left3.getFxImage());
             }
         }
+        if (entity instanceof Kondoria) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.kondoria_left1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.kondoria_left2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
+            } else {
+                entity.setImg(Sprite.kondoria_left3.getFxImage());
+            }
+        }
     }
 
     public static void ifRight(Entity entity) {
@@ -479,6 +557,17 @@ public class Move {
                 entity.setImg(Sprite.doll_right3.getFxImage());
             } else {
                 entity.setImg(Sprite.doll_right3.getFxImage());
+            }
+        }
+        if (entity instanceof Kondoria) {
+            if (entity.getCount() % 4 == 0) {
+                entity.setImg(Sprite.kondoria_right1.getFxImage());
+            } else if (entity.getCount() % 4 == 3) {
+                entity.setImg(Sprite.kondoria_right2.getFxImage());
+            } else if (entity.getCount() % 4 == 2) {
+                entity.setImg(Sprite.kondoria_right3.getFxImage());
+            } else {
+                entity.setImg(Sprite.kondoria_right3.getFxImage());
             }
         }
     }
