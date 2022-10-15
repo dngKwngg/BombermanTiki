@@ -7,7 +7,6 @@ import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Brick extends Entity {
-
     /**
      * Create constructor.
      *
@@ -31,6 +30,7 @@ public class Brick extends Entity {
             }
         }
     }
+
 
     @Override
 

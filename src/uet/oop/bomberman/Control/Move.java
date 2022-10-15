@@ -113,10 +113,40 @@ public class Move {
             entity.setDirection(0);
             checkRun(entity);
         }
-        if (entity instanceof Monster && entity.getCount() == 0) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
             if (blockDown(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
+                entity.setDirection(0);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Oneal && entity.getCount() == 0) {
+            if (blockDown(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(0);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Minvo && entity.getCount() == 0) {
+            if (blockDown(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(0);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Doll && entity.getCount() == 0) {
+            if (blockDown(entity)) {
+                entity.setStanding(0);
+                entity.setCount(16);
                 entity.setDirection(0);
                 checkRun(entity);
             } else {
@@ -131,10 +161,40 @@ public class Move {
             entity.setDirection(3);
             checkRun(entity);
         }
-        if (entity instanceof Monster && entity.getCount() == 0) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
             if (blockRight(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
+                entity.setDirection(3);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Oneal && entity.getCount() == 0) {
+            if (blockRight(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(3);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Minvo && entity.getCount() == 0) {
+            if (blockRight(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(3);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Doll && entity.getCount() == 0) {
+            if (blockRight(entity)) {
+                entity.setStanding(0);
+                entity.setCount(16);
                 entity.setDirection(3);
                 checkRun(entity);
             } else {
@@ -149,10 +209,40 @@ public class Move {
             entity.setDirection(2);
             checkRun(entity);
         }
-        if (entity instanceof Monster && entity.getCount() == 0) {
+        if (entity instanceof Ballom && entity.getCount() == 0) {
             if (blockLeft(entity)) {
                 entity.setStanding(0);
                 entity.setCount(8);
+                entity.setDirection(2);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Oneal && entity.getCount() == 0) {
+            if (blockLeft(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(2);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Minvo && entity.getCount() == 0) {
+            if (blockLeft(entity)) {
+                entity.setStanding(0);
+                entity.setCount(8);
+                entity.setDirection(2);
+                checkRun(entity);
+            } else {
+                entity.setStanding(1);
+            }
+        }
+        if (entity instanceof Doll && entity.getCount() == 0) {
+            if (blockLeft(entity)) {
+                entity.setStanding(0);
+                entity.setCount(16);
                 entity.setDirection(2);
                 checkRun(entity);
             } else {

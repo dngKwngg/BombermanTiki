@@ -24,12 +24,15 @@ public class Ballom extends Monster {
                 this.setImg(Sprite.balloom_dead.getFxImage());
                 dieScene = 2;
             } else if (dieScene == 2) {
-                this.setImg(Sprite.balloom_dead.getFxImage());
+                this.setImg(Sprite.mob_dead1.getFxImage());
                 dieScene = 3;
             } else if (dieScene == 3) {
-                this.setImg(Sprite.balloom_dead.getFxImage());
+                this.setImg(Sprite.mob_dead2.getFxImage());
                 dieScene = 4;
             } else if (dieScene == 4) {
+                this.setImg(Sprite.mob_dead3.getFxImage());
+                dieScene = 5;
+            } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
             }
         }
@@ -81,7 +84,7 @@ public class Ballom extends Monster {
         if(this.getLife()) {
             randomDirection();
         }
-        if (this.getDelayPerStep() == 8) {
+        if (this.getDelayPerStep() == 7) {
             Die();
             if(this.getLife()) {
                 Move.checkRun(this);
