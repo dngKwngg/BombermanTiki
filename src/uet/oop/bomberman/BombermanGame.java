@@ -99,11 +99,13 @@ public class BombermanGame extends Application {
         timer.start();
 
         createMap();
-        player = new Bomber(7, 1, Sprite.player_right.getFxImage());
+        player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         entities.add(player);
-        enemies.add(new Minvo(7, 3, Sprite.balloom_left1.getFxImage()));
+        enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
         enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
-        enemies.add(new  Doll(21, 6, Sprite.balloom_left1.getFxImage()));
+        enemies.add(new  Doll(21, 6, Sprite.doll_left1.getFxImage()));
+        enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
+        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
     }
 
     public void createMap() {

@@ -10,11 +10,21 @@ import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Bomber extends Entity {
 
+    public boolean canPass = false;
+
     public int dieScene=1;
-    public int limitDelay=6;
+    public int limitDelay = 6;
 
     public Bomber(int x, int y, Image img) {
         super(x, y, img);
+    }
+
+    public void setCanPass(boolean canPass) {
+        this.canPass = canPass;
+    }
+
+    public boolean isCanPass() {
+        return canPass;
     }
 
     public void setLimitDelay(int limitDelay) {
