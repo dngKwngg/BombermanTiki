@@ -12,8 +12,7 @@ import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Items.FlameItem;
 import uet.oop.bomberman.entities.Items.SpeedItem;
-import uet.oop.bomberman.entities.Monster.Ballom;
-import uet.oop.bomberman.entities.Monster.Monster;
+import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
 import java.io.File;
@@ -102,9 +101,9 @@ public class BombermanGame extends Application {
         createMap();
         player = new Bomber(7, 1, Sprite.player_right.getFxImage());
         entities.add(player);
-        enemies.add(new Ballom(7, 3, Sprite.balloom_left1.getFxImage()));
-        enemies.add(new Ballom(9, 3, Sprite.balloom_left1.getFxImage()));
-        enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
+        enemies.add(new Minvo(7, 3, Sprite.balloom_left1.getFxImage()));
+        enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
+        enemies.add(new  Doll(21, 6, Sprite.balloom_left1.getFxImage()));
     }
 
     public void createMap() {
