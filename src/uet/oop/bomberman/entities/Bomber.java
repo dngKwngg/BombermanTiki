@@ -11,7 +11,7 @@ import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Bomber extends Entity {
 
-    public boolean canPass = false;
+    public boolean canPass = true;
 
     public int dieScene=1;
     public int limitDelay = 6;

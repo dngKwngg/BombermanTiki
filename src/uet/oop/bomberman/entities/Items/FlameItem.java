@@ -2,6 +2,7 @@ package uet.oop.bomberman.entities.Items;
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.entities.Block.Bomb;
+import uet.oop.bomberman.entities.Block.Brick;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -24,7 +25,9 @@ public class FlameItem extends Items {
     public void update() {
         for (Entity entity: stillObjects) {
             if (entity instanceof FlameItem && (!this.isReceived)) {
-                if (listIsKilled[entity.getX() / 32][entity.getY()/32] == 4) {          // 4 có thể là 1 giá trị riêng với Items
+                if (listIsKilled[entity.getX() / 32][entity.getY()/32] == 4) {
+                    // 4 có thể là 1 giá trị riêng với Items
+                    entity.setLife(false);
                     entity.setImg(Sprite.powerup_flames.getFxImage());
                 }
             }
@@ -32,9 +35,11 @@ public class FlameItem extends Items {
 
         if (!this.isReceived) {
             if (player.getX() == this.x && player.getY() == this.y) {
-                this.setImg(Sprite.grass.getFxImage());
-                this.isReceived = true;
-                Bomb.bombPower += 1;
+                if(!this.getLife()) {
+                        this.setImg(Sprite.grass.getFxImage());
+                        this.isReceived = true;
+                        Bomb.bombPower += 1;
+                    }
             }
         }
     }

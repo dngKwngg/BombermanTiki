@@ -193,6 +193,7 @@ public class BombermanGame extends Application {
             enemies.get(i).update();
         }
         for (int i = 0; i < stillObjects.size(); i++) {
+            stillObjects.get(i).run();
             stillObjects.get(i).update();
         }
 
