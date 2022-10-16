@@ -1,6 +1,8 @@
 package uet.oop.bomberman.entities.Monster;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
+import uet.oop.bomberman.entities.Monster.Smart.AI;
+import uet.oop.bomberman.entities.Monster.Smart.AiLevel1;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.Random;
@@ -9,13 +11,15 @@ import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Minvo extends Monster {
 
-    public int dieScene=1;
+//    public int dieScene=1;
     private int direction;
+    protected AI ai;
 
-    private int stepLoop = 0;
+//    private int stepLoop = 0;
 
     public Minvo(int x, int y, Image img) {
         super(x, y, img);
+        ai = new AiLevel1();
     }
 
     public void Die() {
@@ -50,8 +54,9 @@ public class Minvo extends Monster {
         if (standing == 0 && stepLoop != 5) {
             moveWithNumber(direction);
         } else {
-            Random random = new Random();
-            direction = random.nextInt(4);
+//            Random random = new Random();
+//            direction = random.nextInt(4);
+            direction = ai.calculateDirection();
             moveWithNumber(direction);
         }
     }
