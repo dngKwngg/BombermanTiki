@@ -5,8 +5,10 @@ import uet.oop.bomberman.entities.Block.Brick;
 import uet.oop.bomberman.entities.Block.Grass;
 import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Block.Wall;
+import uet.oop.bomberman.entities.Items.BombPassItem;
 import uet.oop.bomberman.entities.Items.FlameItem;
 import uet.oop.bomberman.entities.Items.SpeedItem;
+import uet.oop.bomberman.entities.Items.WallPassItem;
 
 import static uet.oop.bomberman.BombermanGame.*;
 
@@ -58,6 +60,10 @@ public class CreateMap {
                                 objIdx[j][i] = value;
                                 object = new Brick(j, i, Sprite.brick.getFxImage());
                                 break;
+                            case 5:
+                                objIdx[j][i] = value;
+                                object = new WallPassItem(j, i, Sprite.brick.getFxImage());
+                                break;
                             case 6:
                                 objIdx[j][i] = value;
                                 object = new SpeedItem(j, i, Sprite.brick.getFxImage());
@@ -65,6 +71,10 @@ public class CreateMap {
                             case 7:
                                 objIdx[j][i] = value;
                                 object = new FlameItem(j, i, Sprite.brick.getFxImage());
+                                break;
+                            case 8:
+                                objIdx[j][i] = value;
+                                object = new BombPassItem(j, i, Sprite.brick.getFxImage());
                                 break;
                             default:
                                 objIdx[j][i] = value;
