@@ -20,7 +20,7 @@ public class Bomb extends Entity {
 
     private static int state = 1;       // State of the bomb
     private static int stateExplosion = 1;          // State explosion of the bomb
-    public static int numberBomb = 20;              // Number bomb limit in the map
+    public static int numberBomb = 1000;              // Number bomb limit in the map
     public static int bombPower = 0;                // Bomb power
     public static int bombPowerLeft = 0;            // Bomb power in left side
     public static int bombPowerRight = 0;           // Bomb power in right side

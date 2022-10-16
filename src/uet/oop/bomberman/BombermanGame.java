@@ -108,6 +108,7 @@ public class BombermanGame extends Application {
         enemies.add(new  Doll(21, 6, Sprite.doll_left1.getFxImage()));
         enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
         enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
+        stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
     }
 
     public void createMap() {
