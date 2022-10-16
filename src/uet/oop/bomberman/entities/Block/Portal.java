@@ -4,8 +4,7 @@ import javafx.scene.image.Image;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.BombermanGame._gameLevel;
-import static uet.oop.bomberman.BombermanGame.player;
+import static uet.oop.bomberman.BombermanGame.*;
 
 public class Portal extends Entity {
 
@@ -16,15 +15,24 @@ public class Portal extends Entity {
         super(x, y, img);
     }
 
+    public boolean canNextLevel() {
+        for (int i = 0; i < enemies.size(); ++ i) {
+            if (enemies.get(i).getLife()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     @Override
     public void update() {
-        if (isEndGame) {
+        if (canNextLevel()) {
             this.setImg(Sprite.portal.getFxImage());
             if (player.getX() == this.getX() && player.getY() == this.getY()) {
                 onPortal = true;
                 _gameLevel ++;
             }
         }
-
     }
 }
