@@ -2,6 +2,8 @@ package uet.oop.bomberman.entities.Monster;
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
+import uet.oop.bomberman.entities.Monster.Smart.AI;
+import uet.oop.bomberman.entities.Monster.Smart.AiLevel2;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.Random;
@@ -9,13 +11,15 @@ import java.util.Random;
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Oneal extends Monster{
-    public int dieScene=1;
+//    public int dieScene=1;
     private int direction;
+    protected AI ai;
 
-    private int stepLoop = 0;
+//    private int stepLoop = 0;
 
     public Oneal(int x, int y, Image img) {
         super(x, y, img);
+        ai = new AiLevel2(this);
     }
 
     public void Die() {
@@ -47,29 +51,34 @@ public class Oneal extends Monster{
     }
 
     public void randomDirection() {
-        if (standing == 0 && stepLoop != 5) {
+//        if (standing == 0 && stepLoop != 5) {
+//            moveWithNumber(direction);
+////
+//        } else {
+//            Random random = new Random();
+//            direction = random.nextInt(4);
+            direction = ai.calculateDirection();
             moveWithNumber(direction);
-
-        } else {
-            Random random = new Random();
-            direction = random.nextInt(4);
-            moveWithNumber(direction);
-        }
+//        }
     }
 
     void moveWithNumber(int number) {
         switch (number) {
             case 0:
-                Move.down(this);
-                break;
-            case 1:
-                Move.up(this);
-                break;
-            case 2:
+//                Move.down(this);
                 Move.left(this);
                 break;
-            case 3:
+            case 1:
+//                Move.up(this);
                 Move.right(this);
+                break;
+            case 2:
+//                Move.left(this);
+                Move.down(this);
+                break;
+            case 3:
+//                Move.right(this);
+                Move.up(this);
                 break;
         }
     }

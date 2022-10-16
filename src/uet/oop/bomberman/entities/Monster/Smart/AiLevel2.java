@@ -19,27 +19,30 @@ public class AiLevel2 extends AI {
     @Override
     public int calculateDirection() {
         // TODO: Chase bomber
-        int choice = random.nextInt(2);
-
-        if (choice == 1) {
-            if (calculateColumnDir() != -1) {
-                return calculateColumnDir();
+        int choice = random.nextInt(3);
+        if (choice == 0) {
+            int direction = calculateColumnDir();
+            if (direction != -1) {
+                return direction;
             } else {
                 return calculateRowDir();
+            }
+        } else if (choice == 1){
+            int direction = calculateRowDir();
+            if (direction != -1) {
+                return direction;
+            } else {
+                return calculateColumnDir();
             }
         } else {
-            if (calculateRowDir() != -1) {
-                return calculateRowDir();
-            } else {
-                return calculateColumnDir();
-            }
+            return random.nextInt(4);
         }
 
     }
 
     protected int calculateColumnDir() {
         if (player.getBomberX() < _m.getMonsterX()) {
-            return 3;
+            return 0;
         } else if (player.getBomberX() > _m.getMonsterX()) {
             return 1;
         }
@@ -49,7 +52,7 @@ public class AiLevel2 extends AI {
 
     protected int calculateRowDir() {
         if (player.getBomberY() < _m.getMonsterY()) {
-            return 0;
+            return 3;
         } else if (player.getBomberY() > _m.getMonsterY()) {
             return 2;
         }

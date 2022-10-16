@@ -9,10 +9,10 @@ import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Doll extends Monster {
 
-    public int dieScene=1;
+//    public int dieScene=1;
     private int direction;
 
-    private int stepLoop = 0;
+//    private int stepLoop = 0;
 
     public Doll(int x, int y, Image img) {
         super(x, y, img);
