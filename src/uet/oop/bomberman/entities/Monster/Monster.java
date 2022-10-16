@@ -24,4 +24,12 @@ public class Monster extends Entity {
             this.setDelayPerStep(0);
         }
     }
+
+    public int getMonsterX() {
+        return this.x / 32;
+    }
+
+    public int getMonsterY() {
+        return this.y / 32;
+    }
 }

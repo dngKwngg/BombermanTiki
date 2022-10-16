@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
 import uet.oop.bomberman.entities.Monster.Monster;
+import uet.oop.bomberman.graphics.Sound;
 import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.BombermanGame.enemies;
@@ -68,6 +69,13 @@ public class Bomber extends Entity {
                 }
             }
         }
+
+//        if (!this.life) {
+//            int timeSound = 1;
+////            if (System.currentTimeMillis() - timeSound < 1000L) {
+//                new Sound("sound/just_died.wav", "bomberDie");
+////            }
+//        }
     }
 
     private void dieByFlameFromBomb() {
@@ -76,6 +84,13 @@ public class Bomber extends Entity {
         if(listIsKilled[x][y]==4) {
             this.life = false;
         }
+
+//        if (!this.life) {
+//            int timeSound = 1;
+////            if (System.currentTimeMillis() - timeSound < 1000L) {
+//                new Sound("sound/just_died.wav", "bomberDie");
+////            }
+//        }
     }
 
     @Override
@@ -87,5 +102,13 @@ public class Bomber extends Entity {
             Move.checkRun(this);
             this.setDelayPerStep(0);
         }
+    }
+
+    public int getBomberX() {
+        return this.x / 32;
+    }
+
+    public int getBomberY() {
+        return this.y / 32;
     }
 }
