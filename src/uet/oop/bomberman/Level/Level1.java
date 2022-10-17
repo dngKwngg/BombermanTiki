@@ -7,6 +7,7 @@ import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.BombermanGame.*;
+//import static uet.oop.bomberman.entities.Block.Bomb.bombPower;
 
 //import javafx.scene.media.Media;
 //import javafx.scene.media.MediaPlayer;
@@ -20,7 +21,5 @@ public class Level1 {
     public Level1() {
         entities.clear();
         stillObjects.clear();
-
-
     }
 }
