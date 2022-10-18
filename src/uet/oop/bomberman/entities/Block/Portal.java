@@ -31,7 +31,8 @@ public class Portal extends Entity {
             this.setImg(Sprite.portal.getFxImage());
             if (player.getX() == this.getX() && player.getY() == this.getY()) {
                 onPortal = true;
-                _gameLevel ++;
+                _gameLevel = _gameLevel + 1;
+                System.out.println(_gameLevel);
             }
         }
     }

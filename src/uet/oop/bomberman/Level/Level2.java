@@ -4,6 +4,8 @@ import javafx.scene.image.ImageView;
 import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Monster.*;
+import static uet.oop.bomberman.entities.Block.Portal.onPortal;
+import static uet.oop.bomberman.entities.Block.Bomb.bombPower;
 //import static uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
@@ -13,6 +15,8 @@ public class Level2 {
     public Level2() {
         entities.clear();
         stillObjects.clear();
+        onPortal = false;
+        bombPower = 0;
         new CreateMap("res/levels/Level2.txt");
         Image image1 = new Image("img/meme1.png");
         View = new ImageView(image1);

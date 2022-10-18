@@ -6,6 +6,8 @@ import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
+import static uet.oop.bomberman.entities.Block.Portal.onPortal;
+import static uet.oop.bomberman.entities.Block.Bomb.bombPower;
 import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
@@ -14,6 +16,8 @@ public class Level3 {
         public Level3() {
             entities.clear();
             stillObjects.clear();
+            onPortal = false;
+            bombPower = 0;
             new CreateMap("res/levels/Level3.txt");
             Image image1 = new Image("img/meme1.png");
             View = new ImageView(image1);
