@@ -15,34 +15,31 @@ chơi [Bomberman](https://www.youtube.com/watch?v=mKIOVwqgSXM) kinh điển củ
 
 Bạn có thể sử dụng mã nguồn tại repository này để phát triển hoặc tự phát triển từ đầu.
 
-## Mô tả về các đối tượng trong trò chơi
+## Các đối tượng trong trò chơi Bomberman
 
-Nếu bạn đã từng chơi Bomberman, bạn sẽ cảm thấy quen thuộc với những đối tượng này. Chúng được được chia làm hai loại
-chính là nhóm đối tượng động (*Bomber*, *Enemy*, *Bomb*) và nhóm đối tượng tĩnh (*Grass*, *Wall*, *Brick*, *Door*, *
-Item*).
-
-*Hãy thiết kế hệ thống các đối tượng một cách phù hợp để tận dụng tối đa sức mạnh của OOP: tái sử dụng code, dễ dàng
-maintain.*
+Các đối tượng chính của trò chơi Bomberman như sau:
 
 - ![](res/sprites/player_down.png) *Bomber* là nhân vật chính của trò chơi. Bomber có thể di chuyển theo 4 hướng
   trái/phải/lên/xuống theo sự điều khiển của người chơi.
+
 - ![](res/sprites/balloom_left1.png) *Enemy* là các đối tượng mà Bomber phải tiêu diệt hết để có thể qua Level. Enemy có
   thể di chuyển ngẫu nhiên hoặc tự đuổi theo Bomber tùy theo loại Enemy. Các loại Enemy sẽ được mô tả cụ thể ở phần
   dưới.
+
 - ![](res/sprites/bomb.png) *Bomb* là đối tượng mà Bomber sẽ đặt và kích hoạt tại các ô Grass. Khi đã được kích hoạt,
   Bomber và Enemy không thể di chuyển vào vị trí Bomb. Tuy nhiên ngay khi Bomber vừa đặt và kích hoạt Bomb tại ví trí
   của mình, Bomber có một lần được đi từ vị trí đặt Bomb ra vị trí bên cạnh. Sau khi kích hoạt 2s, Bomb sẽ tự nổ, các
   đối tượng *Flame* ![](res/sprites/explosion_horizontal.png) được tạo ra.
 
-
 - ![](res/sprites/grass.png) *Grass* là đối tượng mà Bomber và Enemy có thể di chuyển xuyên qua, và cho phép đặt Bomb
   lên vị trí của nó
+
 - ![](res/sprites/wall.png) *Wall* là đối tượng cố định, không thể phá hủy bằng Bomb cũng như không thể đặt Bomb lên
   được, Bomber và Enemy không thể di chuyển vào đối tượng này
+
 - ![](res/sprites/brick.png) *Brick* là đối tượng được đặt lên các ô Grass, không cho phép đặt Bomb lên nhưng có thể bị
   phá hủy bởi Bomb được đặt gần đó. Bomber và Enemy thông thường không thể di chuyển vào vị trí Brick khi nó chưa bị phá
   hủy.
-
 
 - ![](res/sprites/portal.png) *Portal* là đối tượng được giấu phía sau một đối tượng Brick. Khi Brick đó bị phá hủy,
   Portal sẽ hiện ra và nếu tất cả Enemy đã bị tiêu diệt thì người chơi có thể qua Level khác bằng cách di chuyển vào vị
@@ -55,19 +52,35 @@ chuyển vào vị trí của Item. Thông tin về chức năng của các Item
   giá trị thích hợp
 - ![](res/sprites/powerup_flames.png) *FlameItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Flame
   lớn hơn)
-- ![](res/sprites/powerup_bombs.png) *BombItem* Thông thường, nếu không có đối tượng Bomb nào đang trong trạng thái kích
-  hoạt, Bomber sẽ được đặt và kích hoạt duy nhất một đối tượng Bomb. Item này giúp tăng số lượng Bomb có thể đặt thêm
-  một.
+- ![](res/sprites/powerup_wallpass.png) *WallPassItem* Item naày giúp cho Bomber đi xuyên qua những ô gạch, không xuyên
+qua các ô tường, và có thể đặt bom trên các ô gạch
 
-Có nhiều loại Enemy trong Bomberman, tuy nhiên trong phiên bản này chỉ yêu cầu cài đặt hai loại Enemy dưới đây (nếu cài
-đặt thêm các loại khác sẽ được cộng thêm điểm):
+Các loại Monster tương ứng đã cài trong game Bomberman
 
 - ![](res/sprites/balloom_left1.png) *Balloom* là Enemy đơn giản nhất, di chuyển ngẫu nhiên với vận tốc cố định
-- ![](res/sprites/oneal_left1.png) *Oneal* có tốc độ di chuyển thay đổi, lúc nhanh, lúc chậm và di chuyển "thông minh"
-  hơn so với Balloom (biết đuổi theo Bomber)
+- ![](res/sprites/oneal_left1.png) *Oneal* di chuyển "thông minh" hơn so với Balloom (biết đuổi theo Bomber)
+- ![](res/sprites/doll_left1.png) *Doll* di chuyển với vận tốc giảm đi một nửa so với *Ballom*
+- ![](res/sprites/minvo_left1.png) *Minvo* di chuyển với vận tốc cao x2 so với Ballom
+- ![](res/sprites/kondoria_left1.png) *Kondoria* là Enemy có thể di chuyển xuyên qua gạch.
+
+## Game Logic
+- Bomber được điều khiển bằng các phím mũi tên và phím SPACE để đặt bom. Nhiệm vụ của Bomber là phải tiêu diệt hết các
+Monster, khi đó cửa (*Portal*) sẽ hiện ra để đi đến Level tiếp theo
+
+![](res/screenshots/Character.gif)
+
+- Bomb: Khi bomb nổ, các đối tượng Flame sẽ được tạo ra, phá hủy gạch và tiêu diệt Bomber/ Monsters nếu đi vào
+vùng có Flames
+
+![](res/screenshots/Bomb.gif)
+- Các loại Monster khác nhau của trò chơi, với những thuộc tính khác nhau
+
+![](res/screenshots/Ballom.gif)
+![](res/screenshots/Doll.gif)
+![](res/screenshots/Oneal.gif)
+![](res/screenshots/Kondoria.gif)
 
 ## Chức năng
-
 - Đã hoàn thành:
     + Xây dựng bản đồ chơi từ file txt cấu hình tự định nghĩa
     + Di chuyển Bomber theo sự điều khiển từ người chơi (Phím mũi tên, SPACE)
@@ -84,29 +97,12 @@ Có nhiều loại Enemy trong Bomberman, tuy nhiên trong phiên bản này ch�
     + Chọn các loại quái, loại Bomber khác nhau
     + Phát triển hệ thống Server - Client
 
-## Yêu cầu chung
+## UML Class Diagram
 
-- Có thể chơi được ít nhất cho một màn chơi (chiến thắng một màn chơi)
-- Có thể thay đổi được tệp cấu hình khác cho màn chơi (tương tự mẫu cho trước)
 
-## Nhiệm vụ của bạn
 
-- Gói bắt buộc (+8đ)
+## Các phần mềm đã sử dụng
+- Ngôn ngữ lập trình: [JAVA](https://www.java.com/en/)
+- IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+- Thư viện: [JavaFX](https://openjfx.io/)
 
-1. Thiết kế cây thừa kế cho các đối tượng game +2đ
-2. Xây dựng bản đồ màn chơi từ tệp cấu hình (có mẫu tệp cấu hình,
-   xem [tại đây](https://raw.githubusercontent.com/bqcuong/bomberman-starter/starter-2/res/levels/Level1.txt)) +1đ
-3. Di chuyển Bomber theo sự điều khiển từ người chơi +1đ
-4. Tự động di chuyển các Enemy +1đ
-5. Xử lý va chạm cho các đối tượng Bomber, Enemy, Wall, Brick, Bomb +1đ
-6. Xử lý bom nổ +1đ
-7. Xử lý khi Bomber sử dụng các Item và khi đi vào vị trí Portal +1đ
-
-- Gói tùy chọn (tối đa +2đ)
-
-1. Nâng cấp thuật toán tìm đường cho Enemy +0.5đ
-   Cài đặt thêm các loại Enemy khác: +0.25đ cho mỗi loại enemy
-2. Cài đặt thuật toán AI cho Bomber (tự chơi) +1đ
-3. Xử lý hiệu ứng âm thanh (thêm music & sound effects) +1đ
-4. Phát triển hệ thống server-client để nhiều người có thể cùng chơi qua mạng LAN hoặc Internet +1đ
-5. Những ý tưởng khác sẽ được đánh giá và cộng điểm theo mức tương ứng
