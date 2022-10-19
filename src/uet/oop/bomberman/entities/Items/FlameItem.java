@@ -26,7 +26,6 @@ public class FlameItem extends Items {
         for (Entity entity: stillObjects) {
             if (entity instanceof FlameItem && (!this.isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY()/32] == 4) {
-                    // 4 có thể là 1 giá trị riêng với Items
                     entity.setLife(false);
                     entity.setImg(Sprite.powerup_flames.getFxImage());
                 }
