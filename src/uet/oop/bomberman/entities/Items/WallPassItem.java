@@ -9,19 +9,25 @@ import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.player;
 
 public class WallPassItem extends Items {
-    public static int speed = 1;
     public WallPassItem(int x, int y, Image img) {
         super(x, y, img);
     }
 
+    public WallPassItem() {
+
+    }
+
+    public WallPassItem(boolean isReceived) {
+        super(isReceived);
+    }
 
     @Override
     public void update() {
         for (Entity entity: stillObjects) {
-            if (entity instanceof SpeedItem && (!isReceived)) {
+            if (entity instanceof  WallPassItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY()/32] == 4) {
                     entity.setLife(false);
-                    entity.setImg(Sprite.powerup_speed.getFxImage());
+                    entity.setImg(Sprite.powerup_wallpass.getFxImage());
                 }
             }
         }

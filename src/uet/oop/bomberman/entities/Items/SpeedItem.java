@@ -9,8 +9,6 @@ import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.player;
 
 public class SpeedItem extends Items {
-    public static int speed = 1;
-
     public SpeedItem(int x, int y, Image img) {
         super(x, y, img);
     }
