@@ -27,7 +27,7 @@ public class BombPassItem extends Items {
             if (entity instanceof SpeedItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY() / 32] == 4) {
                     entity.setLife(false);
-                    entity.setImg(Sprite.powerup_speed.getFxImage());
+                    entity.setImg(Sprite.powerup_bombpass.getFxImage());
                 }
             }
         }
