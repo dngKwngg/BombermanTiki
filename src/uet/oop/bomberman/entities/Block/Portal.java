@@ -1,10 +1,11 @@
 package uet.oop.bomberman.entities.Block;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.Level.LevelNew;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
-
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.Level.LevelNew.NewLevel;
 
 public class Portal extends Entity {
 
@@ -31,7 +32,8 @@ public class Portal extends Entity {
             this.setImg(Sprite.portal.getFxImage());
             if (player.getX() == this.getX() && player.getY() == this.getY()) {
                 onPortal = true;
-                _gameLevel ++;
+                _gameLevel++;
+                NewLevel();
             }
         }
     }
