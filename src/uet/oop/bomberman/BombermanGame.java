@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import static uet.oop.bomberman.graphics.Sound.isSoundScreen;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
 
 public class BombermanGame extends Application {

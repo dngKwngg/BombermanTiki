@@ -17,7 +17,6 @@ public class Sound extends JFrame {
     public static Clip plantBomb;
 
     public static boolean isSoundDie = false;
-    public static boolean isSoundScreen = false;
 
     public Sound(String name, String sound) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,11 +59,6 @@ public class Sound extends JFrame {
                 new Sound("sound/just_died.wav", "bomberDie");
                 isSoundDie = true;
             }
-        }
-
-        if (!isSoundScreen) {
-            new Sound("sound/title_screen.wav", "screen");
-            isSoundScreen = true;
         }
     }
 }
