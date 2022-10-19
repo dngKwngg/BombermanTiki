@@ -24,7 +24,7 @@ public class BombPassItem extends Items {
     @Override
     public void update() {
         for (Entity entity : stillObjects) {
-            if (entity instanceof SpeedItem && (!isReceived)) {
+            if (entity instanceof BombPassItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY() / 32] == 4) {
                     entity.setLife(false);
                     entity.setImg(Sprite.powerup_bombpass.getFxImage());

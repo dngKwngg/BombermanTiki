@@ -28,6 +28,7 @@ public class SpriteSheet {
     private void load() {
         try {
             URL a = SpriteSheet.class.getResource(_path);
+            assert a != null;
             image = ImageIO.read(a);
             int w = image.getWidth();
             int h = image.getHeight();
