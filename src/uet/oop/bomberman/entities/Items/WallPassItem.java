@@ -14,13 +14,6 @@ public class WallPassItem extends Items {
         super(x, y, img);
     }
 
-    public WallPassItem() {
-
-    }
-
-    public WallPassItem(boolean isReceived) {
-        super(isReceived);
-    }
 
     @Override
     public void update() {

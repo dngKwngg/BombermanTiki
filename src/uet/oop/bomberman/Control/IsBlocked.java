@@ -10,9 +10,14 @@ public class IsBlocked {
 
     public static boolean blockLeft(Entity entity) {            // Check if player, animals can go left through the block
         if(entity instanceof Bomber) {
-            if( ((Bomber) entity).isCanPass() ) {
+            if( ((Bomber) entity).isCanPass() && !((Bomber) entity).isCanPassBomb()) {
                 return objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] != 2
                 && objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] != 4;
+            } else if(((Bomber) entity).isCanPassBomb()&& !((Bomber) entity).isCanPass()) {
+                return objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] == 0
+                        || objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] == 4;
+            } else if(((Bomber) entity).isCanPassBomb() && ((Bomber) entity).isCanPass())  {
+                return objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] != 2;
             } else {
                 return objIdx[entity.getX() / 32 - 1][entity.getY() / 32 ] == 0;
             }
@@ -25,9 +30,14 @@ public class IsBlocked {
 
     public static boolean blockRight(Entity entity) {           // Check if player, animals can go right through the block
         if(entity instanceof Bomber) {
-            if( ((Bomber) entity).isCanPass() ) {
+            if( ((Bomber) entity).isCanPass() && !((Bomber) entity).isCanPassBomb()) {
                 return objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] != 2
                 && objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] != 4;
+            } else if(((Bomber) entity).isCanPassBomb() && !((Bomber) entity).isCanPass()) {
+                return objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] == 0
+                        || objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] == 4;
+            } else if(((Bomber) entity).isCanPassBomb() && ((Bomber) entity).isCanPass())  {
+                return objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] != 2;
             } else {
                 return objIdx[entity.getX() / 32 + 1][entity.getY() / 32 ] == 0;
             }
@@ -40,9 +50,14 @@ public class IsBlocked {
 
     public static boolean blockUp(Entity entity) {              // Check if player, animals can go up through the block
         if(entity instanceof Bomber) {
-            if( ((Bomber) entity).isCanPass() ) {
+            if( ((Bomber) entity).isCanPass() && !((Bomber) entity).isCanPassBomb()) {
                 return objIdx[entity.getX() / 32][entity.getY() / 32 - 1] != 2
                         && objIdx[entity.getX() / 32][entity.getY() / 32 - 1] != 4;
+            } else if(((Bomber) entity).isCanPassBomb() && !((Bomber) entity).isCanPass()) {
+                return objIdx[entity.getX() / 32][entity.getY() / 32 - 1] == 0
+                        || objIdx[entity.getX() / 32][entity.getY() / 32 - 1] == 4;
+            } else if(((Bomber) entity).isCanPassBomb() && ((Bomber) entity).isCanPass())  {
+                return objIdx[entity.getX() / 32][entity.getY() / 32 - 1] != 2;
             } else {
                 return objIdx[entity.getX() / 32][entity.getY() / 32 - 1] == 0;
             }
@@ -55,7 +70,12 @@ public class IsBlocked {
 
     public static boolean blockDown(Entity entity) {            // Check if player, animals can go down through the block
         if(entity instanceof Bomber) {
-            if( ((Bomber) entity).isCanPass() ) {
+            if( ((Bomber) entity).isCanPass() && !((Bomber) entity).isCanPassBomb()) {
+                return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] != 2;
+            }  else if(((Bomber) entity).isCanPassBomb() && !((Bomber) entity).isCanPass()) {
+                return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] == 0
+                        || objIdx[entity.getX() / 32][entity.getY() / 32 + 1] == 4;
+            } else if(((Bomber) entity).isCanPassBomb() && ((Bomber) entity).isCanPass())  {
                 return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] != 2;
             } else {
                 return objIdx[entity.getX() / 32][entity.getY() / 32 + 1] == 0;

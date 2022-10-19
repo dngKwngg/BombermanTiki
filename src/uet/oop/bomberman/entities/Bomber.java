@@ -10,7 +10,7 @@ import static uet.oop.bomberman.BombermanGame.enemies;
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
 
 public class Bomber extends Entity {
-
+    public boolean canPassBomb = true;
     public boolean canPass = true;
 
     public int dieScene=1;
@@ -18,6 +18,14 @@ public class Bomber extends Entity {
 
     public Bomber(int x, int y, Image img) {
         super(x, y, img);
+    }
+
+    public void setCanPassBomb(boolean canPassBomb) {
+        this.canPassBomb = canPassBomb;
+    }
+
+    public boolean isCanPassBomb() {
+        return canPassBomb;
     }
 
     public void setCanPass(boolean canPass) {
