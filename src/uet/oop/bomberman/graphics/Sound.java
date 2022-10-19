@@ -54,7 +54,7 @@ public class Sound extends JFrame {
 
     public static void updateSound() {
         if (!player.getLife()) {
-//            bombExplode.close();
+//            //bombExplode.close();
             if (!isSoundDie) {
                 new Sound("sound/just_died.wav", "bomberDie");
                 isSoundDie = true;

@@ -14,6 +14,7 @@ public class Bomber extends Entity {
     public boolean canPass = true;
 
     public int dieScene=1;
+
     public int limitDelay = 6;
 
     public Bomber(int x, int y, Image img) {
