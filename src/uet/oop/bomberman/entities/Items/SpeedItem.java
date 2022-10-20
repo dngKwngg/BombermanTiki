@@ -37,7 +37,7 @@ public class SpeedItem extends Items {
                     if (!this.getLife()) {
                         this.setImg(Sprite.grass.getFxImage());
                         this.isReceived = true;
-                        player.setLimitDelay(4);
+                        player.setLimitDelay(player.getLimitDelay()-2);
                     }
                 }
             }
