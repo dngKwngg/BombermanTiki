@@ -25,7 +25,7 @@ public class MenuGameOver extends Parent {
 
         menu.setTranslateX(300);
         menu.setTranslateY(200);
-        Menubutton PlayBt = new Menubutton("PlayAgain");
+        MenuButton PlayBt = new MenuButton("PlayAgain");
         PlayBt.setOnMouseClicked(event -> {
             _gameLevel = 1;
             NewLevel();

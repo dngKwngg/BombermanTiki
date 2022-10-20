@@ -9,10 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class Menubutton extends StackPane {
+public class MenuButton extends StackPane {
     private Text text;
 
-    public Menubutton(String name) {
+    public MenuButton(String name) {
         text = new Text(name);
         text.setFont(text.getFont().font(20));
         text.setFill(Color.WHITE);
