@@ -9,12 +9,20 @@ import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.player;
 
 public class WallPassItem extends Items {
+
     public static int speed = 1;
 
     public WallPassItem(int x, int y, Image img) {
         super(x, y, img);
     }
 
+    public WallPassItem() {
+
+    }
+
+    public WallPassItem(boolean isReceived) {
+        super(isReceived);
+    }
 
     @Override
     public void update() {
@@ -38,3 +46,4 @@ public class WallPassItem extends Items {
         }
     }
 }
+
