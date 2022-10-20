@@ -20,7 +20,7 @@ public class Bomb extends Entity {
 
     private static int state = 1;       // State of the bomb
     private static int stateExplosion = 1;          // State explosion of the bomb
-    public static int numberBomb = 1000;              // Number bomb limit in the map
+//    public static int numberBomb = 1000;              // Number bomb limit in the map
     public static int bombPower = 0;                // Bomb power
     public static int bombPowerLeft = 0;            // Bomb power in left side
     public static int bombPowerRight = 0;           // Bomb power in right side
@@ -47,13 +47,13 @@ public class Bomb extends Entity {
 
 
     public static void plantBomb() {                // Function to plant a bomb
-        if (numberBomb > 0 && isPlanted == 0 && player.getLife()) {
+        if (isPlanted == 0 && player.getLife()) {
             new Sound("sound/put_bombs.wav", "plantBomb");
             int x = player.getX() / 32;
             int y = player.getY() / 32;
             x = Math.round((float) x);                              // Get x in Canvas
             y = Math.round((float) y);                              // Get y in canvas
-            numberBomb--;
+//            numberBomb--;
             isPlanted = 1;
             timeBomb = System.currentTimeMillis();             // Get time when plant the bomb
             timeBombTemp = timeBomb;                       // Time between 2 bombs
