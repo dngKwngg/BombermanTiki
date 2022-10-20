@@ -122,21 +122,4 @@ public class IsBlocked {
                 || objIdx[entity.getX() / 32][entity.getY() / 32 + 1 + power] == 7
                 || objIdx[entity.getX() / 32][entity.getY() / 32 + 1 + power] == 8;
     }
-
-//    public static boolean leftBombBlockBrick(Entity entity, int power) {
-//        return objIdx[entity.getX() / 32 - 1 - power][entity.getY() / 32] == 3;
-//    }
-//
-//    public static boolean rightBombBlockBrick(Entity entity, int power) {
-//        return objIdx[entity.getX() / 32 + 1 + power][entity.getY() / 32] == 3;
-//    }
-//
-//    public static boolean upBombBlockBrick(Entity entity, int power) {
-//        return objIdx[entity.getX() / 32][entity.getY() / 32 - 1 - power] == 3;
-//    }
-//
-//    public static boolean downBombBlockBrick(Entity entity, int power) {
-//        return objIdx[entity.getX() / 32][entity.getY() / 32 + 1 + power] == 3;
-//    }
-
 }

@@ -86,7 +86,7 @@ public class Bomb extends Entity {
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && (IsBlocked.leftBombBlock(bomb, i)); ++i) {
                     int tempIdx = objIdx[bomb.getX() / 32 - i][bomb.getY() / 32];
-                    if (tempIdx == 3) {
+                    if (tempIdx == 3 || tempIdx == 5 || tempIdx == 6 || tempIdx == 7 || tempIdx == 8) {
                         break;
                     }
                     lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
@@ -111,7 +111,7 @@ public class Bomb extends Entity {
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.rightBombBlock(bomb, i); ++i) {
                     int tempIdx = objIdx[bomb.getX() / 32 + i][bomb.getY() / 32];
-                    if (tempIdx == 3) {
+                    if (tempIdx == 3 || tempIdx == 5 || tempIdx == 6 || tempIdx == 7 || tempIdx == 8) {
                         break;
                     }
                     lastEdgeRight.setX(bomb.getX() + 32 + i * 32);
@@ -127,7 +127,7 @@ public class Bomb extends Entity {
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.upBombBlock(bomb, i); ++i) {
                     int tempIdx = objIdx[bomb.getX() / 32][bomb.getY() / 32 - i];
-                    if (tempIdx == 3) {
+                    if (tempIdx == 3 || tempIdx == 5 || tempIdx == 6 || tempIdx == 7 || tempIdx == 8) {
                         break;
                     }
                     lastEdgeUp.setY(bomb.getY() - 32 - i * 32);
@@ -143,7 +143,7 @@ public class Bomb extends Entity {
             if (bombPower > 0) {
                 for (i = 1; i <= bombPower && IsBlocked.downBombBlock(bomb, i); ++i) {
                     int tempIdx = objIdx[bomb.getX() / 32][bomb.getY() / 32 + i];
-                    if (tempIdx == 3) {
+                    if (tempIdx == 3 || tempIdx == 5 || tempIdx == 6 || tempIdx == 7 || tempIdx == 8) {
                         break;
                     }
                     lastEdgeDown.setY(bomb.getY() + 32 + i * 32);
