@@ -117,7 +117,7 @@ public class BombermanGame extends Application {
         menuWinGame = new MenuWinGame();
         pane = new Pane();
         pane.getChildren().add(menuWinGame);
-        Image image1 = new Image("img/win.png");
+        Image image1 = new Image("img/winner.png");
         imgView = new ImageView(image1);
 
         menuPause = new MenuPause();
