@@ -22,8 +22,8 @@ public class Level2 {
         View = new ImageView(image1);
         View.setX(0);
         isSoundDie = false;
-        player = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        player.setLife(true);
+        player.setX(32);
+        player.setY(32);
         entities.add(player);
         enemies.add(new Doll(21, 6, Sprite.doll_left1.getFxImage()));
 //        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));

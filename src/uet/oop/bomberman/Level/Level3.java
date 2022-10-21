@@ -22,8 +22,8 @@ public class Level3 {
             Image image1 = new Image("img/Pause.png");
             View = new ImageView(image1);
             View.setX(0);
-            player = new Bomber(1, 1, Sprite.player_right.getFxImage());
-            player.setLife(true);
+            player.setX(32);
+            player.setY(32);
             isSoundDie =false;
             entities.add(player);
             enemies.add(new Doll(21, 6, Sprite.doll_left1.getFxImage()));
