@@ -77,7 +77,7 @@ public class BombermanGame extends Application {
     private MenuWinGame menuWinGame;
     private MenuPause menuPause;
 
-    public static Slider slider;
+//    public static Slider slider;
 
     public static Text level, scoreText;
     public static boolean running = true;
@@ -123,9 +123,9 @@ public class BombermanGame extends Application {
         menuPause = new MenuPause();
         pp = new Pane();
         pp.getChildren().add(menuPause);
-        slider = new Slider(0, 100, 100);
-        slider.setLayoutX(340);
-        slider.setLayoutY(50);
+//        slider = new Slider(0, 100, 100);
+//        slider.setLayoutX(340);
+//        slider.setLayoutY(50);
 
         level = new Text("Level: 1");
         level.setFont(Font.font("Arial", FontWeight.BOLD, 14));
@@ -170,10 +170,10 @@ public class BombermanGame extends Application {
                     if (running) {
                         running = !running;
                         root.getChildren().add(View);
-                        root.getChildren().addAll(pp, slider);
+                        root.getChildren().addAll(pp);
                     } else {
                         running = !running;
-                        root.getChildren().removeAll(pp, View, slider);
+                        root.getChildren().removeAll(pp, View);
                     }
                     break;
             }

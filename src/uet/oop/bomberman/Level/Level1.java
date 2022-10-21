@@ -29,9 +29,9 @@ public class Level1 {
         // if (g_mediaPlayer != null) g_mediaPlayer.stop();
         new CreateMap("res/levels/Level1.txt");
         //timeNumber = 120;
-        Image image1 = new Image("img/meme1.png");
+        Image image1 = new Image("img/Pause.png");
         View = new ImageView(image1);
-        View.setX(250);
+        View.setX(0);
 //        bombRadius = 1;
 //        bombBank = 1;
 //        speedItem = 0;

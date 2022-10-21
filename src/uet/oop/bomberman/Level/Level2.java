@@ -18,9 +18,9 @@ public class Level2 {
         stillObjects.clear();
         isPlanted = 0;
         new CreateMap("res/levels/Level2.txt");
-        Image image1 = new Image("img/meme1.png");
+        Image image1 = new Image("img/Pause.png");
         View = new ImageView(image1);
-        View.setX(250);
+        View.setX(0);
         isSoundDie = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         player.setLife(true);
