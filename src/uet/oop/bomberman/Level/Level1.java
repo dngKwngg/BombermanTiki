@@ -11,6 +11,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.Block.Bomb.isPlanted;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
 import static uet.oop.bomberman.entities.Block.Bomb.bombPower;
 
@@ -25,6 +26,7 @@ public class Level1 {
     public Level1() {
         entities.clear();
         stillObjects.clear();
+        isPlanted = 0;
         // if (g_mediaPlayer != null) g_mediaPlayer.stop();
         new CreateMap("res/levels/Level1.txt");
         //timeNumber = 120;
