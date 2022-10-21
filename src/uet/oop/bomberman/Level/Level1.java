@@ -34,6 +34,7 @@ public class Level1 {
 //        bombRadius = 1;
 //        bombBank = 1;
 //        speedItem = 0;
+        score=0;
         stateExplosion = 1;
         isPlanted = 0;
         bombPower = 0;
