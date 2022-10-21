@@ -13,7 +13,7 @@ import static uet.oop.bomberman.Level.LevelNew.NewLevel;
             menu.setTranslateX(300);
             menu.setTranslateY(200);
 
-            Menubutton  PlayBt = new Menubutton ("PlayAgain");
+            MenuButton  PlayBt = new MenuButton ("PlayAgain");
             PlayBt.setOnMouseClicked(event -> {
                 root.getChildren().removeAll(pp, View, slider);
                 _gameLevel = 1;
@@ -21,13 +21,13 @@ import static uet.oop.bomberman.Level.LevelNew.NewLevel;
                 running = true;
             });
 
-            Menubutton  ResumeBt = new Menubutton ("Resume");
+            MenuButton  ResumeBt = new MenuButton ("Resume");
             ResumeBt.setOnMouseClicked(event -> {
                 running = true;
                 //g_mediaPlayer.play();
                 root.getChildren().removeAll(pp, View, slider);
             });
-            Menubutton  ExitBt = new Menubutton ("Exit");
+            MenuButton  ExitBt = new MenuButton ("Exit");
             ExitBt.setOnMouseClicked(event -> {
                 System.exit(0);
             });

@@ -18,7 +18,7 @@ public class MenuGame extends Parent {
 
         final int offset = 400;
 
-        Menubutton  PlayBt = new Menubutton ("Play");
+        MenuButton  PlayBt = new MenuButton ("Play");
 //        g_mediaPlayer = new MediaPlayer(menu_sound);
 //        g_mediaPlayer.play();
         PlayBt.setOnMouseClicked(event -> {
@@ -28,7 +28,7 @@ public class MenuGame extends Parent {
             root.getChildren().add(pa);
         });
 
-        Menubutton  ExitBt = new Menubutton ("Exit");
+        MenuButton  ExitBt = new MenuButton ("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });

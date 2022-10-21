@@ -17,7 +17,7 @@ public class MenuWinGame extends Parent {
         menu.setTranslateX(300);
         menu.setTranslateY(200);
 
-        Menubutton  PlayBt = new Menubutton ("PlayAgain");
+        MenuButton  PlayBt = new MenuButton ("PlayAgain");
         PlayBt.setOnMouseClicked(event -> {
             _gameLevel = 1;
             NewLevel();
@@ -26,7 +26,7 @@ public class MenuWinGame extends Parent {
             root.getChildren().add(pa);
         });
 
-        Menubutton  ExitBt = new Menubutton ("Exit");
+        MenuButton  ExitBt = new MenuButton ("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });

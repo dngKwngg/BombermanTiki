@@ -36,13 +36,13 @@ public class MenuGameOver extends Parent {
             root.getChildren().add(pa);
         });
 
-        Menubutton  MenuBt = new Menubutton ("Menu");
+        MenuButton  MenuBt = new MenuButton ("Menu");
         MenuBt.setOnMouseClicked(event -> {
             root.getChildren().removeAll(bg, pa);
             root.getChildren().removeAll(V, p);
             root.getChildren().addAll(r, imageView);
         });
-        Menubutton  ExitBt = new Menubutton ("Exit");
+        MenuButton  ExitBt = new MenuButton ("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });
