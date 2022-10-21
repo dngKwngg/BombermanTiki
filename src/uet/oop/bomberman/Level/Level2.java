@@ -9,10 +9,12 @@ import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.entities.Block.Bomb.isPlanted;
 public class Level2 {
     public Level2() {
         entities.clear();
         stillObjects.clear();
+        isPlanted = 0;
         new CreateMap("res/levels/Level2.txt");
         Image image1 = new Image("img/meme1.png");
         View = new ImageView(image1);
