@@ -296,7 +296,7 @@ public class BombermanGame extends Application {
             root.getChildren().add(V);
             root.getChildren().addAll(p);
             root.getChildren().removeAll(bg, pa);
-            enemies.clear();
+//            enemies.clear();
             player.setLife(true);
       }
         else {
