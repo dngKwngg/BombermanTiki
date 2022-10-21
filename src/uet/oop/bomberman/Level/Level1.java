@@ -24,6 +24,7 @@ import java.awt.image.ImageProducer;
 public class Level1 {
     public Level1() {
         entities.clear();
+        enemies.clear();
         stillObjects.clear();
         // if (g_mediaPlayer != null) g_mediaPlayer.stop();
         new CreateMap("res/levels/Level1.txt");

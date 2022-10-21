@@ -15,6 +15,7 @@ import static uet.oop.bomberman.entities.Block.Bomb.isPlanted;
 public class Level3 {
         public Level3() {
             entities.clear();
+            enemies.clear();
             stillObjects.clear();
             isPlanted = 0;
             new CreateMap("res/levels/Level3.txt");

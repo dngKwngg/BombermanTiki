@@ -2,8 +2,9 @@ package uet.oop.bomberman.Menu;
     import javafx.scene.Parent;
     import javafx.scene.control.MenuButton;
     import javafx.scene.layout.VBox;
+    import uet.oop.bomberman.Level.Level1;
 
-import static uet.oop.bomberman.BombermanGame.*;
+    import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.V;
 import static uet.oop.bomberman.Level.LevelNew.NewLevel;
 

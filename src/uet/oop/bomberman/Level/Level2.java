@@ -14,6 +14,7 @@ import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 public class Level2 {
     public Level2() {
         entities.clear();
+        enemies.clear();
         stillObjects.clear();
         isPlanted = 0;
         new CreateMap("res/levels/Level2.txt");
