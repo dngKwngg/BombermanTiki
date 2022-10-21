@@ -106,7 +106,7 @@ public class BombermanGame extends Application {
         MenuGame menuGame = new MenuGame();
         r = new Pane();
         r.getChildren().add(menuGame);
-        Image img = new Image("img/menu.png");
+        Image img = new Image("img/BomberMenu.png");
         imageView = new ImageView(img);
         p = new Pane();
         MenuGameOver menuGameOver = new MenuGameOver();

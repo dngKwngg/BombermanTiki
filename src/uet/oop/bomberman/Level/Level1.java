@@ -11,8 +11,8 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.Block.Bomb.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
-import static uet.oop.bomberman.entities.Block.Bomb.bombPower;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -34,7 +34,21 @@ public class Level1 {
 //        bombRadius = 1;
 //        bombBank = 1;
 //        speedItem = 0;
+        stateExplosion = 1;
+        isPlanted = 0;
         bombPower = 0;
+        bombPowerLeft = 0;
+        bombPowerRight = 0;
+        bombPowerUp = 0;
+        bombPowerDown = 0;
+        lastEdgeUp = null;
+        lastEdgeDown = null;
+        lastEdgeLeft = null;
+        lastEdgeRight = null;
+        isEdge = false;
+        isMiddle = false;
+        listBombMiddleVertical.clear();
+        listBombMiddleHorizontal.clear();
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         entities.add(player);
         //enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));

@@ -9,11 +9,13 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.entities.Block.Bomb.isPlanted;
 
 public class Level3 {
         public Level3() {
             entities.clear();
             stillObjects.clear();
+            isPlanted = 0;
             new CreateMap("res/levels/Level3.txt");
             Image image1 = new Image("img/meme1.png");
             View = new ImageView(image1);

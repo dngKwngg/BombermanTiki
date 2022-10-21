@@ -19,7 +19,7 @@ public class Bomb extends Entity {
     private static Entity bomb;
 
     private static int state = 1;       // State of the bomb
-    private static int stateExplosion = 1;          // State explosion of the bomb
+    public static int stateExplosion = 1;          // State explosion of the bomb
 //    public static int numberBomb = 1000;              // Number bomb limit in the map
     public static int bombPower = 0;                // Bomb power
     public static int bombPowerLeft = 0;            // Bomb power in left side
@@ -27,10 +27,10 @@ public class Bomb extends Entity {
     public static int bombPowerUp = 0;              // Bomb power in up side
     public static int bombPowerDown = 0;            // Bomb power in down side
 
-    private static Entity lastEdgeUp = null;        // The upper edge of the block blocks bomber going through
-    private static Entity lastEdgeDown = null;      // The down edge of the block blocks bomber going through
-    private static Entity lastEdgeLeft = null;      // The left edge of the block blocks bomber going through
-    private static Entity lastEdgeRight = null;     // The right edge of the block blocks bomber going through
+    public static Entity lastEdgeUp = null;        // The upper edge of the block blocks bomber going through
+    public static Entity lastEdgeDown = null;      // The down edge of the block blocks bomber going through
+    public static Entity lastEdgeLeft = null;      // The left edge of the block blocks bomber going through
+    public static Entity lastEdgeRight = null;     // The right edge of the block blocks bomber going through
 
     public static int isPlanted = 0;                // Check if there's a bomb here: 0: clear, 1: have bomb, 2: explode
     public static boolean isEdge = false;           // Variable to check if the edge exist
@@ -38,8 +38,8 @@ public class Bomb extends Entity {
     private static final long timeBetweenPlantAndExplode = 2000L;     // Set time between plant anh explode is 2 seconds
     private static final long timeBetweenPlantAndAnimation = 100L; // Set time between plant and get bomb animation is 0.1 second
     private static final long timeExploding = 1000L;                  // Set time exploding the bomb is 1 second
-    private static final List<Entity> listBombMiddleVertical = new ArrayList<>();
-    private static final List<Entity> listBombMiddleHorizontal = new ArrayList<>();
+    public static final List<Entity> listBombMiddleVertical = new ArrayList<>();
+    public static final List<Entity> listBombMiddleHorizontal = new ArrayList<>();
 
     public Bomb(int x, int y, Image fxImage) {
         super(x, y, fxImage);
