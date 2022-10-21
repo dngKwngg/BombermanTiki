@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import uet.oop.bomberman.Menu.MenuPause;
+import uet.oop.bomberman.Menu.*;
 import uet.oop.bomberman.entities.Block.*;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
@@ -33,8 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import uet.oop.bomberman.Menu.MenuGame;
-import uet.oop.bomberman.Menu.MenuGameOver;
+
 import uet.oop.bomberman.Menu.MenuPause;
 import javafx.scene.control.MenuButton;
 import uet.oop.bomberman.graphics.Sound;
@@ -74,6 +73,7 @@ public class BombermanGame extends Application {
     private MenuGame menuGame;
 
     private MenuGameOver menuGameOver;
+    private MenuWinGame menuWinGame;
     private MenuPause menuPause;
 
     public static Slider slider;
@@ -102,16 +102,22 @@ public class BombermanGame extends Application {
 
         // Tao root container
         root = new Group();
-        MenuGame menuGame = new MenuGame();
+        menuGame = new MenuGame();
         r = new Pane();
         r.getChildren().add(menuGame);
         Image img = new Image("img/menu.png");
         imageView = new ImageView(img);
         p = new Pane();
-        MenuGameOver menuGameOver = new MenuGameOver();
+        menuGameOver = new MenuGameOver();
         p.getChildren().add(menuGameOver);
         Image image = new Image("img/Gameover.png");
         V = new ImageView(image);
+
+        menuWinGame = new MenuWinGame();
+        pane = new Pane();
+        pane.getChildren().add(menuWinGame);
+        Image image1 = new Image("img/win.png");
+        imgView = new ImageView(image1);
 
         menuPause = new MenuPause();
         pp = new Pane();
@@ -160,6 +166,14 @@ public class BombermanGame extends Application {
                     Bomb.plantBomb();
                     break;
                 case P:
+                    if (running) {
+                        running = !running;
+                        root.getChildren().add(View);
+                        root.getChildren().addAll(pp, slider);
+                    } else {
+                        running = !running;
+                        root.getChildren().removeAll(pp, View, slider);
+                    }
                     break;
             }
         });
@@ -173,7 +187,6 @@ public class BombermanGame extends Application {
             public void handle(long l) {
                 render();
                 update();
-                updateMenu();
             }
         };
         timer.start();
@@ -260,8 +273,8 @@ public class BombermanGame extends Application {
 //        } catch (IOException e) {               // Catch exception.
 //            e.printStackTrace();                // printStackTrace(): Help to understand where the problem is actually happening.
 //        }
-    }
 
+    }
     public void update() {
 
         for (int i = 0; i < entities.size(); i++) {
@@ -277,6 +290,7 @@ public class BombermanGame extends Application {
             stillObjects.get(i).update();
         }
        if (player != null && !player.getLife()) {
+           updateSound();
             entities.clear();
             stillObjects.clear();
             root.getChildren().add(V);
@@ -292,13 +306,6 @@ public class BombermanGame extends Application {
             newStillObjects.clear();
             entities.forEach(Entity::update);
             stillObjects.forEach(Entity::update);
-//            if (entities.size() == 1) {
-//                isEndGame = true;
-//                if(isEndGame && onPortal)
-//                {
-////                    NewLevel();
-//                }
-//            }
         }
     }
 

@@ -11,7 +11,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
-
+import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -32,6 +32,7 @@ public class Level1 {
 //        bombRadius = 1;
 //        bombBank = 1;
 //        speedItem = 0;
+        isSoundDie = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         player.setLife(true);
         entities.add(player);
@@ -42,6 +43,6 @@ public class Level1 {
 //        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
 //        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
         stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
-            updateSound();
+        updateSound();
     }
 }

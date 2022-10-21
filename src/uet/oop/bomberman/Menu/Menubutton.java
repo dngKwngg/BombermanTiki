@@ -27,8 +27,8 @@ public class Menubutton extends StackPane {
         getChildren().addAll(bg, text);
 
         setOnMouseEntered(event -> {
-            bg.setTranslateX(10);
-            text.setTranslateX(10);
+            bg.setTranslateX(0);
+            text.setTranslateX(0);
             bg.setFill(Color.WHITE);
             text.setFill(Color.BLACK);
         });

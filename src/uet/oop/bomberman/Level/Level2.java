@@ -9,6 +9,7 @@ import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 public class Level2 {
     public Level2() {
         entities.clear();
@@ -17,6 +18,7 @@ public class Level2 {
         Image image1 = new Image("img/meme1.png");
         View = new ImageView(image1);
         View.setX(250);
+        isSoundDie = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         player.setLife(true);
         entities.add(player);

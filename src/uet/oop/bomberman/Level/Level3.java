@@ -9,6 +9,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 
 public class Level3 {
         public Level3() {
@@ -20,13 +21,14 @@ public class Level3 {
             View.setX(250);
             player = new Bomber(1, 1, Sprite.player_right.getFxImage());
             player.setLife(true);
+            isSoundDie =false;
             entities.add(player);
             enemies.add(new Doll(21, 6, Sprite.doll_left1.getFxImage()));
-            enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
-            enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
-            enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
-            enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
-            enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
+//            enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
+//            enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
+//            enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
+//            enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
+//            enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
             stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
                 updateSound();
         }

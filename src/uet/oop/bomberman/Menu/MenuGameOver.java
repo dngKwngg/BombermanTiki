@@ -15,11 +15,13 @@ import javafx.util.Duration;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Level.*;
+import uet.oop.bomberman.Menu.MenuGame.*;
 import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.graphics.Sound.updateSound;
+
 public class MenuGameOver extends Parent {
-    Stage window;
-    Scene scene1;
+    private MenuGame menuGame;
     public MenuGameOver() {
         VBox menu = new VBox(15);
 
@@ -34,12 +36,13 @@ public class MenuGameOver extends Parent {
             root.getChildren().add(pa);
         });
 
-        MenuButton MenuBt = new MenuButton("Menu");
+        Menubutton  MenuBt = new Menubutton ("Menu");
         MenuBt.setOnMouseClicked(event -> {
-            new MenuGame();
-
+            root.getChildren().removeAll(bg, pa);
+            root.getChildren().removeAll(V, p);
+            root.getChildren().addAll(r, imageView);
         });
-        MenuButton ExitBt = new MenuButton("Exit");
+        Menubutton  ExitBt = new Menubutton ("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });

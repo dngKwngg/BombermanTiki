@@ -16,7 +16,7 @@ public class Sound extends JFrame {
     public static Clip bomberDie;
     public static Clip plantBomb;
 
-    public static boolean isSoundDie = false;
+    public static boolean isSoundDie;
 
     public Sound(String name, String sound) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,11 +54,11 @@ public class Sound extends JFrame {
 
     public static void updateSound() {
         if (!player.getLife()) {
-//            //bombExplode.close();
-            if (!isSoundDie) {
+            //bombExplode.close();
+           if (!isSoundDie) {
                 new Sound("sound/just_died.wav", "bomberDie");
-                isSoundDie = true;
-            }
+              isSoundDie = true;
+           }
         }
     }
 }
