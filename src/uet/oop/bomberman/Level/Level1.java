@@ -13,7 +13,7 @@ import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Block.Bomb.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
-
+import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -50,7 +50,9 @@ public class Level1 {
         isMiddle = false;
         listBombMiddleVertical.clear();
         listBombMiddleHorizontal.clear();
+        isSoundDie = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        player.setLife(true);
         entities.add(player);
         //enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
         enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
