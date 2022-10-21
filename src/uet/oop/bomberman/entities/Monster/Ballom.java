@@ -9,14 +9,14 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.util.Random;
 
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
+import static uet.oop.bomberman.BombermanGame.score;
 
 public class Ballom extends Monster {
 
-//    public int dieScene=1;
+    public int scoreOfThis=200;
     private int direction;
     protected AI ai;
 
-//    private int stepLoop = 0;
 
     public Ballom(int x, int y, Image img) {
         super(x, y, img);
@@ -39,6 +39,8 @@ public class Ballom extends Monster {
                 dieScene = 5;
             } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
+                score+=scoreOfThis;
+                scoreOfThis=0;
             }
         }
     }
@@ -52,9 +54,8 @@ public class Ballom extends Monster {
     }
 
     public void randomDirection() {
-            if (standing == 0 && stepLoop != 5) {
+            if (standing == 0 && stepLoop%5==0) {
                 moveWithNumber(direction);
-
             } else {
 //                Random random = new Random();
 //                direction = random.nextInt(4);

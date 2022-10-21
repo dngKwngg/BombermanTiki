@@ -36,7 +36,6 @@ public class Level1 {
 //        speedItem = 0;
         bombPower = 0;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        player.setLife(true);
         entities.add(player);
         //enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
         enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));

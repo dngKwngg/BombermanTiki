@@ -10,7 +10,7 @@ import static uet.oop.bomberman.BombermanGame.player;
 
 public class WallPassItem extends Items {
 
-    public static int speed = 1;
+    public int scoreOfThis=10;
 
     public WallPassItem(int x, int y, Image img) {
         super(x, y, img);
@@ -29,6 +29,8 @@ public class WallPassItem extends Items {
         for (Entity entity : stillObjects) {
             if (entity instanceof WallPassItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY() / 32] == 4) {
+                    score+=scoreOfThis;
+                    scoreOfThis=0;
                     entity.setLife(false);
                     entity.setImg(Sprite.powerup_wallpass.getFxImage());
                 }

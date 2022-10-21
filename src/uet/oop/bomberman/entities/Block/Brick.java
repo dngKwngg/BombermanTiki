@@ -10,6 +10,8 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class Brick extends Entity {
     public int dieScene = 1;
 
+    public int scoreOfThis = 10;
+
     public void Exploding() {
         if (!this.getLife()) {
             if (dieScene == 1) {
@@ -23,6 +25,8 @@ public class Brick extends Entity {
                 dieScene = 4;
             } else {
                 this.setImg(Sprite.grass.getFxImage());
+                score+=scoreOfThis;
+                scoreOfThis=0;
             }
         }
     }

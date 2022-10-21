@@ -6,10 +6,11 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.util.Random;
 
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
+import static uet.oop.bomberman.BombermanGame.score;
 
 public class Doll extends Monster {
 
-//    public int dieScene=1;
+    public int scoreOfThis=300;
     private int direction;
 
 //    private int stepLoop = 0;
@@ -34,6 +35,8 @@ public class Doll extends Monster {
                 dieScene = 5;
             } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
+                score+=scoreOfThis;
+                scoreOfThis=0;
             }
         }
     }

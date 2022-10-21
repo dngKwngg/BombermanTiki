@@ -8,14 +8,14 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.util.Random;
 
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
+import static uet.oop.bomberman.BombermanGame.score;
 
 public class Minvo extends Monster {
 
-//    public int dieScene=1;
+    public int scoreOfThis=100;
     private int direction;
     protected AI ai;
 
-//    private int stepLoop = 0;
 
     public Minvo(int x, int y, Image img) {
         super(x, y, img);
@@ -38,6 +38,8 @@ public class Minvo extends Monster {
                 dieScene = 5;
             } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
+                score+=scoreOfThis;
+                scoreOfThis=0;
             }
         }
     }

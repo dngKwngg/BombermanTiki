@@ -9,6 +9,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.player;
 
 public class SpeedItem extends Items {
+    public int scoreOfThis=10;
     public SpeedItem(int x, int y, Image img) {
         super(x, y, img);
     }
@@ -26,6 +27,8 @@ public class SpeedItem extends Items {
         for (Entity entity : stillObjects) {
             if (entity instanceof SpeedItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY() / 32] == 4) {
+                    score+=scoreOfThis;
+                    scoreOfThis=0;
                     entity.setLife(false);
                     entity.setImg(Sprite.powerup_speed.getFxImage());
                 }

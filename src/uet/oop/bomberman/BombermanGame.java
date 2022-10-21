@@ -43,6 +43,7 @@ import uet.oop.bomberman.Level.*;
 import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
+    public static int score = 0;
 
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
@@ -78,7 +79,7 @@ public class BombermanGame extends Application {
 
     public static Slider slider;
 
-    public static Text level, bomb;
+    public static Text level, scoreText;
     public static boolean running = true;
     private Canvas canvas;
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
@@ -125,17 +126,17 @@ public class BombermanGame extends Application {
         level.setFill(Color.BLACK);
         level.setX(416);
         level.setY(20);
-        bomb = new Text("bomb: 1");
-        bomb.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        bomb.setFill(Color.BLACK);
-        bomb.setX(512);
-        bomb.setY(20);
+        scoreText = new Text("Score: "+ score);
+        scoreText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        scoreText.setFill(Color.BLACK);
+        scoreText.setX(512);
+        scoreText.setY(20);
         bg = new Rectangle(285, 25);
         bg.setFill(Color.GRAY);
         bg.setY(2);
         bg.setX(400);
         pa = new Pane();
-        pa.getChildren().addAll(level, bomb);
+        pa.getChildren().addAll(level, scoreText);
         root.getChildren().addAll(canvas, imageView, r);
 
         // Tao scene
@@ -263,7 +264,6 @@ public class BombermanGame extends Application {
     }
 
     public void update() {
-
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).run();
             entities.get(i).update();
