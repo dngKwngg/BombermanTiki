@@ -30,6 +30,8 @@ public class BombermanGame extends Application {
     public static int score = 0;
     public static int highScore;
 
+    public static boolean isPause=false;
+
     FileReader fr;
 
     {
@@ -42,7 +44,7 @@ public class BombermanGame extends Application {
 
 
     public static boolean isOver = false;
-
+//    public static boolean isWin = false;
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -158,6 +160,8 @@ public class BombermanGame extends Application {
         Scene scene = new Scene(root);
 
         // Catch event
+
+
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
@@ -177,16 +181,19 @@ public class BombermanGame extends Application {
                     break;
                 case P:
                     if (running) {
+                        isPause = true;
                         running = !running;
                         root.getChildren().add(View);
                         root.getChildren().addAll(pp);
                     } else {
+                        isPause = false;
                         running = !running;
                         root.getChildren().removeAll(pp, View);
                     }
                     break;
             }
         });
+        
 
         // Add scene to stage
         stage.setScene(scene);
@@ -195,9 +202,11 @@ public class BombermanGame extends Application {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                render();
-                update();
-                updateMenu();
+                if(!isPause) {
+                    render();
+                    update();
+                    updateMenu();
+                }
             }
         };
         timer.start();

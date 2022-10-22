@@ -26,6 +26,7 @@ import static uet.oop.bomberman.Level.LevelNew.NewLevel;
 
             MenuButton  ResumeBt = new MenuButton ("Resume");
             ResumeBt.setOnMouseClicked(event -> {
+                isPause = false;
                 running = true;
                 //g_mediaPlayer.play();
                 root.getChildren().removeAll(pp, View);

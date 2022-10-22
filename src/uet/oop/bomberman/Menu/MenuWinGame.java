@@ -13,7 +13,7 @@ import static uet.oop.bomberman.Level.LevelNew.NewLevel;
 public class MenuWinGame extends Parent {
     public MenuWinGame() {
         VBox menu = new VBox(15);
-
+//        isWin = true;
         menu.setTranslateX(300);
         menu.setTranslateY(200);
 
