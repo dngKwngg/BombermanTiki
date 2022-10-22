@@ -43,6 +43,7 @@ import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
     public static int score = 0;
+    public static int highScore = 0;
 
     public static boolean isOver = false;
 
@@ -81,7 +82,7 @@ public class BombermanGame extends Application {
 
 //    public static Slider slider;
 
-    public static Text level, scoreText;
+    public static Text level, scoreText, highscore;
     public static boolean running = true;
     private Canvas canvas;
     //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
@@ -139,6 +140,13 @@ public class BombermanGame extends Application {
         scoreText.setFill(Color.BLACK);
         scoreText.setX(512);
         scoreText.setY(20);
+
+        highscore = new Text("Highscore:"+ highScore);
+        highscore.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        highscore.setFill(Color.BLACK);
+        highscore.setX(600);
+        highscore.setY(20);
+
         bg = new Rectangle(285, 25);
         bg.setFill(Color.GRAY);
         bg.setY(2);
@@ -323,6 +331,7 @@ public class BombermanGame extends Application {
     public void updateMenu() {
             level.setText("Level: " + _gameLevel);
         scoreText.setText("Score: " + score);
+        highscore.setText("Highscore: " + highScore);
     }
 }
 
