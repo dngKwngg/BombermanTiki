@@ -42,7 +42,7 @@ public class BombermanGame extends Application {
 
 
     public static boolean isOver = false;
-
+//    public static boolean isWin = false;
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -158,35 +158,35 @@ public class BombermanGame extends Application {
         Scene scene = new Scene(root);
 
         // Catch event
-        scene.setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case UP:
-                    Move.up(entities.get(0));
-                    break;
-                case DOWN:
-                    Move.down(entities.get(0));
-                    break;
-                case RIGHT:
-                    Move.right(entities.get(0));
-                    break;
-                case LEFT:
-                    Move.left(entities.get(0));
-                    break;
-                case SPACE:
-                    Bomb.plantBomb();
-                    break;
-                case P:
-                    if (running) {
-                        running = !running;
-                        root.getChildren().add(View);
-                        root.getChildren().addAll(pp);
-                    } else {
-                        running = !running;
-                        root.getChildren().removeAll(pp, View);
-                    }
-                    break;
-            }
-        });
+            scene.setOnKeyPressed(event -> {
+                switch (event.getCode()) {
+                    case UP:
+                        Move.up(entities.get(0));
+                        break;
+                    case DOWN:
+                        Move.down(entities.get(0));
+                        break;
+                    case RIGHT:
+                        Move.right(entities.get(0));
+                        break;
+                    case LEFT:
+                        Move.left(entities.get(0));
+                        break;
+                    case SPACE:
+                        Bomb.plantBomb();
+                        break;
+                    case P:
+                        if (running) {
+                            running = !running;
+                            root.getChildren().add(View);
+                            root.getChildren().addAll(pp);
+                        } else {
+                            running = !running;
+                            root.getChildren().removeAll(pp, View);
+                        }
+                        break;
+                }
+            });
 
         // Add scene to stage
         stage.setScene(scene);

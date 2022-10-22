@@ -53,6 +53,7 @@ public class Level1 {
         listBombMiddleHorizontal.clear();
         isSoundDie = false;
         isSoundScreen = false;
+//        isWin = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         player.setLife(true);
         entities.add(player);
