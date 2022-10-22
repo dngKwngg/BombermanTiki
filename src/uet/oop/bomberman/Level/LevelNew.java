@@ -5,7 +5,7 @@ import javafx.util.Duration;
 import static uet.oop.bomberman.entities.Block.Portal.isEndGame;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Block.Portal.onPortal;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.graphics.Sound.*;
 //import static uet.oop.bomberman.graphics.Sound.level_complete;
 
 public class LevelNew {
@@ -13,15 +13,19 @@ public class LevelNew {
         onPortal = false;
         switch (_gameLevel) {
             case 1:
+                screen.stop();
                 new Level1();
                 break;
             case 2:
+                screen.stop();
                 new Level2();
                 break;
             case 3:
+                screen.stop();
                 new Level3();
                 break;
             case 4:
+                screen.stop();
                 entities.clear();
                 stillObjects.clear();
                 root.getChildren().removeAll(bg, pa);

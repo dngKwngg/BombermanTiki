@@ -44,6 +44,8 @@ import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
     public static int score = 0;
 
+    public static boolean isOver = false;
+
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -290,13 +292,14 @@ public class BombermanGame extends Application {
             stillObjects.get(i).run();
             stillObjects.get(i).update();
         }
-       if (player != null && !player.getLife()) {
-           updateSound();
+
+       if (player != null && !player.getLife() && isOver) {
             entities.clear();
             stillObjects.clear();
             root.getChildren().add(V);
             root.getChildren().addAll(p);
             root.getChildren().removeAll(bg, pa);
+            isOver = false;
 //            enemies.clear();
             player.setLife(true);
       }
