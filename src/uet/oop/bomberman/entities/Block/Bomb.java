@@ -290,10 +290,10 @@ public class Bomb extends Entity {
 
     private static void checkBombActive() {         // Function to handle the bomb when it is planted and is not explode
         if (isPlanted == 1) {
-            if (System.currentTimeMillis() - timeBomb < 2000L) {
-                if (System.currentTimeMillis() - timeBombTemp > 100L) {
+            if (System.currentTimeMillis() - timeBomb < timeBetweenPlantAndExplode) {
+                if (System.currentTimeMillis() - timeBombTemp > timeBetweenPlantAndAnimation) {
                     showBombAnimation();
-                    timeBombTemp += 100L;
+                    timeBombTemp += timeBetweenPlantAndAnimation;
                 }
             } else {
                 isPlanted = 2;
@@ -305,8 +305,8 @@ public class Bomb extends Entity {
 
     private static void checkExplosion() {          // Handle the explosion of bomb after planted
         if (isPlanted == 2) {
-            if (System.currentTimeMillis() - timeBomb < 1000L) {
-                if (System.currentTimeMillis() - timeBombTemp > 100L) {
+            if (System.currentTimeMillis() - timeBomb < timeExploding) {
+                if (System.currentTimeMillis() - timeBombTemp > timeBetweenPlantAndAnimation) {
                     if (!isEdge) {
                         createBlocked();
                         isEdge = true;
@@ -319,7 +319,7 @@ public class Bomb extends Entity {
 
                     new Sound("sound/bomb_explosion.wav", "explosion");
                     bombExplosion();
-                    timeBombTemp += 100L;
+                    timeBombTemp += timeBetweenPlantAndAnimation;
                 }
             } else {
                 isPlanted = 0;
