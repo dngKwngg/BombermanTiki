@@ -43,7 +43,7 @@ import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
     public static int score = 0;
-    public static int highScore = 0;
+    public static int highScore;
 
     public static boolean isOver = false;
 
@@ -133,26 +133,26 @@ public class BombermanGame extends Application {
         level = new Text("Level: 1");
         level.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         level.setFill(Color.BLACK);
-        level.setX(416);
+        level.setX(352);
         level.setY(20);
         scoreText = new Text("Score: "+ score);
         scoreText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         scoreText.setFill(Color.BLACK);
-        scoreText.setX(512);
+        scoreText.setX(448);
         scoreText.setY(20);
 
         highscore = new Text("Highscore:"+ highScore);
         highscore.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         highscore.setFill(Color.BLACK);
-        highscore.setX(600);
+        highscore.setX(560);
         highscore.setY(20);
 
-        bg = new Rectangle(285, 25);
+        bg = new Rectangle(385, 25);
         bg.setFill(Color.GRAY);
         bg.setY(2);
-        bg.setX(400);
+        bg.setX(300);
         pa = new Pane();
-        pa.getChildren().addAll(level, scoreText);
+        pa.getChildren().addAll(level, scoreText,highscore);
         root.getChildren().addAll(canvas, imageView, r);
 
         // Tao scene
