@@ -193,7 +193,6 @@ public class BombermanGame extends Application {
                     break;
             }
         });
-        
 
         // Add scene to stage
         stage.setScene(scene);
