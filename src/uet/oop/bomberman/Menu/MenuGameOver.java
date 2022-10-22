@@ -43,7 +43,7 @@ public class MenuGameOver extends Parent {
             stillObjects.clear();
             root.getChildren().removeAll(bg, pa);
             root.getChildren().removeAll(V, p);
-            root.getChildren().addAll(r, imageView);
+            root.getChildren().addAll(imageView, r);
         });
         Button  ExitBt = new Button ("Exit");
         ExitBt.setOnMouseClicked(event -> {
