@@ -6,8 +6,7 @@ import uet.oop.bomberman.entities.Monster.Monster;
 import uet.oop.bomberman.graphics.Sound;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.BombermanGame.enemies;
-import static uet.oop.bomberman.BombermanGame.listIsKilled;
+import static uet.oop.bomberman.BombermanGame.*;
 
 public class Bomber extends Entity {
     public boolean canPassBomb = false;
@@ -58,6 +57,7 @@ public class Bomber extends Entity {
                 dieScene = 4;
             } else {
                 this.setImg(Sprite.transparent.getFxImage());
+                isOver=true;
             }
         }
     }
