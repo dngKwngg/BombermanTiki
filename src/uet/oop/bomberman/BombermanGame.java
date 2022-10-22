@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -17,30 +16,16 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import uet.oop.bomberman.Menu.*;
-import uet.oop.bomberman.entities.Block.*;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Items.FlameItem;
-import uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
-
 import java.io.*;
-
 import uet.oop.bomberman.entities.Block.Bomb;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 import uet.oop.bomberman.Menu.MenuPause;
-import javafx.scene.control.MenuButton;
-import uet.oop.bomberman.graphics.Sound;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
-import uet.oop.bomberman.Level.*;
-import static uet.oop.bomberman.Level.LevelNew.*;
-import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
     public static int score = 0;
     public static int highScore;
@@ -90,8 +75,6 @@ public class BombermanGame extends Application {
     private MenuGameOver menuGameOver;
     private MenuWinGame menuWinGame;
     private MenuPause menuPause;
-
-//    public static Slider slider;
 
     public static Text level, scoreText, highscore;
     public static boolean running = true;
@@ -171,10 +154,10 @@ public class BombermanGame extends Application {
         pa.getChildren().addAll(level, scoreText,highscore);
         root.getChildren().addAll(canvas, imageView, r);
 
-        // Tao scene
+        // Create Scece
         Scene scene = new Scene(root);
 
-        //Bat su kien
+        // Catch event
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
@@ -205,7 +188,7 @@ public class BombermanGame extends Application {
             }
         });
 
-        // Them scene vao stage
+        // Add scene to stage
         stage.setScene(scene);
         stage.show();
 
