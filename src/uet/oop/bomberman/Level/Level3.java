@@ -8,9 +8,8 @@ import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.graphics.Sound;
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
-import static uet.oop.bomberman.graphics.Sound.isSoundDie;
 import static uet.oop.bomberman.entities.Block.Bomb.isPlanted;
+import static uet.oop.bomberman.graphics.Sound.*;
 
 public class Level3 {
         public Level3() {
@@ -25,6 +24,7 @@ public class Level3 {
             player.setX(32);
             player.setY(32);
             isSoundDie =false;
+            isSoundScreen = false;
             entities.add(player);
             enemies.add(new Doll(21, 6, Sprite.doll_left1.getFxImage()));
 //            enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));

@@ -292,7 +292,6 @@ public class BombermanGame extends Application {
             stillObjects.get(i).update();
         }
        if (player != null && !player.getLife() && isOver) {
-           updateSound();
             entities.clear();
             stillObjects.clear();
             root.getChildren().add(V);
