@@ -291,6 +291,7 @@ public class BombermanGame extends Application {
             stillObjects.get(i).run();
             stillObjects.get(i).update();
         }
+
        if (player != null && !player.getLife() && isOver) {
             entities.clear();
             stillObjects.clear();
