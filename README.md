@@ -6,7 +6,7 @@
 |-----|---------------------|------------|--------------------------------------------------------|------------|
 | 1   | Nguyễn Đăng Quang   | 21020785   | Map, Block, Items, Control, AI Move, Github Management | 40%        |
 | 2   | Ma Thanh Thiện      | 21020794   | Map, Monster, Bomber, Control, Items, Levels, Testing  | 40%        |
-| 3   | Hoàng Thanh Tùng    | 21021661   | Nothing                                                | 20%        |
+| 3   | Hoàng Thanh Tùng    | 21021661   | Menu, Levels                                           | 20%        |
 
 Trong bài tập lớn này, nhiệm vụ của bạn là viết một phiên bản Java mô phỏng lại trò
 chơi [Bomberman](https://www.youtube.com/watch?v=mKIOVwqgSXM) kinh điển của NES.
