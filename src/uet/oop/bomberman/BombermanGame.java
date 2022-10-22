@@ -165,16 +165,16 @@ public class BombermanGame extends Application {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
-                    Move.up(entities.get(0));
+                    Move.up(player);
                     break;
                 case DOWN:
-                    Move.down(entities.get(0));
+                    Move.down(player);
                     break;
                 case RIGHT:
-                    Move.right(entities.get(0));
+                    Move.right(player);
                     break;
                 case LEFT:
-                    Move.left(entities.get(0));
+                    Move.left(player);
                     break;
                 case SPACE:
                     Bomb.plantBomb();
