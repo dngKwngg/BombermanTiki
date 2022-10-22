@@ -45,15 +45,16 @@ public class BombermanGame extends Application {
     public static int score = 0;
     public static int highScore;
 
-    Scanner input;
+    FileReader fr;
 
     {
         try {
-            input = new Scanner(new File("res/score/highscore.txt"));
-        } catch (FileNotFoundException e) {
+            fr = new FileReader("res/score/highscore.txt");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public static boolean isOver = false;
 
@@ -110,7 +111,11 @@ public class BombermanGame extends Application {
 
     @Override
     public void start(Stage stage) {
-        highScore =input.nextInt();
+        try {
+            highScore =fr.read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         // Tao Canvas
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
@@ -258,7 +263,13 @@ public class BombermanGame extends Application {
     public void updateMenu() {
         if(score>highScore) {
             highScore=score;
-            
+            try {
+                FileWriter fw = new FileWriter("res/score/highscore.txt");
+                fw.write(highScore);
+                fw.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
             level.setText("Level: " + _gameLevel);
         scoreText.setText("Score: " + score);
