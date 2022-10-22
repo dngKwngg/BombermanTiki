@@ -27,7 +27,7 @@ public class MenuGameOver extends Parent {
 
         menu.setTranslateX(300);
         menu.setTranslateY(200);
-        MenuButton PlayBt = new MenuButton("PlayAgain");
+        Button PlayBt = new Button("PlayAgain");
         PlayBt.setOnMouseClicked(event -> {
             _gameLevel = 1;
             NewLevel();
@@ -36,13 +36,16 @@ public class MenuGameOver extends Parent {
             root.getChildren().add(pa);
         });
 
-        MenuButton  MenuBt = new MenuButton ("Menu");
+        Button  MenuBt = new Button ("Back To Menu");
         MenuBt.setOnMouseClicked(event -> {
+            entities.clear();
+            enemies.clear();
+            stillObjects.clear();
             root.getChildren().removeAll(bg, pa);
             root.getChildren().removeAll(V, p);
             root.getChildren().addAll(r, imageView);
         });
-        MenuButton  ExitBt = new MenuButton ("Exit");
+        Button  ExitBt = new Button ("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });

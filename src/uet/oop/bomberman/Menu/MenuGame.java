@@ -11,14 +11,14 @@ public class MenuGame extends Parent {
         VBox menu = new VBox(15);
         //VBox menu1 = new VBox(15);
 
-        menu.setTranslateX(200);
-        menu.setTranslateY(200);
+        menu.setTranslateX(300);
+        menu.setTranslateY(350);
         //menu1.setTranslateX(100);
         //menu1.setTranslateY(200);
 
         final int offset = 400;
 
-        MenuButton  PlayBt = new MenuButton ("Play");
+        Button PlayBt = new Button("Play");
 //        g_mediaPlayer = new MediaPlayer(menu_sound);
 //        g_mediaPlayer.play();
         PlayBt.setOnMouseClicked(event -> {
@@ -28,7 +28,7 @@ public class MenuGame extends Parent {
             root.getChildren().add(pa);
         });
 
-        MenuButton  ExitBt = new MenuButton ("Exit");
+        Button ExitBt = new Button("Exit");
         ExitBt.setOnMouseClicked(event -> {
             System.exit(0);
         });
