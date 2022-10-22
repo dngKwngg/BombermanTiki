@@ -47,7 +47,7 @@ public class Bomb extends Entity {
 
 
     public static void plantBomb() {                // Function to plant a bomb
-        if (isPlanted == 0 && player.getLife()) {
+        if (isPlanted == 0 && player.getLife() && !isPause) {
             new Sound("sound/put_bombs.wav", "plantBomb");
             int x = player.getX() / 32;
             int y = player.getY() / 32;
