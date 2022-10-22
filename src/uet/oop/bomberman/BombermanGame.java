@@ -188,6 +188,7 @@ public class BombermanGame extends Application {
             public void handle(long l) {
                 render();
                 update();
+                updateMenu();
             }
         };
         timer.start();
@@ -317,17 +318,8 @@ public class BombermanGame extends Application {
     }
 
     public void updateMenu() {
-        level.setText("Level: " + _gameLevel);
-    //    player.setText("Bombs: " + bombBank);
-//        long now = System.currentTimeMillis();
-//        if (now -  lastTime > 1000) {
-//            lastTime = System.currentTimeMillis();
-//
-//            time.setText("Time: " + timeNumber);
-//            timeNumber--;
-//            if (timeNumber == 0)
-//                bomber.setState(1);
-//        }
+            level.setText("Level: " + _gameLevel);
+        scoreText.setText("Score: " + score);
     }
 }
 
