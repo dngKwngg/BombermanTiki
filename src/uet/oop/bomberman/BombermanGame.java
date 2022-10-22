@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -17,36 +16,35 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import uet.oop.bomberman.Menu.*;
-import uet.oop.bomberman.entities.Block.*;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Items.FlameItem;
-import uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import uet.oop.bomberman.entities.Block.Bomb;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 import uet.oop.bomberman.Menu.MenuPause;
-import javafx.scene.control.MenuButton;
-import uet.oop.bomberman.graphics.Sound;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
-import uet.oop.bomberman.Level.*;
-import static uet.oop.bomberman.Level.LevelNew.*;
-import static uet.oop.bomberman.entities.Block.Portal.*;
 public class BombermanGame extends Application {
     public static int score = 0;
     public static int highScore;
 
-    public static boolean isOver = false;
+    public static boolean isPause=false;
 
+    FileReader fr;
+
+    {
+        try {
+            fr = new FileReader("res/score/highscore.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static boolean isOver = false;
+//    public static boolean isWin = false;
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -80,8 +78,6 @@ public class BombermanGame extends Application {
     private MenuWinGame menuWinGame;
     private MenuPause menuPause;
 
-//    public static Slider slider;
-
     public static Text level, scoreText, highscore;
     public static boolean running = true;
     private Canvas canvas;
@@ -100,6 +96,11 @@ public class BombermanGame extends Application {
 
     @Override
     public void start(Stage stage) {
+        try {
+            highScore =fr.read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         // Tao Canvas
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
@@ -155,10 +156,12 @@ public class BombermanGame extends Application {
         pa.getChildren().addAll(level, scoreText,highscore);
         root.getChildren().addAll(canvas, imageView, r);
 
-        // Tao scene
+        // Create Scece
         Scene scene = new Scene(root);
 
-        //Bat su kien
+        // Catch event
+
+
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
@@ -178,10 +181,12 @@ public class BombermanGame extends Application {
                     break;
                 case P:
                     if (running) {
+                        isPause = true;
                         running = !running;
                         root.getChildren().add(View);
                         root.getChildren().addAll(pp);
                     } else {
+                        isPause = false;
                         running = !running;
                         root.getChildren().removeAll(pp, View);
                     }
@@ -189,103 +194,21 @@ public class BombermanGame extends Application {
             }
         });
 
-        // Them scene vao stage
+        // Add scene to stage
         stage.setScene(scene);
         stage.show();
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                render();
-                update();
-                updateMenu();
+                if(!isPause) {
+                    render();
+                    update();
+                    updateMenu();
+                }
             }
         };
         timer.start();
-
-//        createMap();
-//        player = new Bomber(1, 1, Sprite.player_right.getFxImage());
-//        entities.add(player);
-//        enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
-//        enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
-//        enemies.add(new  Doll(21, 6, Sprite.doll_left1.getFxImage()));
-//        enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
-//        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
-//        stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
-//    }
-//
-//    public void createMap() {
-//////        for (int i = 0; i < WIDTH; i++) {
-//////            for (int j = 0; j < HEIGHT; j++) {
-//////                Entity object;
-//////                if (j == 0 || j == HEIGHT - 1 || i == 0 || i == WIDTH - 1) {
-//////                    object = new Wall(i, j, Sprite.wall.getFxImage());
-//////                }
-//////                else {
-//////                    object = new Grass(i, j, Sprite.grass.getFxImage());
-//////                }
-//////                stillObjects.add(object);
-//////            }
-//////        }
-//
-//        String pathLevel = "res/levels/Level1.txt";
-//        File fileName = new File(pathLevel);        //TODO: Create object fileName contain info of the level.
-//        try (FileReader reader = new FileReader(fileName)) {            // Try - catch to create map.
-//            Scanner sc = new Scanner(reader);           // Create obj sc from class Scanner.
-//            String mapInfo = sc.nextLine();                // Get input from line 1 in string type.
-//
-//            StringTokenizer token = new StringTokenizer(mapInfo);      // Read 1 string in line.
-//            // parseInt() method: convert String to Integer
-//            _gameLevel = Integer.parseInt(token.nextToken());
-//            _mapHeight = Integer.parseInt(token.nextToken());
-//            _mapWidth = Integer.parseInt(token.nextToken());
-//
-//            while (sc.hasNextLine()) {              // If sc can read more line.
-//                objIdx = new int[_mapWidth][_mapHeight];            // Create new obj mapIdx in main file.
-//                listIsKilled = new int[_mapWidth][_mapHeight];         // Create new obj listKill in main file.
-//                for (int i = 0; i < _mapHeight; ++i) {
-//                    String lineInfo = sc.nextLine();                // Get input from line.
-//                    StringTokenizer tokenLineInfo = new StringTokenizer(lineInfo);      // Read info from lineInfo.
-//
-//                    for (int j = 0; j < _mapWidth; ++j) {
-//                        int value = Integer.parseInt(tokenLineInfo.nextToken());
-//                        Entity object;                              // Create obj named object from class Entity.
-//
-//                        // This if - else statement running, and we got a full map for a game.
-//                        // Through the program, in the for-loop statement, we can get the map according to each loop it passed.
-//                        switch (value) {
-//                            case 1:
-//                                object = new Portal(j, i, Sprite.portal.getFxImage());
-//                                value = 0;
-//                                break;
-//                            case 2:
-//                                object = new Wall(j, i, Sprite.wall.getFxImage());
-//                                break;
-//                            case 3:
-//                                object = new Brick(j, i, Sprite.brick.getFxImage());
-//                                break;
-//                            case 6:
-//                                object = new SpeedItem(j, i, Sprite.brick.getFxImage());
-//                                break;
-//                            case 7:
-//                                object = new FlameItem(j, i, Sprite.brick.getFxImage());
-//                                break;
-//                            default:
-//                                object = new Grass(j, i, Sprite.grass.getFxImage());
-//                        }
-//
-//                        objIdx[j][i] = value;
-//                        stillObjects.add(object);
-//
-//                    }
-//                }
-//
-//            }
-//
-//        } catch (IOException e) {               // Catch exception.
-//            e.printStackTrace();                // printStackTrace(): Help to understand where the problem is actually happening.
-//        }
-
     }
     public void update() {
         for (int i = 0; i < entities.size(); i++) {
@@ -329,6 +252,16 @@ public class BombermanGame extends Application {
     }
 
     public void updateMenu() {
+        if(score>highScore) {
+            highScore=score;
+            try {
+                FileWriter fw = new FileWriter("res/score/highscore.txt");
+                fw.write(highScore);
+                fw.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
             level.setText("Level: " + _gameLevel);
         scoreText.setText("Score: " + score);
         highscore.setText("Highscore: " + highScore);
