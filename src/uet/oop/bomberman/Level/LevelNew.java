@@ -25,6 +25,7 @@ public class LevelNew {
                 new Level3();
                 break;
             case 4:
+                isPause = true;
                 screen.stop();
                 entities.clear();
                 stillObjects.clear();
