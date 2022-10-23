@@ -7,8 +7,10 @@ package uet.oop.bomberman.Menu;
     import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.BombermanGame.V;
 import static uet.oop.bomberman.Level.LevelNew.NewLevel;
+    import static uet.oop.bomberman.graphics.Sound.isSoundScreen;
+    import static uet.oop.bomberman.graphics.Sound.screen;
 
-    public class MenuPause extends Parent {
+public class MenuPause extends Parent {
         public MenuPause() {
             VBox menu = new VBox(15);
             menu.setTranslateX(300);
@@ -17,11 +19,13 @@ import static uet.oop.bomberman.Level.LevelNew.NewLevel;
 
             Button  MenuBt = new Button ("Back To Menu");
             MenuBt.setOnMouseClicked(event -> {
+                screen.stop();
                 entities.clear();
                 enemies.clear();
                 stillObjects.clear();
 //                root.getChildren().removeAll(pp, View, slider);
                 root.getChildren().removeAll(pp, View);
+                root.getChildren().removeAll(bg, pa);
                 root.getChildren().addAll(imageView,r);
                 running = true;
             });

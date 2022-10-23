@@ -18,7 +18,7 @@ import uet.oop.bomberman.Level.*;
 import uet.oop.bomberman.Menu.MenuGame.*;
 import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.graphics.Sound.*;
 
 public class MenuGameOver extends Parent {
     private MenuGame menuGame;
@@ -43,7 +43,7 @@ public class MenuGameOver extends Parent {
             stillObjects.clear();
             root.getChildren().removeAll(bg, pa);
             root.getChildren().removeAll(V, p);
-            root.getChildren().addAll(r, imageView);
+            root.getChildren().addAll(imageView,r);
         });
         Button  ExitBt = new Button ("Exit");
         ExitBt.setOnMouseClicked(event -> {

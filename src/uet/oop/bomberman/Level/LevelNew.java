@@ -1,12 +1,8 @@
 package uet.oop.bomberman.Level;
-import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
-import static uet.oop.bomberman.entities.Block.Portal.isEndGame;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Block.Portal.onPortal;
 import static uet.oop.bomberman.graphics.Sound.*;
-//import static uet.oop.bomberman.graphics.Sound.level_complete;
 
 public class LevelNew {
     public static void NewLevel() {
@@ -25,12 +21,17 @@ public class LevelNew {
                 new Level3();
                 break;
             case 4:
-                screen.stop();
-                entities.clear();
-                stillObjects.clear();
+
                 root.getChildren().removeAll(bg, pa);
                 root.getChildren().add(imgView);
                 root.getChildren().addAll(pane);
+
+                entities.clear();
+                stillObjects.clear();
+                enemies.clear();
+                plantBomb.stop();
+                bombExplode.stop();
+                screen.stop();
                 break;
         }
     }
