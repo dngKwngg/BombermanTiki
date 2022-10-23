@@ -52,16 +52,16 @@ chuyển vào vị trí của Item. Thông tin về chức năng của các Item
   giá trị thích hợp
 - ![](res/sprites/powerup_flames.png) *FlameItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Flame
   lớn hơn)
-- ![](res/sprites/powerup_wallpass.png) *WallPassItem* Item naày giúp cho Bomber đi xuyên qua những ô gạch, không xuyên
+- ![](res/sprites/powerup_wallpass.png) *WallPassItem* Item này giúp cho Bomber đi xuyên qua những ô gạch, không xuyên
 qua các ô tường, và có thể đặt bom trên các ô gạch
 
 Các loại Monster tương ứng đã cài trong game Bomberman
 
 - ![](res/sprites/balloom_left1.png) *Balloom* là Enemy đơn giản nhất, di chuyển ngẫu nhiên với vận tốc cố định
 - ![](res/sprites/oneal_left1.png) *Oneal* di chuyển "thông minh" hơn so với Balloom (biết đuổi theo Bomber)
-- ![](res/sprites/doll_left1.png) *Doll* di chuyển với vận tốc giảm đi một nửa so với *Ballom*
+- ![](res/sprites/doll_left1.png) *Doll* di chuyển với vận tốc giảm đi một nửa so với *Ballom*, "kém thông minh" hơn Balloom
 - ![](res/sprites/minvo_left1.png) *Minvo* di chuyển với vận tốc cao x2 so với Ballom
-- ![](res/sprites/kondoria_left1.png) *Kondoria* là Enemy có thể di chuyển xuyên qua gạch.
+- ![](res/sprites/kondoria_left1.png) *Kondoria* là Enemy có thể di chuyển xuyên qua gạch và *Bomb*
 
 ## Game Logic
 - Bomber được điều khiển bằng các phím mũi tên và phím SPACE để đặt bom. Nhiệm vụ của Bomber là phải tiêu diệt hết các
