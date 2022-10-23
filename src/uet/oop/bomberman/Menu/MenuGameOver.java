@@ -18,7 +18,7 @@ import uet.oop.bomberman.Level.*;
 import uet.oop.bomberman.Menu.MenuGame.*;
 import static uet.oop.bomberman.Level.LevelNew.*;
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.graphics.Sound.updateSound;
+import static uet.oop.bomberman.graphics.Sound.screen;
 
 public class MenuGameOver extends Parent {
     private MenuGame menuGame;
@@ -30,6 +30,7 @@ public class MenuGameOver extends Parent {
         Button PlayBt = new Button("PlayAgain");
         PlayBt.setOnMouseClicked(event -> {
             _gameLevel = 1;
+//            screen.stop();
             NewLevel();
             root.getChildren().removeAll(p, V);
             root.getChildren().add(bg);
