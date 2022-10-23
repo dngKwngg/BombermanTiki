@@ -16,7 +16,7 @@ public class Bomb extends Entity {
     protected static long timeBomb = 1;         // Exploding time bomb
     protected static long timeBombTemp = 1;     // TimeBombTemp to handle between 2 bombs
 
-    private static Entity bomb;
+    public static Entity bomb;
 
     private static int state = 1;       // State of the bomb
     public static int stateExplosion = 1;          // State explosion of the bomb
