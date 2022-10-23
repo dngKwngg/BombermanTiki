@@ -26,14 +26,16 @@ import uet.oop.bomberman.entities.Block.Bomb;
 import java.util.ArrayList;
 import java.util.List;
 import uet.oop.bomberman.Menu.MenuPause;
+
+import static uet.oop.bomberman.entities.Block.Bomb.bomb;
+
 public class BombermanGame extends Application {
     public static int score = 0;
     public static int highScore;
 
-    public static boolean isPause=false;
+    public static boolean isPause = false;
 
     FileReader fr;
-
     {
         try {
             fr = new FileReader("res/score/highscore.txt");
@@ -165,19 +167,21 @@ public class BombermanGame extends Application {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
-                    Move.up(entities.get(0));
+                    Move.up(player);
                     break;
                 case DOWN:
-                    Move.down(entities.get(0));
+                    Move.down(player);
                     break;
                 case RIGHT:
-                    Move.right(entities.get(0));
+                    Move.right(player);
                     break;
                 case LEFT:
-                    Move.left(entities.get(0));
+                    Move.left(player);
                     break;
                 case SPACE:
-                    Bomb.plantBomb();
+                    if(player!=null) {
+                        Bomb.plantBomb();
+                    }
                     break;
                 case P:
                     if (running) {
