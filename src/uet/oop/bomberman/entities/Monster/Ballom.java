@@ -1,19 +1,17 @@
 package uet.oop.bomberman.entities.Monster;
+
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
 import uet.oop.bomberman.entities.Monster.Smart.AI;
 import uet.oop.bomberman.entities.Monster.Smart.AiLevel1;
-import uet.oop.bomberman.entities.Monster.Smart.AiLevel2;
 import uet.oop.bomberman.graphics.Sprite;
-
-import java.util.Random;
 
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
 import static uet.oop.bomberman.BombermanGame.score;
 
 public class Ballom extends Monster {
 
-    public int scoreOfThis=200;
+    public int scoreOfThis = 200;
     private int direction;
     protected AI ai;
 
@@ -24,7 +22,7 @@ public class Ballom extends Monster {
     }
 
     public void Die() {
-        if(!this.getLife()) {
+        if (!this.getLife()) {
             if (dieScene == 1) {
                 this.setImg(Sprite.balloom_dead.getFxImage());
                 dieScene = 2;
@@ -39,29 +37,27 @@ public class Ballom extends Monster {
                 dieScene = 5;
             } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
-                score+=scoreOfThis;
-                scoreOfThis=0;
+                score += scoreOfThis;
+                scoreOfThis = 0;
             }
         }
     }
 
     private void dieByFlameFromBomb() {
-        int x = this.getX()/32;
-        int y = this.getY()/32;
-        if(listIsKilled[x][y]==4) {
+        int x = this.getX() / 32;
+        int y = this.getY() / 32;
+        if (listIsKilled[x][y] == 4) {
             this.life = false;
         }
     }
 
     public void randomDirection() {
-            if (standing == 0 && stepLoop%5==0) {
-                moveWithNumber(direction);
-            } else {
-//                Random random = new Random();
-//                direction = random.nextInt(4);
-                direction = ai.calculateDirection();
-                moveWithNumber(direction);
-            }
+        if (standing == 0 && stepLoop % 5 == 0) {
+            moveWithNumber(direction);
+        } else {
+            direction = ai.calculateDirection();
+            moveWithNumber(direction);
+        }
     }
 
     void moveWithNumber(int number) {
@@ -88,12 +84,12 @@ public class Ballom extends Monster {
     @Override
     public void update() {
         dieByFlameFromBomb();
-        if(this.getLife()) {
+        if (this.getLife()) {
             randomDirection();
         }
         if (this.getDelayPerStep() == 7) {
             Die();
-            if(this.getLife()) {
+            if (this.getLife()) {
                 Move.checkRun(this);
                 stepLoop++;
             }

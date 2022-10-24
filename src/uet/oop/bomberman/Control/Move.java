@@ -4,6 +4,7 @@ import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
+
 import static uet.oop.bomberman.Control.IsBlocked.*;
 
 
@@ -11,7 +12,7 @@ public class Move {
 
     public static void checkRun(Entity entity) {
         if (entity instanceof Bomber && entity.getCount() > 0 && entity.getLife()) {
-            stepByStep(entity.getDirection(), entity, 8 );
+            stepByStep(entity.getDirection(), entity, 8);
             entity.setCount(entity.getCount() - 1);
         }
 
@@ -40,8 +41,6 @@ public class Move {
             entity.setCount(entity.getCount() - 1);
         }
     }
-
-//    public static void setDirection(String direction, Entity entity, int step) {
 
     public static void stepByStep(int direction, Entity entity, int distance) {     //Show the direction of all mob
         switch (direction) {

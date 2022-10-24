@@ -1,10 +1,7 @@
 package uet.oop.bomberman.entities;
 
-import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import uet.oop.bomberman.graphics.Sprite;
 
 public abstract class Entity {
@@ -16,12 +13,12 @@ public abstract class Entity {
     protected int count;
     protected int direction;
     protected int delayPerStep;
-    protected boolean life=true;
+    protected boolean life = true;
 
-    protected int standing=1;
+    protected int standing = 1;
 
     //Khởi tạo đối tượng, chuyển từ tọa độ đơn vị sang tọa độ trong canvas
-    public Entity( int xUnit, int yUnit, Image img) {
+    public Entity(int xUnit, int yUnit, Image img) {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
@@ -56,7 +53,7 @@ public abstract class Entity {
     }
 
     public void setCount(int count) {
-        this.count=count;
+        this.count = count;
     }
 
     public int getCount() {
@@ -84,7 +81,7 @@ public abstract class Entity {
     }
 
     public void setLife(boolean life) {
-        this.life=life;
+        this.life = life;
     }
 
     public int getStanding() {
@@ -92,14 +89,16 @@ public abstract class Entity {
     }
 
     public void setStanding(int standing) {
-        this.standing=standing;
+        this.standing = standing;
     }
 
     public void run() {
         setDelayPerStep(getDelayPerStep() + 1);
     }
+
     public void render(GraphicsContext gc) {
         gc.drawImage(img, x, y);
     }
+
     public abstract void update();
 }

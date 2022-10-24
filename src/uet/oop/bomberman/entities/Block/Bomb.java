@@ -1,7 +1,6 @@
 package uet.oop.bomberman.entities.Block;
 
 import javafx.scene.image.Image;
-import javafx.scene.media.MediaPlayer;
 import uet.oop.bomberman.Control.IsBlocked;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sound;
@@ -20,7 +19,6 @@ public class Bomb extends Entity {
 
     private static int state = 1;       // State of the bomb
     public static int stateExplosion = 1;          // State explosion of the bomb
-//    public static int numberBomb = 1000;              // Number bomb limit in the map
     public static int bombPower = 0;                // Bomb power
     public static int bombPowerLeft = 0;            // Bomb power in left side
     public static int bombPowerRight = 0;           // Bomb power in right side
@@ -53,7 +51,6 @@ public class Bomb extends Entity {
             int y = player.getY() / 32;
             x = Math.round((float) x);                              // Get x in Canvas
             y = Math.round((float) y);                              // Get y in canvas
-//            numberBomb--;
             isPlanted = 1;
             timeBomb = System.currentTimeMillis();             // Get time when plant the bomb
             timeBombTemp = timeBomb;                       // Time between 2 bombs
@@ -92,15 +89,7 @@ public class Bomb extends Entity {
                     lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
                     bombPowerLeft++;
 
-//                    if (tempIdx == 3) {
-//                        break;
-//                    }
                 }
-
-//                for (i = 1; i <= bombPower && (IsBlocked.leftBombBlock(bomb, i) || IsBlocked.leftBombBlockBrick(bomb, i)); ++i) {
-//                    lastEdgeLeft.setX(bomb.getX() - 32 - i * 32);
-//                    bombPowerLeft++;
-//                }
             }
 
             stillObjects.add(lastEdgeLeft);

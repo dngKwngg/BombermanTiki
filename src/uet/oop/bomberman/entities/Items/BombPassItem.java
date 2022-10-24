@@ -1,15 +1,14 @@
 package uet.oop.bomberman.entities.Items;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.entities.Block.Bomb;
-import uet.oop.bomberman.entities.Block.Brick;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class BombPassItem extends Items {
-    public int scoreOfThis=10;
+    public int scoreOfThis = 10;
+
     public BombPassItem(int x, int y, Image img) {
         super(x, y, img);
     }
@@ -27,8 +26,8 @@ public class BombPassItem extends Items {
         for (Entity entity : stillObjects) {
             if (entity instanceof BombPassItem && (!isReceived)) {
                 if (listIsKilled[entity.getX() / 32][entity.getY() / 32] == 4) {
-                    score+=scoreOfThis;
-                    scoreOfThis=0;
+                    score += scoreOfThis;
+                    scoreOfThis = 0;
                     entity.setLife(false);
                     entity.setImg(Sprite.powerup_bombpass.getFxImage());
                 }

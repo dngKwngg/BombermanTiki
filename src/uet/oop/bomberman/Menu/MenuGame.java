@@ -9,22 +9,17 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class MenuGame extends Parent {
     public MenuGame() {
         VBox menu = new VBox(15);
-        //VBox menu1 = new VBox(15);
 
         menu.setTranslateX(300);
         menu.setTranslateY(350);
-        //menu1.setTranslateX(100);
-        //menu1.setTranslateY(200);
 
         final int offset = 400;
 
         Button PlayBt = new Button("Play");
-//        g_mediaPlayer = new MediaPlayer(menu_sound);
-//        g_mediaPlayer.play();
         PlayBt.setOnMouseClicked(event -> {
             new Level1();
-            root.getChildren().removeAll(r,imageView);
-           root.getChildren().addAll(bg,pa);
+            root.getChildren().removeAll(r, imageView);
+            root.getChildren().addAll(bg, pa);
         });
 
         Button ExitBt = new Button("Exit");
@@ -32,7 +27,7 @@ public class MenuGame extends Parent {
             System.exit(0);
         });
 
-        menu.getChildren().addAll(PlayBt,ExitBt);
+        menu.getChildren().addAll(PlayBt, ExitBt);
 
         getChildren().addAll(menu);
     }

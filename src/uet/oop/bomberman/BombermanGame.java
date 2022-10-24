@@ -21,10 +21,14 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Monster.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.Control.Move;
+
 import java.io.*;
+
 import uet.oop.bomberman.entities.Block.Bomb;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import uet.oop.bomberman.Menu.MenuPause;
 
 import static uet.oop.bomberman.entities.Block.Bomb.bomb;
@@ -36,6 +40,7 @@ public class BombermanGame extends Application {
     public static boolean isPause = false;
 
     FileReader fr;
+
     {
         try {
             fr = new FileReader("res/score/highscore.txt");
@@ -46,7 +51,6 @@ public class BombermanGame extends Application {
 
 
     public static boolean isOver = false;
-//    public static boolean isWin = false;
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
     public static int _mapWidth = 0;
@@ -83,7 +87,6 @@ public class BombermanGame extends Application {
     public static Text level, scoreText, highscore;
     public static boolean running = true;
     private Canvas canvas;
-    //    public static List<Entity> block = new ArrayList<>();           // Contains entities after fixed
     public static List<Entity> entities = new ArrayList<>();
     public static List<Monster> enemies = new ArrayList<>();
     // Contains enemy entities
@@ -99,7 +102,7 @@ public class BombermanGame extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            highScore =fr.read();
+            highScore = fr.read();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -129,22 +132,19 @@ public class BombermanGame extends Application {
         menuPause = new MenuPause();
         pp = new Pane();
         pp.getChildren().add(menuPause);
-//        slider = new Slider(0, 100, 100);
-//        slider.setLayoutX(340);
-//        slider.setLayoutY(50);
 
         level = new Text("Level: 1");
         level.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         level.setFill(Color.BLACK);
         level.setX(352);
         level.setY(20);
-        scoreText = new Text("Score: "+ score);
+        scoreText = new Text("Score: " + score);
         scoreText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         scoreText.setFill(Color.BLACK);
         scoreText.setX(448);
         scoreText.setY(20);
 
-        highscore = new Text("Highscore:"+ highScore);
+        highscore = new Text("Highscore:" + highScore);
         highscore.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         highscore.setFill(Color.BLACK);
         highscore.setX(560);
@@ -155,7 +155,7 @@ public class BombermanGame extends Application {
         bg.setY(2);
         bg.setX(300);
         pa = new Pane();
-        pa.getChildren().addAll(level, scoreText,highscore);
+        pa.getChildren().addAll(level, scoreText, highscore);
         root.getChildren().addAll(canvas, imageView, r);
 
         // Create Scece
@@ -179,7 +179,7 @@ public class BombermanGame extends Application {
                     Move.left(player);
                     break;
                 case SPACE:
-                    if(player!=null) {
+                    if (player != null) {
                         Bomb.plantBomb();
                     }
                     break;
@@ -205,7 +205,7 @@ public class BombermanGame extends Application {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                if(!isPause) {
+                if (!isPause) {
                     render();
                     update();
                     updateMenu();
@@ -214,6 +214,7 @@ public class BombermanGame extends Application {
         };
         timer.start();
     }
+
     public void update() {
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).run();
@@ -228,17 +229,15 @@ public class BombermanGame extends Application {
             stillObjects.get(i).update();
         }
 
-       if (player != null && !player.getLife() && isOver) {
+        if (player != null && !player.getLife() && isOver) {
             entities.clear();
             stillObjects.clear();
             root.getChildren().add(V);
             root.getChildren().addAll(p);
             root.getChildren().removeAll(bg, pa);
             isOver = false;
-//            enemies.clear();
             player.setLife(true);
-      }
-        else {
+        } else {
             entities.addAll(newEntities);
             stillObjects.addAll(newStillObjects);
             newEntities.clear();
@@ -256,8 +255,8 @@ public class BombermanGame extends Application {
     }
 
     public void updateMenu() {
-        if(score>highScore) {
-            highScore=score;
+        if (score > highScore) {
+            highScore = score;
             try {
                 FileWriter fw = new FileWriter("res/score/highscore.txt");
                 fw.write(highScore);
@@ -266,7 +265,7 @@ public class BombermanGame extends Application {
                 System.out.println(e);
             }
         }
-            level.setText("Level: " + _gameLevel);
+        level.setText("Level: " + _gameLevel);
         scoreText.setText("Score: " + score);
         highscore.setText("Highscore: " + highScore);
     }

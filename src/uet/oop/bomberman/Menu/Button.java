@@ -17,7 +17,7 @@ public class Button extends StackPane {
         text.setFont(text.getFont().font(20));
         text.setFill(Color.WHITE);
 
-        Rectangle bg = new Rectangle(200,30);
+        Rectangle bg = new Rectangle(200, 30);
         bg.setOpacity(0.6);
         bg.setFill(Color.BLACK);
         bg.setEffect(new GaussianBlur(3.5));

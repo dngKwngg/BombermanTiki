@@ -1,10 +1,7 @@
 package uet.oop.bomberman.graphics;
 
-import javafx.scene.media.Media;
-
 import javax.sound.sampled.*;
 import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -15,11 +12,9 @@ public class Sound extends JFrame {
     public static Clip bombExplode;
     public static Clip bomberDie;
     public static Clip plantBomb;
-//    public static Clip silentSound;
 
     public static boolean isSoundDie;
     public static boolean isSoundScreen;
-//    public static boolean isSoundSilent;
 
     public Sound(String name, String sound) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,14 +29,6 @@ public class Sound extends JFrame {
                 gainControl.setValue(-8.0f);
                 screen.loop(1);
             }
-
-//            if (sound.equals("silent")) {
-//                silentSound = AudioSystem.getClip();
-//                silentSound.open(audioInput);
-//                FloatControl gainControl = (FloatControl) silentSound.getControl(FloatControl.Type.MASTER_GAIN);
-//                gainControl.setValue(-8.0f);
-//                silentSound.loop(1);
-//            }
 
             if (sound.equals("explosion")) {
                 bombExplode = AudioSystem.getClip();
@@ -62,8 +49,6 @@ public class Sound extends JFrame {
             if (sound.equals("bomberDie")) {
                 bomberDie = AudioSystem.getClip();
                 bomberDie.open(audioInput);
-//                FloatControl gainControl = (FloatControl) bomberDie.getControl(FloatControl.Type.MASTER_GAIN);
-//                gainControl.setValue(-8.0f);
                 bomberDie.start();
             }
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {

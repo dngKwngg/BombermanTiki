@@ -5,21 +5,14 @@ import javafx.scene.image.ImageView;
 import uet.oop.bomberman.entities.Block.Portal;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Monster.*;
-//import static uet.oop.bomberman.entities.Items.SpeedItem;
 import uet.oop.bomberman.graphics.CreateMap;
 import uet.oop.bomberman.graphics.Sprite;
-import uet.oop.bomberman.graphics.Sound;
 
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Block.Bomb.*;
 import static uet.oop.bomberman.graphics.Sound.updateSound;
 import static uet.oop.bomberman.graphics.Sound.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 
 public class Level1 {
     public Level1() {
@@ -27,16 +20,11 @@ public class Level1 {
         entities.clear();
         enemies.clear();
         stillObjects.clear();
-        // if (g_mediaPlayer != null) g_mediaPlayer.stop();
         new CreateMap("res/levels/Level1.txt");
-        //timeNumber = 120;
         Image image1 = new Image("img/Pause.png");
         View = new ImageView(image1);
         View.setX(0);
-//        bombRadius = 1;
-//        bombBank = 1;
-//        speedItem = 0;
-        score=0;
+        score = 0;
         stateExplosion = 1;
         isPlanted = 0;
         bombPower = 0;
@@ -54,7 +42,6 @@ public class Level1 {
         listBombMiddleHorizontal.clear();
         isSoundDie = false;
         isSoundScreen = false;
-//        isWin = false;
         player = new Bomber(1, 1, Sprite.player_right.getFxImage());
         player.setLife(true);
         entities.add(player);

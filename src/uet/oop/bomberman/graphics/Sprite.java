@@ -2,10 +2,6 @@ package uet.oop.bomberman.graphics;
 
 import javafx.scene.image.*;
 
-import java.awt.image.BufferedImage;
-import java.nio.IntBuffer;
-import java.util.Arrays;
-
 /**
  * Lưu trữ thông tin các pixel của 1 sprite (hình ảnh game)
  */
@@ -22,7 +18,7 @@ public class Sprite {
     private SpriteSheet _sheet;
 
     // This object creates transparent color in the outline of the interface.
-    public static Sprite transparent = new Sprite(DEFAULT_SIZE, 15, 15,SpriteSheet.tiles, 16, 16);
+    public static Sprite transparent = new Sprite(DEFAULT_SIZE, 15, 15, SpriteSheet.tiles, 16, 16);
     /*
     |--------------------------------------------------------------------------
     | Board sprites

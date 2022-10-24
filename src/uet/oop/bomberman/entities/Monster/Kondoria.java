@@ -1,18 +1,17 @@
 package uet.oop.bomberman.entities.Monster;
+
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Control.Move;
 import uet.oop.bomberman.entities.Monster.Smart.AI;
 import uet.oop.bomberman.entities.Monster.Smart.AiLevel1;
 import uet.oop.bomberman.graphics.Sprite;
 
-import java.util.Random;
-
 import static uet.oop.bomberman.BombermanGame.listIsKilled;
 import static uet.oop.bomberman.BombermanGame.score;
 
 public class Kondoria extends Monster {
 
-    public int scoreOfThis=100;
+    public int scoreOfThis = 100;
     private int direction;
     protected AI ai;
 
@@ -22,7 +21,7 @@ public class Kondoria extends Monster {
     }
 
     public void Die() {
-        if(!this.getLife()) {
+        if (!this.getLife()) {
             if (dieScene == 1) {
                 this.setImg(Sprite.kondoria_dead.getFxImage());
                 dieScene = 2;
@@ -37,16 +36,16 @@ public class Kondoria extends Monster {
                 dieScene = 5;
             } else if (dieScene == 5) {
                 this.setImg(Sprite.transparent.getFxImage());
-                score+=scoreOfThis;
-                scoreOfThis=0;
+                score += scoreOfThis;
+                scoreOfThis = 0;
             }
         }
     }
 
     private void dieByFlameFromBomb() {
-        int x = this.getX()/32;
-        int y = this.getY()/32;
-        if(listIsKilled[x][y]==4) {
+        int x = this.getX() / 32;
+        int y = this.getY() / 32;
+        if (listIsKilled[x][y] == 4) {
             this.life = false;
         }
     }
@@ -56,8 +55,6 @@ public class Kondoria extends Monster {
             moveWithNumber(direction);
 
         } else {
-//            Random random = new Random();
-//            direction = random.nextInt(4);
             direction = ai.calculateDirection();
             moveWithNumber(direction);
         }
@@ -87,12 +84,12 @@ public class Kondoria extends Monster {
     @Override
     public void update() {
         dieByFlameFromBomb();
-        if(this.getLife()) {
+        if (this.getLife()) {
             randomDirection();
         }
         if (this.getDelayPerStep() == 12) {
             Die();
-            if(this.getLife()) {
+            if (this.getLife()) {
                 Move.checkRun(this);
                 stepLoop++;
             }

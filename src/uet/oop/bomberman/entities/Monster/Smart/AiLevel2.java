@@ -1,16 +1,11 @@
 package uet.oop.bomberman.entities.Monster.Smart;
 
-import uet.oop.bomberman.entities.Block.Bomb;
-import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Monster.Monster;
-
-import java.util.List;
 
 import static uet.oop.bomberman.BombermanGame.player;
 
 public class AiLevel2 extends AI {
     Monster _m;
-//    List<Bomb> bombList;
 
     public AiLevel2(Monster _m) {
         this._m = _m;
@@ -27,7 +22,7 @@ public class AiLevel2 extends AI {
             } else {
                 return calculateRowDir();
             }
-        } else if (choice == 1){
+        } else if (choice == 1) {
             int direction = calculateRowDir();
             if (direction != -1) {
                 return direction;

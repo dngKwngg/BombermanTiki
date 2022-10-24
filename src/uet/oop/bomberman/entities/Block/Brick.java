@@ -1,7 +1,6 @@
 package uet.oop.bomberman.entities.Block;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.Control.Move;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -25,8 +24,8 @@ public class Brick extends Entity {
                 dieScene = 4;
             } else {
                 this.setImg(Sprite.grass.getFxImage());
-                score+=scoreOfThis;
-                scoreOfThis=0;
+                score += scoreOfThis;
+                scoreOfThis = 0;
             }
         }
     }

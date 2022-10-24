@@ -15,7 +15,6 @@ import static uet.oop.bomberman.BombermanGame.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 

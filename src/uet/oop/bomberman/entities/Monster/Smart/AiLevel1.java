@@ -2,7 +2,7 @@ package uet.oop.bomberman.entities.Monster.Smart;
 
 import java.util.Random;
 
-public class AiLevel1 extends AI{
+public class AiLevel1 extends AI {
 
     @Override
     public int calculateDirection() {
