@@ -29,10 +29,10 @@ public class Level2 {
         isSoundScreen = false;
         player.setLife(true);
         entities.add(player);
-        enemies.add(new Doll(21, 6, Sprite.doll_left1.getFxImage()));
-//        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
-//        enemies.add(new Ballom(7, 1, Sprite.balloom_left1.getFxImage()));
-//        enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
+        enemies.add(new Doll(15, 3, Sprite.doll_left1.getFxImage()));
+        enemies.add(new Minvo(21, 6, Sprite.minvo_left1.getFxImage()));
+        enemies.add(new Kondoria(15, 13, Sprite.kondoria_left1.getFxImage()));
+        enemies.add(new Ballom(3, 7, Sprite.oneal_left1.getFxImage()));
         stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
         updateSound();
     }

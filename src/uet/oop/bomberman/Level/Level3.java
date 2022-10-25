@@ -32,11 +32,11 @@ public class Level3 {
 //            enemies.add(new Oneal(9, 3, Sprite.oneal_left1.getFxImage()));
 //            enemies.add(new Minvo(7, 3, Sprite.minvo_left1.getFxImage()));
 //            enemies.add(new Kondoria(3, 1, Sprite.kondoria_left1.getFxImage()));
-//            enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
-//            enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
-//            enemies.add(new Oneal(21, 6, Sprite.oneal_left1.getFxImage()));
-//            enemies.add(new Minvo(21, 6, Sprite.minvo_left1.getFxImage()));
-//            enemies.add(new Kondoria(21, 6, Sprite.kondoria_left1.getFxImage()));
+            enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
+            enemies.add(new Ballom(21, 6, Sprite.balloom_left1.getFxImage()));
+            enemies.add(new Oneal(21, 6, Sprite.oneal_left1.getFxImage()));
+            enemies.add(new Minvo(21, 6, Sprite.minvo_left1.getFxImage()));
+            enemies.add(new Kondoria(21, 6, Sprite.kondoria_left1.getFxImage()));
         stillObjects.add(new Portal(23, 13, Sprite.transparent.getFxImage()));
         updateSound();
     }
