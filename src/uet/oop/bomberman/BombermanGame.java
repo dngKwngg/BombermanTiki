@@ -200,6 +200,9 @@ public class BombermanGame extends Application {
 
         // Add scene to stage
         stage.setScene(scene);
+        stage.setTitle("Bomberman By JavaFx");
+        Image icon = new Image("img/icon.png");
+        stage.getIcons().add(icon);
         stage.show();
 
         AnimationTimer timer = new AnimationTimer() {
