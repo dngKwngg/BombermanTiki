@@ -98,8 +98,29 @@ vùng có Flames
     + Phát triển hệ thống Server - Client
 
 ## UML Class Diagram
+### Control
+![](res/uml/Control.png)
 
+### Entity - Overview
+![](res/uml/Overview.png)
 
+### Entity - Block
+![](res/uml/Block.png)
+
+### Entity - Items
+![](res/uml/Item.png)
+
+### Entity - Monster
+![](res/uml/Monster.png)
+
+### Graphics
+![](res/uml/Graphics.png)
+
+### Levels
+![](res/uml/Levels.png)
+
+### Menu
+![](res/uml/Menu.png)
 
 ## Các phần mềm đã sử dụng
 - Ngôn ngữ lập trình: [JAVA](https://www.java.com/en/)
