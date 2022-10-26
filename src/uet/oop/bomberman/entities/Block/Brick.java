@@ -33,9 +33,9 @@ public class Brick extends Entity {
     /**
      * Create constructor.
      *
-     * @param x
-     * @param y
-     * @param img
+     * @param x int.
+     * @param y int.
+     * @param img Image.
      */
     public Brick(int x, int y, Image img) {
         super(x, y, img);
