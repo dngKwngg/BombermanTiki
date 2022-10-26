@@ -12,7 +12,7 @@ public class Bomber extends Entity {
     public boolean canPassBomb = false;
     public boolean canPass = false;
 
-    public int dieScene=1;
+    public int dieScene = 1;
 
     public int limitDelay = 6;
 
@@ -46,7 +46,7 @@ public class Bomber extends Entity {
 
     public void Die() {
         updateSound();
-        if(!this.getLife()) {
+        if (!this.getLife()) {
             if (dieScene == 1) {
                 this.setImg(Sprite.player_dead1.getFxImage());
                 dieScene = 2;
@@ -58,7 +58,7 @@ public class Bomber extends Entity {
                 dieScene = 4;
             } else {
                 this.setImg(Sprite.transparent.getFxImage());
-                isOver=true;
+                isOver = true;
             }
         }
     }
@@ -73,7 +73,7 @@ public class Bomber extends Entity {
                     x == monsterPositionX && monsterPositionY - 32 < y && monsterPositionY + 32 > y
                             || y == monsterPositionY && monsterPositionX - 32 < x && monsterPositionX + 32 > x
             ) {
-                if(monster.getLife()) {
+                if (monster.getLife()) {
                     this.life = false;
                     break;
                 }
@@ -82,9 +82,9 @@ public class Bomber extends Entity {
     }
 
     private void dieByFlameFromBomb() {
-        int x = this.getX()/32;
-        int y = this.getY()/32;
-        if(listIsKilled[x][y]==4) {
+        int x = this.getX() / 32;
+        int y = this.getY() / 32;
+        if (listIsKilled[x][y] == 4) {
             this.life = false;
         }
     }
@@ -93,7 +93,7 @@ public class Bomber extends Entity {
     public void update() {
         dieByMonster();
         dieByFlameFromBomb();
-        if (this.getDelayPerStep() == this.getLimitDelay() ) {
+        if (this.getDelayPerStep() == this.getLimitDelay()) {
             Die();
             Move.checkRun(this);
             this.setDelayPerStep(0);
